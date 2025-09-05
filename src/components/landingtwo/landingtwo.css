@@ -1,0 +1,58 @@
+.landing-upper {
+    display: flex;
+    flex-direction: row;
+}
+
+.landing-upper-left {
+    width: 50%;
+}
+
+.aud-goo-logo {
+    position: absolute;
+    width: 790px;
+    left: -20px;
+    top: -30px;
+}
+
+.landing-upper-right {
+    width: 50%;
+    height: 400px;
+}
+
+.horizontal-video-container {
+    width: 620px;
+    height: 350px;
+    background-color: #093689;
+}
+
+.landing-lower {
+    display: flex;
+    flex-direction: row;
+}
+
+.landing-lower-left {
+    width: 50%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.vert-video-wrap {
+    height: 320px;
+    background-color: #098938;
+    width: 210px;
+}
+
+.landing-lower-right {
+    width: 50%;
+}
+
+.lower-content {
+    padding: 50px 70px 0px 70px;
+    font-size: 30px;
+}
+
+.aud-inline {
+    font-family: 'PPPangaiaMedium', sans-serif;
+    font-size: 30px;
+}

@@ -1,0 +1,47 @@
+.landvideo-background {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* full viewport height */
+  overflow: hidden;
+}
+
+.landvideo-background .video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills container, keeps aspect ratio */
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.landvideo-background .video-overlay-content {
+  position: relative;
+  z-index: 0;
+  color: white;
+  text-align: center;
+  padding: 20px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  
+}
+
+.video-overlay-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.video-overlay-content p {
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  text-align: center;
+}
