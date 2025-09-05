@@ -1,4 +1,4 @@
-import './LandVideo.css';
+import './landVideo.css';
 
 export default function LandVideo({
     src = '/videos/Aud_Land_Video.mp4',
