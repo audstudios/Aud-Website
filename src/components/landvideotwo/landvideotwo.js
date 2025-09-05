@@ -10,10 +10,10 @@ export default function LandVideoTwo({ src = "/videos/Aud_Land_Video.mp4" }) {
   useEffect(() => {
     // Fade in the overlay content on load
     gsap.from(overlayRef.current, {
-      opacity: 0,   // start invisible
-      duration: 1.5, // fade-in duration
+      opacity: 0,
+      duration: 1.5,
       ease: "power2.out",
-      delay: .5 
+      delay: 0.5,
     });
   }, []);
 
@@ -28,13 +28,17 @@ export default function LandVideoTwo({ src = "/videos/Aud_Land_Video.mp4" }) {
         className="video-bg"
       />
       <div ref={overlayRef} className="video-overlay-content">
-        <p>
-          <span className="aud-inline">aud studios</span> is a boutique
-          production agency founded by longtime co-producers Madeline Corley
-          and Syd Ross. We specialize in luxury experiential capture, brand
-          campaigns, and full-scale commercial production, bringing strategic
-          thinking, creativity, and precision to every project
+        <p className="landing-content">
+          <span className="aud-inline">aud studios</span> is a boutique production agency founded by longtime collaborators Syd Ross and Madeline Corley. We specialize in luxury experiential content, brand campaigns, and full-scale commercial production, bringing strategic thinking, creativity, and precision to every project.
         </p>
+        <div className="connect-container">
+          <p className="cta-content">
+            Let’s work together!{" "}
+            <a className="cta-btn" href="mailto:hello@audstudios.com?subject=Hello&body=Hi%20there!">
+              hello@audstudios.com
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );
