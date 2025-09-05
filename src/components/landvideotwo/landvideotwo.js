@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import "./landvideotwo.css";
 
-export default function LandVideoTwo({ src = "/videos/Aud_Land_Video.mp4" }) {
+export default function LandVideoTwo({ src = "/videos/audbgvid_nologo2.mp4" }) {
   const overlayRef = useRef(null);
 
   useEffect(() => {
