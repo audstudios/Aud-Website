@@ -49,15 +49,18 @@ export default function LandVideoTwo({ src = "/videos/audbgvid_nologo2.mp4" }) {
 
   return (
     <div className="landvideo-background">
-      <video
-        ref={videoRef}
-        src={src}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="video-bg"
-      />
+<video
+  ref={videoRef}
+  src={src}
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="video-bg"
+  controls={false} // ❌ don't show native controls
+  preload="auto" // ✅ helps load faster
+/>
+
       <div ref={overlayRef} className="video-overlay-content">
         <p className="landing-content">
           <span className="aud-inline">aud studios</span> is a boutique creative + production agency based in NYC. 

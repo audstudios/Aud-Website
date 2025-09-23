@@ -77,6 +77,14 @@
     color: #000;
 }
 
+.video-bg::-webkit-media-controls {
+  display: none !important;
+}
+
+.video-bg {
+  pointer-events: none; /* Optional: prevent taps from focusing video */
+}
+
 @media (max-width: 500px) {
   .video-overlay-content p, 
   .aud-inline {
