@@ -29,7 +29,7 @@ export default function LandVideoTwo({ src = "/videos/audbgvid_nologo2.mp4" }) {
       />
       <div ref={overlayRef} className="video-overlay-content">
         <p className="landing-content">
-          <span className="aud-inline">aud studios</span> is a boutique production agency founded by longtime collaborators Syd Ross and Madeline Corley. We specialize in luxury experiential content, brand campaigns, and full-scale commercial production, bringing strategic thinking, creativity, and precision to every project.
+          <span className="aud-inline">aud studios</span> is a boutique creative + production agency based in NYC. 
         </p>
         <div className="connect-container">
           <p className="cta-content">
