@@ -19,48 +19,49 @@ export default function LandVideoTwo({ src = "/videos/audbgvid_nologo2.mp4" }) {
 
     const video = videoRef.current;
 
-    // Try to autoplay video immediately
     const attemptPlay = () => {
       if (video) {
-        video.play().catch((error) => {
-          console.warn("Autoplay was prevented:", error);
-        });
+        video
+          .play()
+          .then(() => {
+            console.log("Video autoplayed or triggered by interaction.");
+          })
+          .catch((error) => {
+            console.warn("Autoplay prevented, waiting for user interaction.");
+          });
       }
     };
 
-    attemptPlay(); // initial attempt
+    // First try: after short delay (ensure video has had time to load)
+    setTimeout(attemptPlay, 100);
 
-    // Also try on first user interaction
-    const handleUserInteraction = () => {
+    // Fallback: user interaction
+    const handleInteraction = () => {
       attemptPlay();
-      document.removeEventListener("click", handleUserInteraction);
-      document.removeEventListener("touchstart", handleUserInteraction);
+      document.removeEventListener("click", handleInteraction);
+      document.removeEventListener("touchstart", handleInteraction);
     };
 
-    document.addEventListener("click", handleUserInteraction);
-    document.addEventListener("touchstart", handleUserInteraction);
+    document.addEventListener("click", handleInteraction);
+    document.addEventListener("touchstart", handleInteraction);
 
-    // Cleanup
     return () => {
-      document.removeEventListener("click", handleUserInteraction);
-      document.removeEventListener("touchstart", handleUserInteraction);
+      document.removeEventListener("click", handleInteraction);
+      document.removeEventListener("touchstart", handleInteraction);
     };
   }, []);
 
   return (
     <div className="landvideo-background">
-<video
-  ref={videoRef}
-  src={src}
-  autoPlay
-  loop
-  muted
-  playsInline
-  className="video-bg"
-  controls={false} // ❌ don't show native controls
-  preload="auto" // ✅ helps load faster
-/>
-
+      <video
+        ref={videoRef}
+        src={src}
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="video-bg"
+      />
       <div ref={overlayRef} className="video-overlay-content">
         <p className="landing-content">
           <span className="aud-inline">aud studios</span> is a boutique creative + production agency based in NYC. 
