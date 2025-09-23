@@ -35,7 +35,7 @@ export default function LandVideoTwo({ src = "/videos/audbgvid_nologo2.mp4" }) {
           <p className="cta-content">
             Let’s work together!{" "}
             <a className="cta-btn" href="mailto:hello@audstudios.com?subject=Hello&body=Hi%20there!">
-              hello@audstudios.co
+              hello@audstudios.com
             </a>
           </p>
         </div>
