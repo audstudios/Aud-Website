@@ -28,3 +28,7 @@ body {
 .devtools-indicator {
   display: none;
 }
+
+h3 {
+  font-size: 48px;
+}

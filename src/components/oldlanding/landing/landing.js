@@ -1,5 +1,5 @@
 import './landing.css';
-import LandVideo from '../landvideo/landvideo';
+import LandVideo from '../oldlanding/landvideo/landvideo';
 
 export default function Landing() {
   return (

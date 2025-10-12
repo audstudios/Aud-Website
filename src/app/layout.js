@@ -1,5 +1,5 @@
 import './globals.css'; // global styles
-import Header from '../components/header/header';
+import Header from '../components/oldlanding/header/header';
 
 
 export const metadata = {

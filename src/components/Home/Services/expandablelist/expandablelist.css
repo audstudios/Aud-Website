@@ -1,0 +1,58 @@
+.expandiblelist-container {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.section {
+  overflow: hidden;
+}
+
+.section-header {
+  padding: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28px;
+  align-items: center;
+}
+
+.expand-list-title {
+  font-size: 28px;
+}
+
+.expand-symbol {
+  font-size: 60px;
+  line-height: 0;
+}
+
+.section-content {
+  list-style: none;
+  margin: 0;
+  padding: 10px 20px;
+  background-color: #fff;
+}
+
+.section-content li {
+  padding: 15px 0;
+}
+
+.section-content li:last-child {
+  border-bottom: none;
+}
+
+
+.expandable-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  padding: 0 0.75rem;
+}
+
+details[open] .expandable-content {
+  max-height: 500px;
+  opacity: 1;
+  padding: 0.75rem;
+}
