@@ -1,0 +1,84 @@
+.homeslider-container {
+  position: relative;
+  height: 1025px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+
+/* Layered background divs */
+.bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0; /* gsap will override */
+}
+
+/* This layer fades OUT */
+.bg-exit {
+  z-index: 0;
+  opacity: 0;
+}
+
+/* This layer fades IN */
+.bg-enter {
+  z-index: 1;
+  opacity: 1;
+}
+
+.homeslider-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.homeslider-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homeslider-title {
+  text-align: center;
+  font-size: 150px;
+  text-transform: uppercase;
+  position: relative;
+  top: 60px;
+  z-index: 1;
+  width: 1400px;
+  color: white;
+}
+
+.slider-video {
+  width: 750px;
+  position: relative;
+  z-index: 1;
+}
+
+.homeslider-controls {
+  justify-content: space-between;
+  display: flex;
+  font-size: 75px;
+  padding: 0 30px;
+  width: 100%;
+  position: relative;
+  bottom: 280px;
+  cursor: pointer;
+}
+
+.homeslider-count p {
+  font-size: 36px;
+  position: relative;
+  bottom: 50px;
+  color: white;
+}

@@ -1,0 +1,79 @@
+.carousel-container {
+  overflow: hidden;
+  background: white;
+  padding: 50px 0;
+  position: relative;
+}
+
+.carousel-wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-title h3 {
+    text-align: left;
+    padding: 0px 0px 30px 60px;
+}
+
+.carousel-controller {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-track {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-images {
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 40s linear infinite;
+}
+
+.carousel-set {
+  display: flex;
+}
+
+.carousel-images img {
+  height: 100px;
+  margin: 0 30px;
+  object-fit: contain;
+}
+
+/* Animation Keyframes */
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Optional: fade on left/right edges */
+.fade-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-fade,
+.right-fade {
+  width: 150px;
+  height: 100%;
+}
+
+.left-fade {
+  background: linear-gradient(to right, white 0%, transparent 100%);
+}
+
+.right-fade {
+  background: linear-gradient(to left, white 0%, transparent 100%);
+}
