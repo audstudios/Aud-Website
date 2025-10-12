@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import './homeslider.css';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 const slides = [
   {
@@ -119,8 +121,8 @@ export default function HomeSlider() {
             playsInline
           />
           <div className="homeslider-controls">
-            <span onClick={prevSlide}>/-</span>
-            <span onClick={nextSlide}>-/</span>
+            <span onClick={prevSlide}><KeyboardDoubleArrowLeftIcon style={{ fontSize: 80, color: 'white' }} /></span>
+            <span onClick={nextSlide}><KeyboardDoubleArrowRightIcon style={{ fontSize: 80, color: 'white' }} /></span>
           </div>
           <div className="homeslider-count">
             <p>
