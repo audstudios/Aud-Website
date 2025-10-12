@@ -8,10 +8,10 @@ export default function Services() {
             <div className="services-left">
                 <div className="services-content">
                     <h3>
-                        What we'll do for you
+                        What we&apos;ll do for you
                     </h3>
                     <p>
-                        We’re aud studios — a founder-led creative agency that plugs in where you need us most, bringing perspective, initiative, and expertise that move with your team in any stage, from ideation to production to wrap.
+                        We&apos;re aud studios — a founder-led creative agency that plugs in where you need us most, bringing perspective, initiative, and expertise that move with your team in any stage, from ideation to production to wrap.
                     </p>
                 </div>
             </div>
