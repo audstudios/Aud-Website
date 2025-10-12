@@ -5,7 +5,7 @@ export default function HomeCarousel() {
     <div className="carousel-container">
       <div className="carousel-wrapper">
         <div className="carousel-title">
-          <h3>Who we've worked with</h3>
+          <h3>Who we&apos;ve worked with</h3>
         </div>
 
         <div className="carousel-controller">
