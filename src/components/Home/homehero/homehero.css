@@ -40,3 +40,22 @@
   user-select: none;
   width: 100%;
 }
+
+.hero-fade {
+    height: 220px;
+    width: 3000px;
+    background: white;
+    position: absolute;
+    bottom: -160px;
+    right: -40px;
+    filter: blur(25px);
+    overflow: hidden;
+}
+
+.hero-block {
+  height: 30px;
+  width: 100%;
+  background: #ffffff;
+  position: absolute;
+  bottom: 0px;
+}

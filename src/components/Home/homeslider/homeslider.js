@@ -14,12 +14,12 @@ const slides = [
   },
   {
     title: 'Slide 02',
-    video: '/videos/Aud_Land_Video.mp4',
+    video: '/videos/frogeating.mp4',
     background: '/images/AudGlassLogo.png',
   },
   {
     title: 'Slide 03',
-    video: '/videos/Aud_Land_Video.mp4',
+    video: '/videos/FlippedFrog.mp4',
     background: '/images/slider_test.jpg',
   },
 ];
