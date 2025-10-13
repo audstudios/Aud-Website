@@ -1,12 +1,6 @@
-body {
-    background-color: #000;
-}
-
 .header {
     display: none;
 }
-
-
 
 .nav-container, .nav-wrapper {
     width: 100%;

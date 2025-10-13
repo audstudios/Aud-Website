@@ -1,9 +1,9 @@
 import Navigation from "@/components/nav/nav";
-import Homehero from "@/components/Home/homehero/homehero";
-import Services from "@/components/Home/Services/services";
-import HomeSlider from "@/components/Home/homeslider/homeslider";
-import HomeCarousel from "@/components/Home/homecarousel/homecarousel";
-import HomeContact from "@/components/Home/homecontact/homecontact";
+import Homehero from "@/components/home/homehero/homehero";
+import Services from "@/components/home/services/services";
+import HomeSlider from "@/components/home/homeslider/homeslider";
+import HomeCarousel from "@/components/home/homecarousel/homecarousel";
+import HomeContact from "@/components/home/homecontact/homecontact";
 
 export default function Test() {
   return (
