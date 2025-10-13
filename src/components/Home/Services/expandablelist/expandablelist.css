@@ -19,7 +19,7 @@
 }
 
 .expand-list-title {
-  font-size: 28px;
+  font-size: 32px;
 }
 
 .expand-symbol {
@@ -36,6 +36,7 @@
 
 .section-content li {
   padding: 15px 0;
+  font-size: 22px;
 }
 
 .section-content li:last-child {
