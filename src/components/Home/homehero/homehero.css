@@ -51,3 +51,37 @@
     filter: blur(25px);
     overflow: hidden;
 }
+
+@media (min-width: 1024px) {
+.hero-title {
+    top: 40%;
+    font-size: 40px;
+}
+}
+
+@media (min-width: 780px) {
+.hero-title {
+    font-size: 35px;
+}
+}
+
+@media (min-width: 667px) {
+.hero-title {
+    font-size: 40px;
+    white-space: break-spaces;
+    width: 400px;
+}
+}
+
+@media (min-width: 410px) {
+.hero-title {
+    font-size: 32px;
+    width: 330px;
+}
+}
+
+@media (min-width: 330px) {
+.hero-title {
+    font-size: 29px;
+}
+}
