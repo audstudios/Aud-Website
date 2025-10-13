@@ -14,7 +14,7 @@ export default function Footer() {
             <div className="footer-contact-wrapper">
                 <div className="footer-contact-title">
                     <h4>
-                        Contact
+                        Contact y
                     </h4>
                     <div className="address">
                         <p>150 Mott Street</p>
