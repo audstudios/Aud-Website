@@ -24,6 +24,10 @@
     padding: 0 0 15px 0;
 }
 
+.homecontact-subtitle p {
+    font-size: 24px;
+}
+
 .homecontact-button {
     margin: 15px 0;
 }

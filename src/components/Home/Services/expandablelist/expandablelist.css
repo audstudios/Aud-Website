@@ -1,6 +1,6 @@
 .expandiblelist-container {
-  max-width: 500px;
-  margin: 20px auto;
+    max-width: 100%;
+    margin: 0px auto 20px auto;
 }
 
 .section {

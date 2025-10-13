@@ -14,7 +14,6 @@ export default function Homehero() {
       <h1 className="hero-title">we are not the standard.<b>we are aud studios.</b></h1>
       <img className="hero-logo" src="/images/AudGlassLogoV02.png"></img>
       <div className='hero-fade'></div>
-      <div className='hero-block'></div>
     </div>
   );
 }

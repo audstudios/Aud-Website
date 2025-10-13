@@ -51,11 +51,3 @@
     filter: blur(25px);
     overflow: hidden;
 }
-
-.hero-block {
-  height: 30px;
-  width: 100%;
-  background: #ffffff;
-  position: absolute;
-  bottom: 0px;
-}
