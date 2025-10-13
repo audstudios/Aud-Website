@@ -7,7 +7,7 @@ export default function Services() {
         <div className="services-wrapper">
             <div className="services-left">
                 <div className="services-content">
-                    <h3>
+                    <h3 className='services-title'>
                         What we&apos;ll do for you
                     </h3>
                     <p>
