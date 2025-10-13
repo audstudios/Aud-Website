@@ -37,6 +37,7 @@
 .section-content li {
   padding: 15px 0;
   font-size: 22px;
+  border-bottom: dotted rgba(0, 0, 0, 0.08);
 }
 
 .section-content li:last-child {
