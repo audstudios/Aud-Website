@@ -173,7 +173,7 @@ export default function HomeSlider() {
       {/* Foreground content */}
       <div className="homeslider-wrapper">
         <div className="homeslider-content">
-          <h2 className="homeslider-title">{title}</h2>
+          <h2 className="homeslider-title"><span className='font-bold'>{title}</span></h2>
 
           <div className="homeslider-controls">
             <span onClick={prevSlide}>

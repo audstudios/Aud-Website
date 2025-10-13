@@ -7,6 +7,13 @@ padding: 0;
 margin: 0;
  }
 
+ @font-face {
+  font-family: 'PPMontreal-Bold';
+  src: url('/fonts/PPNeueMontreal-Bold.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'PPPangaiaMedium';
   src: url('/fonts/PPPangaia-Medium.woff') format('woff');
@@ -32,4 +39,8 @@ body {
 
 h3 {
   font-size: 48px;
+}
+
+.font-bold {
+    font-family: 'PPMontreal-Bold', sans-serif;
 }

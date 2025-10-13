@@ -110,7 +110,7 @@ const animateClose = (key) => {
       {sections.map(({ key, title, items }) => (
         <div key={key} className="section">
           <div className="section-header" onClick={() => toggleSection(key)}>
-            <span className="expand-list-title">{title}</span>
+            <span className="expand-list-title font-bold">{title}</span>
             <div className="expand-symbol">{openSection === key ? '-' : '+'}</div>
           </div>
 

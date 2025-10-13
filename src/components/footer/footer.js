@@ -8,7 +8,7 @@ export default function Footer() {
                 <img className="footer-logo" src="/images/audfooterlogo.svg"></img>
                 <div className="footer-logo-byline">
                     <span>We are not the standard.</span>
-                    <span>We are aud studios.</span>
+                    <span className='font-bold'>We are aud studios.</span>
                 </div>
             </div>
             <div className="footer-contact-wrapper">

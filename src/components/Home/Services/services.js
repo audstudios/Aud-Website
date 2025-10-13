@@ -8,7 +8,7 @@ export default function Services() {
             <div className="services-left">
                 <div className="services-content">
                     <h3 className='services-title'>
-                        What we&apos;ll do for you
+                        <span className='font-bold'>What we&apos;ll do for you</span>
                     </h3>
                     <p>
                         We&apos;re aud studios — a founder-led creative agency that plugs in where you need us most, bringing perspective, initiative, and expertise that move with your team in any stage, from ideation to production to wrap.
