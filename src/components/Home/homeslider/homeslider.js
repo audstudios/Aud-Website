@@ -27,16 +27,20 @@ const slides = [
 export default function HomeSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevBackground, setPrevBackground] = useState(null);
+  const [prevVideo, setPrevVideo] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const bgEnterRef = useRef(null);
   const bgExitRef = useRef(null);
+  const videoEnterRef = useRef(null);
+  const videoExitRef = useRef(null);
 
   const totalSlides = slides.length;
 
   const nextSlide = () => {
     if (isAnimating) return;
     setPrevBackground(slides[currentIndex].background);
+    setPrevVideo(slides[currentIndex].video);
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
   };
@@ -44,42 +48,75 @@ export default function HomeSlider() {
   const prevSlide = () => {
     if (isAnimating) return;
     setPrevBackground(slides[currentIndex].background);
+    setPrevVideo(slides[currentIndex].video);
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
   // Animate transitions
   useEffect(() => {
-    if (!prevBackground) return;
+    if (!prevBackground && !prevVideo) return;
 
+    // Background fade out
     if (bgExitRef.current) {
       gsap.set(bgExitRef.current, { opacity: 1 });
       gsap.to(bgExitRef.current, {
         opacity: 0,
-        duration: 0.6,
+        duration: 1.0,
         ease: 'power2.out',
       });
     }
 
+    // Background fade in
     if (bgEnterRef.current) {
       gsap.set(bgEnterRef.current, { opacity: 0 });
       gsap.to(bgEnterRef.current, {
         opacity: 1,
-        duration: 0.6,
+        duration: 1.0,
+        ease: 'power2.out',
+      });
+    }
+
+    // Video fade out
+    if (videoExitRef.current) {
+      gsap.set(videoExitRef.current, { opacity: 1 });
+      gsap.to(videoExitRef.current, {
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power2.out',
+      });
+    }
+
+    // Video fade in
+    if (videoEnterRef.current) {
+      gsap.set(videoEnterRef.current, { opacity: 0 });
+      gsap.to(videoEnterRef.current, {
+        opacity: 1,
+        duration: 1.2,
         ease: 'power2.out',
         onComplete: () => {
           setPrevBackground(null);
+          setPrevVideo(null);
           setIsAnimating(false);
         },
       });
     }
   }, [currentIndex]);
 
-  // 🔥 Animate initial load
+  // Initial load
   useEffect(() => {
     if (bgEnterRef.current && !prevBackground) {
       gsap.set(bgEnterRef.current, { opacity: 0 });
       gsap.to(bgEnterRef.current, {
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+      });
+    }
+
+    if (videoEnterRef.current && !prevVideo) {
+      gsap.set(videoEnterRef.current, { opacity: 0 });
+      gsap.to(videoEnterRef.current, {
         opacity: 1,
         duration: 0.6,
         ease: 'power2.out',
@@ -107,23 +144,46 @@ export default function HomeSlider() {
         style={{ backgroundImage: `url(${background})` }}
       />
 
+      {/* Fade OUT previous video */}
+      {prevVideo && (
+        <video
+          className="slider-video video-exit"
+          ref={videoExitRef}
+          key={`exit-${prevVideo}`}
+          src={prevVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      )}
+
+      {/* Fade IN new video */}
+      <video
+        className="slider-video video-enter"
+        ref={videoEnterRef}
+        key={`enter-${video}`}
+        src={video}
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+
       {/* Foreground content */}
       <div className="homeslider-wrapper">
         <div className="homeslider-content">
           <h2 className="homeslider-title">{title}</h2>
-          <video
-            className="slider-video"
-            key={video}
-            src={video}
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+
           <div className="homeslider-controls">
-            <span onClick={prevSlide}><KeyboardDoubleArrowLeftIcon style={{ fontSize: 80, color: 'white' }} /></span>
-            <span onClick={nextSlide}><KeyboardDoubleArrowRightIcon style={{ fontSize: 80, color: 'white' }} /></span>
+            <span onClick={prevSlide}>
+              <KeyboardDoubleArrowLeftIcon style={{ fontSize: 80, color: 'white' }} />
+            </span>
+            <span onClick={nextSlide}>
+              <KeyboardDoubleArrowRightIcon style={{ fontSize: 80, color: 'white' }} />
+            </span>
           </div>
+
           <div className="homeslider-count">
             <p>
               {String(currentIndex + 1).padStart(2, '0')}/

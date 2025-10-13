@@ -23,6 +23,8 @@
     background: #fff;
     border-radius: 0 0 15px 0;
     text-align: center;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .nav-right {

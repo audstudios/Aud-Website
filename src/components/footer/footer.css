@@ -1,3 +1,7 @@
+.footer-container {
+    background: #000000;
+}
+
 .footer-wrapper {
     display: flex;
     color: white;
