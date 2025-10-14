@@ -57,6 +57,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 0;
     }
     .footer-contact-title h4 {
         width: 110px;
