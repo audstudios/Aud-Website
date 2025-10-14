@@ -49,3 +49,47 @@
     position: relative;
     bottom: -15px;
 }
+
+@media (max-width: 1282px) {
+    .homecontact-logos {
+        margin: 0 120px 0 0;
+    }
+}
+
+@media (max-width: 1192px) {
+    .homecontact-logos {
+        margin: 0 50px 0 0;
+    }
+}
+
+@media (max-width: 1132px) {
+    .homecontact-wrapper {
+        display: block;
+    }
+    .homecontact-box {
+        margin: 15px auto;
+    }
+    .homecontact-logos {
+        display: none;
+    }
+}
+
+@media (max-width: 670px) {
+    .homecontact-box {
+        width: 390px;
+    }
+
+    .homecontact-maincontent h3 {
+        font-size: 30px;
+    }
+    .homecontact-box {
+        padding: 25px 10px 0px 10px;
+    }
+}
+
+
+@media (max-width: 450px) {
+    .homecontact-box {
+        width: 310px;
+    }
+}

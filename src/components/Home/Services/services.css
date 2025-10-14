@@ -27,7 +27,7 @@
         display: block;
         padding: 30px;  
     }
-    .services-left {
+    .services-left, .services-right {
         padding: 30px 0;   
     }
 
@@ -35,7 +35,7 @@
         width: 100%;
     }
     .section-header {
-        padding: 12px 0;
+        padding: 12px 0 !important;
     }
 }
 
