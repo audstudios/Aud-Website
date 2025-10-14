@@ -48,3 +48,32 @@
     position: relative;
     top: -15px
 }
+
+@media (max-width: 950px) {
+    .footer-wrapper {
+        display: block;
+    }
+    .footer-logo-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-contact-title h4 {
+        width: 110px;
+    }
+    .footer-contact-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .address {
+        text-align: center;
+    }
+
+    .footer-sitemap-wrapper {
+        align-items: center;
+        margin: 0px;
+        padding: 30px 0;
+    }
+}
