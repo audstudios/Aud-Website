@@ -1,12 +1,17 @@
 'use client'; // Needed for Next.js App Router
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './expandablelist.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ExpandibleList() {
   const [openSection, setOpenSection] = useState(null);
   const contentRefs = useRef({});
+  const containerRef = useRef(null);
+  const headersRef = useRef([]);
 
   const toggleSection = (sectionKey) => {
     if (openSection === sectionKey) {
@@ -17,41 +22,60 @@ export default function ExpandibleList() {
         animateClose(openSection);
       }
       setOpenSection(sectionKey);
-      setTimeout(() => animateOpen(sectionKey), 10); // Wait for content render
+      setTimeout(() => animateOpen(sectionKey), 10);
     }
   };
 
- const animateOpen = (key) => {
-  const el = contentRefs.current[key];
-  if (!el) return;
+  const animateOpen = (key) => {
+    const el = contentRefs.current[key];
+    if (!el) return;
 
-  gsap.fromTo(
-    el,
-    { height: 0, opacity: 0 },
-    {
-      height: el.scrollHeight,
-      opacity: 1,
-      duration: 0.4,
-      ease: 'power2.out',
-      onComplete: () => {
-        el.style.height = 'auto';
-        // No animation on li elements here anymore
-      },
-    }
-  );
-};
+    gsap.fromTo(
+      el,
+      { height: 0, opacity: 0 },
+      {
+        height: el.scrollHeight,
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.out',
+        onComplete: () => {
+          el.style.height = 'auto';
+        },
+      }
+    );
+  };
 
-const animateClose = (key) => {
-  const el = contentRefs.current[key];
-  if (!el) return;
+  const animateClose = (key) => {
+    const el = contentRefs.current[key];
+    if (!el) return;
 
-  gsap.to(el, {
-    height: 0,
-    opacity: 0,
-    duration: 0.3,
-    ease: 'power2.inOut',
-  });
-};
+    gsap.to(el, {
+      height: 0,
+      opacity: 0,
+      duration: 0.3,
+      ease: 'power2.inOut',
+    });
+  };
+
+  // 👇 Animate section headers on scroll into view
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(headersRef.current, {
+        autoAlpha: 0,
+        yPercent: 20,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const sections = [
     {
@@ -106,10 +130,14 @@ const animateClose = (key) => {
   ];
 
   return (
-    <div className="expandiblelist-container">
-      {sections.map(({ key, title, items }) => (
+    <div className="expandiblelist-container" ref={containerRef}>
+      {sections.map(({ key, title, items }, index) => (
         <div key={key} className="section">
-          <div className="section-header" onClick={() => toggleSection(key)}>
+          <div
+            className="section-header"
+            onClick={() => toggleSection(key)}
+            ref={(el) => (headersRef.current[index] = el)}
+          >
             <span className="expand-list-title font-bold">{title}</span>
             <div className="expand-symbol">{openSection === key ? '-' : '+'}</div>
           </div>
