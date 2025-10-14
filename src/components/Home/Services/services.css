@@ -53,3 +53,12 @@
         font-size: 40px;
     }
 }
+
+@media (max-width: 450px) {
+    .services-title {
+        font-size: 28px;
+    }
+    .services-content p {
+        font-size: 18px;
+    }
+}
