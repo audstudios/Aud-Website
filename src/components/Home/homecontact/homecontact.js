@@ -9,7 +9,7 @@ export default function HomeContact() {
                     <p>Contact Us</p>
                 </div>
                 <div className="homecontact-maincontent">
-                    <h3><span className='font-bold'>Got a project or an <br></br>aud job in mind?</span></h3>
+                    <h3><span className='font-bold'>Let’s collaborate to set a new standard and bring your ideas to life.</span></h3>
                     <h3>We&apos;d love to connect</h3>
                 </div>
                 <div className="homecontact-button">

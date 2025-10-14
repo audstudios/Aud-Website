@@ -60,10 +60,10 @@ export default function Services() {
         <div className="services-left">
           <div className="services-content">
             <h3 className="services-title" ref={titleRef}>
-              <span className="font-bold">What we&apos;ll do for you</span>
+              <span className="font-bold">Our Approach</span>
             </h3>
             <p ref={paraRef}>
-              We&apos;re aud studios — a founder-led creative agency that plugs in where you need us most, bringing perspective, initiative, and expertise that move with your team in any stage, from ideation to production to wrap.
+              As a founder-led creative agency, we step in where you need us most. We bring fresh perspective, initiative, and hands-on expertise that move in sync with your team from ideation to production to wrap.
             </p>
           </div>
         </div>

@@ -79,6 +79,16 @@ export default function ExpandibleList() {
 
   const sections = [
     {
+      key: 'creative',
+      title: 'Creative',
+      items: [
+        'Creative Direction',
+        'Campaign Development',
+        'Brand Campaigns and Branded Content',
+        'Campaign concepting & ideation',
+      ],
+    },
+    {
       key: 'production',
       title: 'Production',
       items: [
@@ -101,18 +111,8 @@ export default function ExpandibleList() {
       ],
     },
     {
-      key: 'creative',
-      title: 'Creative',
-      items: [
-        'Creative Direction',
-        'Campaign Development',
-        'Brand Campaigns and Branded Content',
-        'Campaign concepting & ideation',
-      ],
-    },
-    {
       key: 'consulting',
-      title: 'Consulting / Account Services',
+      title: 'Consulting & Account Services',
       items: [
         'Creative strategy & campaign planning',
         'Brand positioning & audience engagement',

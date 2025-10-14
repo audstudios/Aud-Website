@@ -20,6 +20,7 @@
 
 .expand-list-title {
   font-size: 32px;
+  text-transform: uppercase;
 }
 
 .expand-symbol {
@@ -38,6 +39,7 @@
   padding: 15px 0;
   font-size: 22px;
   border-bottom: dotted rgba(0, 0, 0, 0.08);
+  text-transform: capitalize;
 }
 
 .section-content li:last-child {
