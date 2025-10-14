@@ -34,6 +34,9 @@
     .services-left, .services-right {
         width: 100%;
     }
+    .section-header {
+        padding: 12px 0;
+    }
 }
 
 @media (max-width: 560px) {
@@ -41,6 +44,12 @@
         font-size: 26px;
     }
     .expand-symbol {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 510px) {
+    .services-title {
         font-size: 40px;
     }
 }

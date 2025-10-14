@@ -42,3 +42,9 @@
     padding: 0 55px;
     gap: 60px;
 }
+
+@media (max-width: 900px) {
+    .nav-container {
+        display: none;
+    }
+}
