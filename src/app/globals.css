@@ -12,6 +12,7 @@ margin: 0;
   src: url('/fonts/PPNeueMontreal-Bold.woff') format('woff');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -19,6 +20,7 @@ margin: 0;
   src: url('/fonts/PPPangaia-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -26,10 +28,11 @@ margin: 0;
   src: url('/fonts/PPNeueMontreal-Thin.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 body {
-  font-family: 'PPNeueMontreal-Thin', sans-serif;
+  font-family: 'PPNeueMontreal-Thin', system-ui, sans-serif;
   background: #ffffff;
 }
 
@@ -42,12 +45,12 @@ h3 {
 }
 
 .font-bold {
-    font-family: 'PPMontreal-Bold', sans-serif;
+    font-family: 'PPMontreal-Bold', system-ui, sans-serif;
 }
 
 .page-title {
   font-size: 120px;
-  font-family: 'PPMontreal-Bold';
+  font-family: 'PPMontreal-Bold', system-ui, sans-serif;
 }
 
 
