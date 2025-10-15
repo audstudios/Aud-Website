@@ -1,0 +1,52 @@
+.project-hero-container {
+    background-color: #000000;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    z-index: 0;
+    position: relative;
+}
+
+.project-hero-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px;
+}
+
+.project-title-container {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    justify-content: space-between;
+}
+
+.project-title {
+    font-family: 'PPMontreal-bold';
+    font-size: 80px;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.project-hero-info-type {
+    color: #ffffff;
+}
+
+.project-hero-info-container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    position: relative;
+    top: 80px;
+}
+
+.project-hero-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-hero-info-button {
+    background: #ffffff;
+    color: #000000;
+    text-align: center;
+    margin: 15px 0;
+}

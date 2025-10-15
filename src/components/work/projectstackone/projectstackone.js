@@ -7,7 +7,7 @@ const projects = [
     client: 'NORTH SIX // JEAN PAUL GAULTIER ',
     type: 'Experiential and Event Content Production ',
     year: '2025',
-    href: '/prod/work/project-a',
+    href: '/prod/work/projects/templates/horizontal',
     positionClass: 'stack-one-left',
   },
   {
@@ -19,11 +19,11 @@ const projects = [
     positionClass: 'stack-one-center',
   },
   {
-    title: 'Project Title 3',
-    client: 'Client C',
-    type: 'Project Type C',
-    year: '2023',
-    href: '/prod/work/project-c',
+    title: 'RIZZLER x HARDEE’S',
+    client: 'GET ENGAGED MEDIA',
+    type: 'Social Media Campaign',
+    year: '2025',
+    href: '/prod/work/projects/templates/horizontal',
     positionClass: 'stack-one-right',
   },
 ];
