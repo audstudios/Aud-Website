@@ -3,24 +3,28 @@
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import './homeslider.css';
+import './titles.css'
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 const slides = [
   {
-    title: 'Jean Paul',
+    title: 'Jean Paul Gautier',
     video: '/videos/Aud_Land_Video.mp4',
     background: '/images/AUD_BG_SLIDER01.png',
+    className: 'slide-jeanpaul',
   },
   {
     title: 'Slide 02',
     video: '/videos/frogeating.mp4',
     background: '/images/AudGlassLogo.png',
+    className: 'slide-frogeating',
   },
   {
     title: 'Slide 03',
     video: '/videos/FlippedFrog.mp4',
     background: '/images/slider_test.jpg',
+    className: 'slide-flippedfrog',
   },
 ];
 
@@ -103,7 +107,7 @@ export default function HomeSlider() {
     }
   }, [currentIndex]);
 
-  // Initial load
+  // Initial load fade-in
   useEffect(() => {
     if (bgEnterRef.current && !prevBackground) {
       gsap.set(bgEnterRef.current, { opacity: 0 });
@@ -124,7 +128,8 @@ export default function HomeSlider() {
     }
   }, []);
 
-  const { title, video, background } = slides[currentIndex];
+  const { title, video, background, className } = slides[currentIndex];
+  const prevClass = slides.find((s) => s.background === prevBackground)?.className || '';
 
   return (
     <div className="homeslider-container">
@@ -173,7 +178,9 @@ export default function HomeSlider() {
       {/* Foreground content */}
       <div className="homeslider-wrapper">
         <div className="homeslider-content">
-          <h2 className="homeslider-title"><span className='font-bold'>{title}</span></h2>
+          <h2 className={`homeslider-title ${className}`}>
+            <span className="font-bold">{title}</span>
+          </h2>
 
           <div className="homeslider-controls">
             <span onClick={prevSlide}>

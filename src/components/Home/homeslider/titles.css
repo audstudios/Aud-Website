@@ -1,0 +1,26 @@
+.slide-jeanpaul {
+    font-size: 90px;
+    top: -110px;
+}
+
+@media (max-width: 988px) {
+    .slide-jeanpaul {
+        font-size: 80px;
+        top: -50px;
+    }
+}
+
+@media (max-width: 858px) {
+    .slide-jeanpaul {
+        font-size: 60px;
+        top: -30px;
+    }
+}
+
+@media (max-width: 705px) {
+    .slide-jeanpaul {
+        font-size: 30px;
+        position: relative;
+        top: 20px;
+    }
+}

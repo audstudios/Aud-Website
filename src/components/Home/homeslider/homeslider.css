@@ -57,6 +57,7 @@
   z-index: 2;
   width: 1400px;
   color: white;
+  height: 180px;
 }
 
 .slider-video {
@@ -96,6 +97,7 @@
   color: white;
 }
 
+
 @media (max-width: 1392px) {
     .homeslider-controls {
         width: 90%;
@@ -118,7 +120,7 @@
     }
     .homeslider-controls {
         width: 60%;
-        bottom: 30px;
+        bottom: 60px;
     }
     .homeslider-count p {
         bottom: -80px;
@@ -130,7 +132,7 @@
 
 @media (max-width: 830px) {
     .homeslider-controls {
-        width: 30%;
+        width: 50%;
     }
 }
 
@@ -138,16 +140,25 @@
     .homeslider-container {
         height: 625px;
     }
+
+    .homeslider-controls {
+        width: 30%;
+    }
+
     .slider-video {
         width: 270px;
     }
+    
     .homeslider-title {
         top: -10px;
         font-size: 60px;
+        height: 100px;
     }
+
     .homeslider-controls {
         width: 39%;
         scale: 0.7;
+        top: -30px;
     }
     .homeslider-count p {
         bottom: -30px;
