@@ -1,0 +1,25 @@
+.horizontal-project-content-container {
+    padding: 80px;
+}
+
+.horizontal-project-content-wrapper {
+    display: flex;
+}
+
+.horizontal-project-content-img-main {
+    background: pink;
+    aspect-ratio: 16 / 9;
+    width: 450px;
+    margin: 0px 0 30px 0px;
+}
+
+.project-content-subimages-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-content-horizontal-subimages {
+    aspect-ratio: 16/9;
+    width: 270px;
+    background: red;
+}

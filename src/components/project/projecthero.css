@@ -56,3 +56,23 @@
     color: black;
     font-weight: 800;
 }
+
+.project-right-content {
+    padding: 0 0 0px 50px;
+}
+
+.project-content-mainline {
+    font-family: 'PPMontreal-Bold';
+    font-size: 28px;
+}
+
+.project-content-mainline {
+    font-size: 28px;
+    padding-bottom: 30px;
+    padding: 0px 0px 30px 0px;
+}
+
+.project-content-subcontent {
+    font-size: 28px;
+    padding-bottom: 20px;
+}
