@@ -50,3 +50,9 @@
     text-align: center;
     margin: 15px 0;
 }
+
+.project-video-link {
+    text-decoration: none;
+    color: black;
+    font-weight: 800;
+}
