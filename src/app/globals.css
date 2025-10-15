@@ -44,3 +44,14 @@ h3 {
 .font-bold {
     font-family: 'PPMontreal-Bold', sans-serif;
 }
+
+.page-title {
+  font-size: 120px;
+  font-family: 'PPMontreal-Bold';
+}
+
+
+/*delete later*/
+.footer-container {
+  display: none;
+}

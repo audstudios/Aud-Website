@@ -26,10 +26,6 @@
     pointer-events: none;
 }
 
-.nav-home {
-    opacity: 0;
-}
-
 .nav-right {
     display: flex;
     flex-direction: column;

@@ -1,0 +1,76 @@
+.project-stack-one-container {
+    padding: 60px 70px 60px 70px;
+}
+
+.project-stack-one-wrapper {
+    display: flex;
+    justify-content: space-between;    
+}
+
+.stack-one-left {
+    position: relative;
+    top: 0px;
+}
+
+
+.stack-one-center {
+    position: relative;
+    top: 150px;
+}
+
+.stack-one-right {
+    position: relative;
+    top: -180px;
+}
+
+.project-card-vert-container {
+    aspect-ratio: 9 / 16;
+    width: 350px;      
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: flex-end;
+}
+
+.project-card-vert-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px;
+}
+
+.project-card-vert-content-right {
+    text-align: right;
+}
+
+.project-card-vert-content-left-top {
+    font-family: 'PPMontreal-Bold';
+}
+
+.footer-container {
+    margin-top: 180px;
+}
+
+.stack-one-left {
+  overflow: hidden;
+}
+
+.stack-one-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/logos/CarouselLogo_png-21.png'); /* 👈 your image path here */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease;
+  z-index: -1;
+}
+
+/* Zoom effect on hover */
+.stack-one-left:hover::before {
+  transform: scale(1.1); /* zoom the background */
+}
