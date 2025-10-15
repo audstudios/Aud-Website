@@ -40,8 +40,8 @@ export default function HorizontalProjectHero() {
                         </div>
                     </div>
                     <div className="project-hero-info-button">
-                        <Link href="/test">
-                            <p className="project-video-link" >WATCH IN FULL</p>
+                        <Link className="project-video-link" href="/test">
+                            <p>WATCH IN FULL</p>
                         </Link>
                     </div>
                 </div>
