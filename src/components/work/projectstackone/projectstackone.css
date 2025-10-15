@@ -74,3 +74,7 @@
 .stack-one-left:hover::before {
   transform: scale(1.1); /* zoom the background */
 }
+
+.temp-spacer {
+    margin: 200px;
+}

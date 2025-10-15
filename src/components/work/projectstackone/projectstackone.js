@@ -57,6 +57,7 @@ export default function ProjectStackOne() {
           </Link>
         ))}
       </div>
+      <div className='temp-spacer'></div>
     </div>
   );
 }
