@@ -1,0 +1,53 @@
+.project-vertical-video-container {
+    display: flex;
+    gap: 60px;
+    padding: 0 60px 0 0px;
+}
+
+.left-project-video-control {
+    position: relative;
+    bottom: 40px;
+}
+
+.right-project-video-control {
+    position: relative;
+    top: 40px;
+}
+
+.vertical-project-content-container {
+    padding: 80px;
+}
+
+.vertical-project-content-wrapper {
+    display: flex;
+}
+
+.project-vertical-video-wrapper {
+    background: red;
+    width: 300px;
+    aspect-ratio: 9 / 16;
+}
+
+.project-content-vertical-mainimages {
+    width: 355px;
+    display: flex;
+    aspect-ratio: 9 / 16;
+    background: red;
+}
+
+.project-content-lower-wrapper {
+    padding: 30px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-content-vertical-subimages {
+    width: 100px;
+    display: flex;
+    aspect-ratio: 9 / 16;
+    background: red;
+
+}
+
+
+
