@@ -1,3 +1,7 @@
+.horizontal-hero-container {
+    min-height: 700px;
+}
+
 .horizontal-project-content-container {
     padding: 80px;
 }
@@ -20,6 +24,12 @@
 
 .project-content-horizontal-subimages {
     aspect-ratio: 16/9;
-    width: 270px;
+    width: 230px;
     background: red;
+}
+
+@media (max-width: 1300px) { 
+    .project-title {
+        font-size: 70px;
+    }
 }

@@ -18,13 +18,13 @@ export default function HorizontalProjectContent() {
           <p className='project-content-subcontent'>Here is where you can put some content giving background information, like what AUD did specifically, how you guys made the shoot happen. Tell or sell the story of what working with aud means in these sections.</p>
           <p className='project-content-subcontent'>Here is where you can put some content giving background information, like what AUD did specifically, how you guys made the shoot happen. Tell or sell the story of what working with aud means in these sections.</p>
           <p className='project-content-subcontent'>Here is where you can put some content giving background information, like what AUD did specifically, how you guys made the shoot happen. Tell or sell the story of what working with aud means in these sections.</p>
+          <div className='project-brand-logo'>
+              <img className='project-brand-logo-img' src="/images/logos/CarouselLogo_png-15.png"></img>
+          </div> 
           <div className='project-content-subimages-wrapper'>
             <div className='project-content-horizontal-subimages'></div> 
             <div className='project-content-horizontal-subimages'></div>
-            <div className='project-content-horizontal-subimages'></div>
-            <div className='project-brand-logo'>
-              <img className='project-brand-logo-img' src="/images/logos/CarouselLogo_png-15.png"></img>
-            </div>              
+            <div className='project-content-horizontal-subimages'></div>             
           </div>
         </div>
       </div>
