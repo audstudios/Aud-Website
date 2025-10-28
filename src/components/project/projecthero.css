@@ -84,3 +84,49 @@
 .project-brand-logo {
     width: 310px;
 }
+
+
+@media (max-width: 1300px) { 
+    .project-title-container {
+        width: 75%;
+    }
+    .project-title {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 1198px) { 
+    .project-title {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 1059px) { 
+    .project-title {
+        font-size: 50px;
+    }
+    .horizontal-hero-container {
+        min-height: 530px;
+    }
+}
+
+@media (max-width: 901px) { 
+    .project-title {
+        font-size: 45px;
+    }
+    .horizontal-hero-container {
+        min-height: 450px;
+    }
+}
+
+@media (max-width: 827px) { 
+    .project-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 777px) { 
+    .project-title {
+      text-align: center;
+    }
+}
