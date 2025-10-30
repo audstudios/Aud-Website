@@ -31,6 +31,10 @@ margin: 0;
   font-display: swap;
 }
 
+main {
+  overflow: hidden;
+}
+
 body {
   font-family: 'PPNeueMontreal-Thin', system-ui, sans-serif;
   background: #ffffff;

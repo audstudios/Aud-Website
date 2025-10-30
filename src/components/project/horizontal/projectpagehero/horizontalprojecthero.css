@@ -46,3 +46,15 @@
         align-items: center;
     }
 }
+
+@media (max-width: 500px) { 
+    .project-hero-wrapper {
+      padding: 0 0px;
+    }
+    .project-horizontal-video-container {
+      width: 90%;
+    }
+    .horizontal-hero-wrapper {
+      align-items: center;
+    }
+}

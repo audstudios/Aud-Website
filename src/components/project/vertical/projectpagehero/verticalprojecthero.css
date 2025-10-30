@@ -1,7 +1,5 @@
-.project-vetical-video-container {
-  aspect-ratio: 16 / 9;
-  width: 750px; /* or set a fixed width if needed */
-  position: relative;
-  overflow: hidden;
-  background-color: aqua;
+.vertical-hero-container {
+  min-height: 700px;
+  height: 700px;
+  width: 100%;
 }
