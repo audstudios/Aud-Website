@@ -1,0 +1,34 @@
+.about-hero-container {
+    height: 500px;
+    background: green;
+}
+
+.about-hero-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.about-hero-left {
+    background: pink;
+    height: 100%;
+    width: 66%;
+}
+
+.about-hero-right {
+    background: red;
+    height: 100%;
+    width: 34%;
+}
+
+.about-hero-tr {
+    height: 50%;
+    background: black;
+    width: 100%;
+}
+
+.about-hero-br {
+    height: 50%;
+    background: cyan;
+    width: 100%;
+}
