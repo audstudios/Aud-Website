@@ -57,6 +57,9 @@ h3 {
   font-family: 'PPMontreal-Bold', system-ui, sans-serif;
 }
 
+.thirty-spacer {
+  padding: 15px 0;
+}
 
 /*delete later*/
 .footer-container {
