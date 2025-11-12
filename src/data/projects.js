@@ -28,30 +28,30 @@ export const projects = {
   },
   
   jeanPaulGaultier: {
-    title: 'JEAN PAUL GAULTIER PRIDE',
+    title: 'JEAN PAUL GAULTIER PRIDE EVENT CONTENT CAPTURE',
     client: 'NORTH SIX // JEAN PAUL GAULTIER',
     type: 'Experiential and Event Content Production',
     year: '2025',
-    heroVideo: '/videos/jpg-hero.mp4',
-    watchLink: 'https://vimeo.com/...',
-    mainline: 'Celebrating pride through bold fashion and immersive experiences',
+    heroVideo: '/videos/Aud_Land_Video.mp4',
+    watchLink: '#',
+    mainline: 'A cinematic approach to event coverage. ',
     content: [
-      'For Jean Paul Gaultier\'s Pride celebration, we created an immersive brand experience...',
-      'Our production team captured every moment of this historic event...',
-      'The content reached millions across social platforms...',
-      'Working alongside North Six, we delivered a campaign that honored both heritage and progress.'
+      'Luxury experiential agency, North Six partnered with us to create a high-end sizzle reel capturing the atmosphere and curated details of their 2025 Jean Paul Gaultier Pride Event.',
+      'The ultra curated, luxury event called for an approach beyond general event recaps. It called for a refined, cinematic video that captured the essence and energy of the event, ',
+      'With just a cinematographer and producer on-site, we seamlessly integrated into the event flow, capturing a mix of brand-focused and candid moments.',
+      'A rapid turnaround enabled stakeholder approval across the board, and the final video achieved 50% higher reach than the average sizzle reel performance.'
     ],
     mainImages: [
-      '/images/projects/jpg/main-1.jpg',
-      '/images/projects/jpg/main-2.jpg',
-      '/images/projects/jpg/main-3.jpg',
+      '',
+      '',
+      '',
     ],
     subImages: [
-      '/images/projects/jpg/sub-1.jpg',
-      '/images/projects/jpg/sub-2.jpg',
-      '/images/projects/jpg/sub-3.jpg',
+      '',
+      '',
+      '',
     ],
-    brandLogo: '/images/logos/CarouselLogo_png-15.png',
+    brandLogo: '/images/logos/CarouselLogo_png-16.png',
   },
   
   cardiDoordash: {
