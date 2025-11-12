@@ -4,7 +4,7 @@ import VerticalProjectContent from "@/components/project/vertical/projectpagecon
 
 import Link from 'next/link'; 
 
-export default function HorizontalProjectPage() {
+export default function VerticalProjectPage() {
   return (
     <>
       <NavigationGeneral />

@@ -28,7 +28,7 @@ export const projects = {
   },
   
   jeanPaulGaultier: {
-    title: 'JEAN PAUL GAULTIER PRIDE EVENT CONTENT CAPTURE',
+    title: 'JEAN PAUL GAULTIER PRIDE EVENT',
     client: 'NORTH SIX // JEAN PAUL GAULTIER',
     type: 'Experiential and Event Content Production',
     year: '2025',
@@ -54,7 +54,7 @@ export const projects = {
     brandLogo: '/images/logos/CarouselLogo_png-16.png',
   },
   
-  cardiDoordash: {
+  cardidoordash: {
     title: 'CARDI B x DOORDASH',
     client: 'GET ENGAGED MEDIA // DOORDASH',
     type: 'Full-service video & film production',
