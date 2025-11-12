@@ -23,13 +23,13 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="footer-sitemap-wrapper">
+            {/*<div className="footer-sitemap-wrapper">
                 <a className="footer-link" href="#">Home</a>
                 <a className="footer-link" href="#">Work</a>
                 <a className="footer-link" href="#">About</a>
                 <a className="footer-link" href="#">Services</a>
                 <a className="footer-link" href="#">Aud Jobs</a>                
-            </div>
+            </div>*/}
         </div>
     </div>
   );
