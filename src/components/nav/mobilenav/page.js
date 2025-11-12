@@ -11,7 +11,7 @@ import { useGSAP } from '@gsap/react';
 const menuLinks = [
     { path: "/", label: "Home" },
     { path: "/prod/work", label: "Projects" },
-    { path: "/prod/work", label: "About" },
+    { path: "/prod/about", label: "About" },
 ];
 
 const MobileMenu = () => {

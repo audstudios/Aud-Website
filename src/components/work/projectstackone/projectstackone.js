@@ -1,4 +1,3 @@
-// src/components/work/projectstackone/projectstackone.js
 import './projectstackone.css';
 import Link from 'next/link';
 
@@ -16,7 +15,7 @@ const projects = [
     client: 'GET ENGAGED MEDIA // DOORDASH ',
     type: 'Full-service video & film production',
     year: '2025',
-    href: '/prod/work/projects/pages/cardiDoordash', // ← Check this matches folder name
+    href: '/prod/work/projects/pages/cardidoordash',
     positionClass: 'stack-one-center',
   },
   {
