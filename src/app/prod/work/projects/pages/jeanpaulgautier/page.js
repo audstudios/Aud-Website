@@ -6,7 +6,7 @@ import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
 import HorizontalProjectPage from '../../templates/horizontal/page';
 import { projects } from '@/data/projects';
 
-export default function jeanPaulGaultierPage() {
+export default function JeanPaulGaultierPage() {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
