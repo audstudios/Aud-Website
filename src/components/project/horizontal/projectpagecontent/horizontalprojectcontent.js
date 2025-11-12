@@ -1,30 +1,61 @@
+// src/components/project/horizontal/projectpagecontent/horizontalprojectcontent.js
 import '../../projecthero.css';
 import './horizontalprojectcontent.css';
 
-import Link from 'next/link'; 
+export default function HorizontalProjectContent({ project }) {
+  // Fallback if no project data
+  if (!project) {
+    return (
+      <div className='horizontal-project-content-container'>
+        <div className='horizontal-project-content-wrapper'>
+          <div className='horizontal-project-left-content'>
+            <div className='horizontal-project-content-img-main'></div>
+            <div className='horizontal-project-content-img-main'></div>
+            <div className='horizontal-project-content-img-main'></div>
+          </div>
+          <div className='project-right-content'>
+            <h3 className='project-content-mainline'>Placeholder content...</h3>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-export default function HorizontalProjectContent() {
   return (
     <div className='horizontal-project-content-container'>
       <div className='horizontal-project-content-wrapper'>
         <div className='horizontal-project-left-content'>
-          <div className='horizontal-project-content-img-main'></div>
-          <div className='horizontal-project-content-img-main'></div>
-          <div className='horizontal-project-content-img-main'></div>                    
+          {project.mainImages?.map((image, index) => (
+            <div key={index} className='horizontal-project-content-img-main'>
+              <img src={image} alt={`${project.title} - ${index + 1}`} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
+          ))}
         </div>
         <div className='project-right-content'>
-          <h3 className='project-content-mainline'>Here is where you might put a sizzle line or something that kindof hooks the reader in , idk put something here like “Horse in a straw hat” or something engaging to really hook a user to read. Sometimes just a quote could be enough.</h3>
-          <p className='project-content-subcontent'>Here is where you can put some content giving background information, like what AUD did specifically, how you guys made the shoot happen. Tell or sell the story of what working with aud means in these sections.</p>
-          <p className='project-content-subcontent'>Here is where you can put some content giving background information, like what AUD did specifically, how you guys made the shoot happen. Tell or sell the story of what working with aud means in these sections.</p>
-          <p className='project-content-subcontent'>Here is where you can put some content giving background information, like what AUD did specifically, how you guys made the shoot happen. Tell or sell the story of what working with aud means in these sections.</p>
-          <p className='project-content-subcontent'>Here is where you can put some content giving background information, like what AUD did specifically, how you guys made the shoot happen. Tell or sell the story of what working with aud means in these sections.</p>
-          <div className='project-brand-logo'>
-              <img className='project-brand-logo-img' src="/images/logos/CarouselLogo_png-15.png"></img>
-          </div> 
+          <h3 className='project-content-mainline'>{project.mainline}</h3>
+          
+          {project.content?.map((paragraph, index) => (
+            <p key={index} className='project-content-subcontent'>
+              {paragraph}
+            </p>
+          ))}
+          
+          {project.brandLogo && (
+            <div className='project-brand-logo'>
+              <img 
+                className='project-brand-logo-img' 
+                src={project.brandLogo}
+                alt={`${project.client} logo`}
+              />
+            </div>
+          )}
+          
           <div className='project-content-subimages-wrapper'>
-            <div className='project-content-horizontal-subimages'></div> 
-            <div className='project-content-horizontal-subimages'></div>
-            <div className='project-content-horizontal-subimages'></div>             
+            {project.subImages?.map((image, index) => (
+              <div key={index} className='project-content-horizontal-subimages'>
+                <img src={image} alt={`${project.title} detail - ${index + 1}`} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

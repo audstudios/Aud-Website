@@ -31,6 +31,10 @@
     color: #ffffff;
 }
 
+.project-hero-info-right {
+    text-align: right;
+}
+
 .project-hero-info-container {
     display: flex;
     flex-direction: column;

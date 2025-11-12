@@ -1,3 +1,4 @@
+// src/components/work/projectstackone/projectstackone.js
 import './projectstackone.css';
 import Link from 'next/link';
 
@@ -7,7 +8,7 @@ const projects = [
     client: 'NORTH SIX // JEAN PAUL GAULTIER ',
     type: 'Experiential and Event Content Production ',
     year: '2025',
-    href: '/prod/work/projects/templates/horizontal',
+    href: '/prod/work/projects/pages/jeanPaulGaultier', // Update to actual page
     positionClass: 'stack-one-left',
   },
   {
@@ -15,15 +16,15 @@ const projects = [
     client: 'GET ENGAGED MEDIA // DOORDASH ',
     type: 'Full-service video & film production',
     year: '2025',
-    href: '/prod/work/projects/templates/vertical',
+    href: '/prod/work/projects/pages/cardiDoordash', // Update to actual page
     positionClass: 'stack-one-center',
   },
   {
-    title: 'RIZZLER x HARDEE’S',
+    title: 'RIZZLER x HARDEES',
     client: 'GET ENGAGED MEDIA',
     type: 'Social Media Campaign',
     year: '2025',
-    href: '/prod/work/projects/templates/horizontal',
+    href: '/prod/work/projects/pages/rizzlerHardees', // ← Already created!
     positionClass: 'stack-one-right',
   },
 ];

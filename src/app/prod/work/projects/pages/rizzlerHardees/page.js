@@ -1,16 +1,17 @@
+// src/app/prod/work/projects/pages/rizzlerHardees/page.js
 'use client';
 
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
 import HorizontalProjectPage from '../../templates/horizontal/page';
+import { projects } from '@/data/projects';
 
-
-export default function Test() {
+export default function RizzlerHardeesPage() {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
       smoothTouch: false,
     });
@@ -23,14 +24,13 @@ export default function Test() {
     requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy(); // Cleanup on unmount
+      lenis.destroy();
     };
   }, []);
 
   return (
     <div>
-      <NavigationGeneral />
-      <HorizontalProjectPage />
+      <HorizontalProjectPage projectData={projects.rizzlerHardees} />
     </div>
   );
 }
