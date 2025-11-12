@@ -151,10 +151,6 @@
 }
 
 @media (max-width: 516px) {
-    .work-title-container {
-        padding: 60px 0px 0 0;
-        font-size: 80px;
-    }
     .project-stack-one-container {
         padding: 60px 70px 0px 70px;
     }

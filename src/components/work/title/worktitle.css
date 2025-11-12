@@ -2,3 +2,10 @@
     font-size: 120px;
     padding: 170px 0px 0px 70px;
 }
+
+@media (max-width: 516px) {
+    .work-title-container {
+        padding: 60px 0px 0 0;
+        font-size: 70px;
+    }
+}

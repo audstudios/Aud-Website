@@ -91,5 +91,6 @@
 @media (max-width: 450px) {
     .homecontact-box {
         width: 310px;
+        height: 290px;
     }
 }

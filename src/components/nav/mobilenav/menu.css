@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1;
+    z-index: 3;
 }
 
 .menu-bar a, 
@@ -62,9 +62,9 @@
 }
 
 .mobile-menu-logo {
-    width: 10px;
+    width: 60px;
     position: absolute;
-    top: 30px;
+    top: 5px;
 }
 
 .menu-copy {
