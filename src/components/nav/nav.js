@@ -39,9 +39,9 @@ export default function Navigation() {
             <Link href="/prod/about">
               <p className="nav-link">About</p>
             </Link>
-            <p className="nav-link">Services</p>
-            <p className="nav-link">Contact</p>
-            <p className="nav-link">Aud Jobs</p>
+{/* <p className="nav-link">Services</p> */}
+{/* <p className="nav-link">Contact</p> */}
+{/* <p className="nav-link">Aud Jobs</p> */}
           </div>
         </div>
       </div>

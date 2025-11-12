@@ -9,6 +9,7 @@ import Services from "@/components/Home/Services/services";
 import HomeSlider from "@/components/Home/homeslider/homeslider";
 import HomeCarousel from "@/components/Home/homecarousel/homecarousel";
 import HomeContact from "@/components/Home/homecontact/homecontact";
+import MobileMenu from '@/components/nav/mobilenav/page';
 
 export default function Test() {
   useEffect(() => {
@@ -34,6 +35,7 @@ export default function Test() {
   return (
     <div>
       <Navigation />
+      <MobileMenu />
       <Homehero />
       <Services />
       <HomeSlider />

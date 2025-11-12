@@ -1,6 +1,7 @@
 import './globals.css'; // global styles
 import Header from '../components/oldlanding/header/header';
 import Footer from '@/components/footer/footer';
+import MobileMenu from '@/components/nav/mobilenav/page';
 
 
 export const metadata = {
@@ -12,7 +13,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header /> 
+        <Header />
+        <MobileMenu />
         <main>
           {children}
         </main>

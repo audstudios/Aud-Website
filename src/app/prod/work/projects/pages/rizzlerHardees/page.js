@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
 import HorizontalProjectPage from '../../templates/horizontal/page';
-import { projects } from '@/data/projects';
+import { projects } from '@/data/projects'; 
 
 export default function RizzlerHardeesPage() {
   useEffect(() => {
@@ -30,6 +30,7 @@ export default function RizzlerHardeesPage() {
 
   return (
     <div>
+      <NavigationGeneral />
       <HorizontalProjectPage projectData={projects.rizzlerHardees} />
     </div>
   );

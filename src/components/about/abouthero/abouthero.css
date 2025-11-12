@@ -10,7 +10,10 @@
 }
 
 .about-hero-left {
-    background: pink;
+    background-image: url('/images/about/AUD_AboutImages-01.jpg');
+    background-size: cover;  /* or contain, depending on your needs */
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100%;
     width: 66%;
 }
@@ -23,12 +26,41 @@
 
 .about-hero-tr {
     height: 50%;
-    background: black;
     width: 100%;
+    background-image: url('/images/about/AUD_AboutImages-02.jpg');
+    background-size: cover;  /* or contain, depending on your needs */
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .about-hero-br {
     height: 50%;
     background: cyan;
     width: 100%;
+    background-image: url('/images/about/AUD_AboutImages-03.jpg');
+    background-size: cover;  /* or contain, depending on your needs */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 757px) {
+    .about-hero-left {
+        width: 100%;
+    }
+    .about-hero-right {
+        display: none;
+    }
+    .page-title {
+        font-size: 70px;
+    }
+    .about-content-paragraph {
+        font-size: 18px !important;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .about-hero-left {
+        background-position: -60px;
+    }
 }

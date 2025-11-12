@@ -11,19 +11,19 @@ const slides = [
   {
     title: 'Jean Paul Gautier',
     video: '/videos/Aud_Land_Video.mp4',
-    background: '/images/AUD_BG_SLIDER01.png',
+    background: '/images/homeblur/jpghomebg.jpg',
     className: 'slide-jeanpaul',
   },
   {
-    title: 'Slide 02',
-    video: '/videos/frogeating.mp4',
-    background: '/images/AudGlassLogo.png',
+    title: 'Doordash',
+    video: '/images/CardiBDoorDash/CardiBHomeSlider.mp4',
+    background: '/images/homeblur/cardibhomebg.jpg',
     className: 'slide-frogeating',
   },
   {
-    title: 'Slide 03',
-    video: '/videos/FlippedFrog.mp4',
-    background: '/images/slider_test.jpg',
+    title: 'Hardees',
+    video: '/images/RizzlerHardees/RizzlerHardees.mp4',
+    background: '/images/homeblur/rizzlerhomebg.jpg',
     className: 'slide-flippedfrog',
   },
 ];

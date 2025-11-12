@@ -11,13 +11,29 @@ export default function Homehero() {
 
     tl.fromTo(
       logoRef.current,
-      { autoAlpha: 0, yPercent: 20 },
-      { autoAlpha: 1, yPercent: 0, duration: 1 }
+      { 
+        autoAlpha: 0, 
+        y: 20  //
+      },
+      { 
+        autoAlpha: 1, 
+        y: 0,  
+        duration: 1,
+        clearProps: 'transform'  // 
+      }
     ).fromTo(
       titleRef.current,
-      { autoAlpha: 0, yPercent: 20 },
-      { autoAlpha: 1, yPercent: 0, duration: 1 },
-      "-=0.5" // slight overlap
+      { 
+        autoAlpha: 0, 
+        y: 20  
+      },
+      { 
+        autoAlpha: 1, 
+        y: 0,  
+        duration: 1,
+        clearProps: 'transform' 
+      },
+      "-=0.5" 
     );
   }, []);
 

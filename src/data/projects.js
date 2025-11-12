@@ -61,21 +61,20 @@ export const projects = {
     year: '2025',
     layout: 'vertical',
     heroVideos: [
-      '/videos/cardib-1.mp4',
-      '/videos/cardib-2.mp4'
+      '/images/CardiBDoorDash/cardibvideo.mp4',
+      '/images/CardiBDoorDash/cardixamayavideo.mp4'
     ],
     watchLink: 'https://youtube.com/...',
-    mainline: 'Star power meets delivery: Cardi B brings her energy to DoorDash',
+    mainline: 'The extension of your in-house team to make your boldest ideas happen: fast, and at the highest level.',
     content: [
-      'Content paragraph 1...',
-      'Content paragraph 2...',
+      'Get Engaged Media came to us with a bold idea, a Cardi B x Door Dash collaboration tied to her newest album drop. ',
+      'The vision was big, and the timeline was tight, and they needed a NYC-based production partner to make it happen. With A-list talent and a tight turnaround, we hit the ground running.',
+      'In just 48 hours, we produced the shoot and delivered campaign-ready assets—pre-production, on-site talent coordination, direction, production, and overseeing every detail for seamless execution.',
+      'The result? Instant virality: 23M views on Instagram alone, with notable coverage in USA Today and Ad Age.',
     ],
-    mainImages: ['/images/projects/cardib/main-1.jpg'],
+    mainImages: ['/images/CardiBDoorDash/CardiBDoorDashImages.jpg'],
     subImages: [
-      '/images/projects/cardib/sub-1.jpg',
-      '/images/projects/cardib/sub-2.jpg',
-      '/images/projects/cardib/sub-3.jpg',
     ],
-    brandLogo: '/images/logos/doordash-logo.png',
+    brandLogo: '/images/logos/CarouselLogo_png-15.png',
   }
 };

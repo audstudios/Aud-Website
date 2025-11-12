@@ -4,12 +4,22 @@ import VerticalProjectContent from "@/components/project/vertical/projectpagecon
 
 import Link from 'next/link'; 
 
-export default function VerticalProjectPage() {
+export default function VerticalProjectPage({ projectData = null }) {
+  // If no project data, show placeholder or redirect
+  if (!projectData) {
+    return (
+      <div style={{ padding: '100px', textAlign: 'center' }}>
+        <h1>Project Template</h1>
+        <p>This is a template page. Please access a specific project.</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <NavigationGeneral />
-      <VerticalProjectHero />
-      <VerticalProjectContent />
+      <VerticalProjectHero project={projectData} />
+      <VerticalProjectContent project={projectData} />
     </>
   );
 }

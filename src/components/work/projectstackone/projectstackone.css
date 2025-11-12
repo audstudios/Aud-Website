@@ -37,6 +37,12 @@
     justify-content: space-between;
     width: 100%;
     padding: 5px;
+    background: #fff;
+}
+
+.project-stack-one-wrapper a {
+    text-decoration: none;
+    color: #000;
 }
 
 .project-card-vert-content-right {
@@ -55,14 +61,8 @@
   overflow: hidden;
 }
 
-.stack-one-left::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/images/logos/CarouselLogo_png-21.png'); /* 👈 your image path here */
+.stack-one-left {
+  background-image: url('/images/projectcard/JPGProjectImg.jpg'); /* 👈 your image path here */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -70,11 +70,92 @@
   z-index: -1;
 }
 
-/* Zoom effect on hover */
-.stack-one-left:hover::before {
-  transform: scale(1.1); /* zoom the background */
+.stack-one-center {
+  background-image: url('/images/projectcard/DoordashProjectImg.jpg'); /* 👈 your image path here */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease;
+  z-index: -1;
 }
+
+.stack-one-right {
+  background-image: url('/images/projectcard/HardeesProjectImg.jpg'); /* 👈 your image path here */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease;
+  z-index: -1;
+}
+
 
 .temp-spacer {
     margin: 200px;
+}
+
+@media (max-width: 1254px) {
+    .project-card-vert-container {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .project-card-vert-container {
+        width: 270px;
+    }
+}
+
+@media (max-width: 990px) {
+    .project-card-vert-container {
+        width: 250px;
+    }
+}
+
+@media (max-width: 935px) {
+    .project-card-vert-container {
+        width: 220px;
+    }
+    .project-card-vert-content-left-top, .project-card-vert-content-left-bottom, .project-card-vert-content-right-top, .project-card-vert-content-right-top {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 895px) {
+    .project-stack-one-wrapper {
+        align-items: center;
+    }
+
+    .project-card-vert-container {
+        width: 300px;
+    }
+    .project-stack-one-wrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 90px;
+    } 
+    .stack-one-center, .stack-one-right {
+        position: unset;
+    }
+    
+    .work-title-control {
+        text-align: center;
+    }
+    .work-title-container {
+        padding: 45px 0px 0 0;
+    }
+
+    .temp-spacer {
+        margin: 0px;
+    } 
+}
+
+@media (max-width: 516px) {
+    .work-title-container {
+        padding: 60px 0px 0 0;
+        font-size: 80px;
+    }
+    .project-stack-one-container {
+        padding: 60px 70px 0px 70px;
+    }
 }

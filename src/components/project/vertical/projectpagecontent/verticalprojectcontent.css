@@ -26,7 +26,6 @@
 }
 
 .project-vertical-video-wrapper {
-    background: red;
     width: 300px;
     aspect-ratio: 9 / 16;
 }
@@ -35,7 +34,6 @@
     width: 355px;
     display: flex;
     aspect-ratio: 9 / 16;
-    background: red;
 }
 
 .project-content-lower-wrapper {
@@ -48,8 +46,6 @@
     width: 100px;
     display: flex;
     aspect-ratio: 9 / 16;
-    background: red;
-
 }
 
 
