@@ -7,7 +7,6 @@ export const projects = {
     type: 'Commercial Production',
     year: '2025',
     heroVideo: '/images/RizzlerHardees/RizzlerHardees.mp4',
-    heroVideo: '/videos/rizzler-hero.mp4',
     watchLink: 'https://youtube.com/...',
     
     // Content data
@@ -19,14 +18,11 @@ export const projects = {
       ''
     ],
     mainImages: [
-      '/images/projects/rizzler/main-1.jpg',
-      '/images/projects/rizzler/main-2.jpg',
-      '/images/projects/rizzler/main-3.jpg',
+      '/images/RizzlerHardees/RizzlerHardees_01.jpg',
+      '/images/RizzlerHardees/RizzlerHardees_03.jpg',
+      '/images/RizzlerHardees/RizzlerHardees_02.jpg',
     ],
     subImages: [
-      '/images/projects/rizzler/sub-1.jpg',
-      '/images/projects/rizzler/sub-2.jpg',
-      '/images/projects/rizzler/sub-3.jpg',
     ],
     brandLogo: '/images/logos/CarouselLogo_png-19.png',
   },
