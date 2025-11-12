@@ -15,7 +15,7 @@ const projects = [
     client: 'GET ENGAGED MEDIA // DOORDASH ',
     type: 'Full-service video & film production',
     year: '2025',
-    href: '/prod/work/projects/pages/cardidoordash',
+    href: '/prod/work/projects/pages/cardibdoordash',
     positionClass: 'stack-one-center',
   },
   {
