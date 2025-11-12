@@ -59,7 +59,7 @@ const MobileMenu = () => {
             <div className="menu-bar">
                 <div className="menu-logo">
                     <Link href="/">
-                     <img className="mobile-menu-logo" src="/images/logos/Aud_Logo_MM_black.svg"></img>
+                     <img className="mobile-menu-logo" src="/images/logos/Aud_Logo_MM_Black.svg"></img>
                     </Link>
                 </div>
                 <div className="menu-open" onClick={toggleMenu}>
