@@ -84,7 +84,7 @@ export default function ExpandibleList() {
       items: [
         'Creative Direction',
         'Campaign Development',
-        'Brand Campaigns and Branded Content',
+        'Brand Campaigns & Branded Content',
         'Campaign concepting & ideation',
       ],
     },
@@ -93,7 +93,7 @@ export default function ExpandibleList() {
       title: 'Production',
       items: [
         'Full-service video & film production',
-        'Experiential and Event Content Production',
+        'Experiential & Event Content Production',
         'Editorial & lifestyle still photography',
         'Post-production & editing',
         'Motion graphics & visual effects',
@@ -104,7 +104,7 @@ export default function ExpandibleList() {
       title: 'Strategy',
       items: [
         'Integrated Campaigns',
-        'Content and Communications Planning',
+        'Content & Communications Planning',
         'Digital & Social Strategy',
         'Influencer Strategy',
         'Research & Measurement',

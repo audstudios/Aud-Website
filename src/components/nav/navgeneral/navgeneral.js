@@ -17,6 +17,9 @@ export default function NavigationGeneral() {
         </Link>
         <div className="nav-right">
           <div className="nav-menu">
+            <Link href="/">
+              <p className="nav-link">Home</p>
+            </Link>
             <Link href="/prod/work">
               <p className="nav-link">Work</p>
             </Link>

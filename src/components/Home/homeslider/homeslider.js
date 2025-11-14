@@ -9,7 +9,7 @@ import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArro
 
 const slides = [
   {
-    title: 'Jean Paul Gautier',
+    title: 'Jean Paul Gaultier',
     video: '/videos/Aud_Land_Video.mp4',
     background: '/images/homeblur/jpghomebg.jpg',
     className: 'slide-jeanpaul',
@@ -21,7 +21,7 @@ const slides = [
     className: 'slide-frogeating',
   },
   {
-    title: 'Hardees',
+    title: 'Hardee\'s',
     video: '/images/RizzlerHardees/RizzlerHardees.mp4',
     background: '/images/homeblur/rizzlerhomebg.jpg',
     className: 'slide-flippedfrog',

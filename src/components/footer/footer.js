@@ -17,9 +17,8 @@ export default function Footer() {
                         Contact
                     </h4>
                     <div className="address">
-                        <p>150 Mott Street</p>
-                        <p>Studio 15</p> 
-                        <p>New York, NY 10013</p>
+                        <p>web@audstudios.com</p>
+                        <p>@the.audstudios</p> 
                     </div>
                 </div>
             </div>

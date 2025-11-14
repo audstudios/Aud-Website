@@ -13,9 +13,8 @@ export const projects = {
     mainline: 'The production team behind your next viral moment.',
     content: [
       'Introducing The Rizzwich: the official Hardee’s x The Rizzler meal. Get Engaged Media partnered with us to lead full-scale production for the launch of this now-viral collaboration.',
-      'Our role: end-to-end production overseeing every detail—from casting local talent and securing crew to location management and on-set coordination. We mobilized a full local team and built a custom set under a tight timeline.',
+      'Our role: end-to-end production overseeing every detail, from casting local talent and securing crew to location management and on-set coordination. We mobilized a full local team and built a custom set under a tight timeline.',
       'The result: a viral campaign capturing over 4.5million views and 150K engagements. ',
-      ''
     ],
     mainImages: [
       '/images/RizzlerHardees/RizzlerHardees_01.jpg',
@@ -34,22 +33,15 @@ export const projects = {
     year: '2025',
     heroVideo: '/videos/Aud_Land_Video.mp4',
     watchLink: '#',
-    mainline: 'A cinematic approach to event coverage. ',
+    mainline: 'A cinematic approach to event coverage.',
     content: [
-      'Luxury experiential agency, North Six partnered with us to create a high-end sizzle reel capturing the atmosphere and curated details of their 2025 Jean Paul Gaultier Pride Event.',
-      'The ultra curated, luxury event called for an approach beyond general event recaps. It called for a refined, cinematic video that captured the essence and energy of the event, ',
-      'With just a cinematographer and producer on-site, we seamlessly integrated into the event flow, capturing a mix of brand-focused and candid moments.',
-      'A rapid turnaround enabled stakeholder approval across the board, and the final video achieved 50% higher reach than the average sizzle reel performance.'
+      'North Six tapped us to produce multiple high-end sizzle reels capturing the atmosphere and curated details of their 2025 Jean Paul Gaultier Pride Event.',
+      'Our role: Leveraging our expertise in luxury event coverage, our lean, agile team handled shooting, editing, and delivering all assets with precision and perspective.',
+      'The result: A rapid turnaround ensured seamless stakeholder approval, and the final video achieved 50% higher reach than the average sizzle reel.',
     ],
     mainImages: [
-      '',
-      '',
-      '',
     ],
     subImages: [
-      '',
-      '',
-      '',
     ],
     brandLogo: '/images/logos/CarouselLogo_png-16.png',
   },
@@ -65,12 +57,11 @@ export const projects = {
       '/images/CardiBDoorDash/cardixamayavideo.mp4'
     ],
     watchLink: 'https://youtube.com/...',
-    mainline: 'The extension of your in-house team to make your boldest ideas happen: fast, and at the highest level.',
+    mainline: 'A trusted extension of your in-house creative team, wherever the work takes you.',
     content: [
-      'Get Engaged Media came to us with a bold idea, a Cardi B x Door Dash collaboration tied to her newest album drop. ',
-      'The vision was big, and the timeline was tight, and they needed a NYC-based production partner to make it happen. With A-list talent and a tight turnaround, we hit the ground running.',
-      'In just 48 hours, we produced the shoot and delivered campaign-ready assets—pre-production, on-site talent coordination, direction, production, and overseeing every detail for seamless execution.',
-      'The result? Instant virality: 23M views on Instagram alone, with notable coverage in USA Today and Ad Age.',
+      'Get Engaged Media brought us on to produce all assets for the Cardi B x DoorDash campaign tied to her new album.',
+      'Our role: We served as their NYC-based production partner, managing pre-production, on-site talent coordination, direction, and execution of campaign-ready assets.',
+      'The result: Instant virality: 23M views on Instagram and notable coverage in USA Today and Ad Age.',
     ],
     mainImages: ['/images/CardiBDoorDash/CardiBDoorDashImages.jpg'],
     subImages: [

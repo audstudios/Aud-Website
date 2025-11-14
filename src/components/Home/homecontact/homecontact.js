@@ -9,11 +9,10 @@ export default function HomeContact() {
                     <p>Contact Us</p>
                 </div>
                 <div className="homecontact-maincontent">
-                    <h3><span className='font-bold'>Let’s collaborate to set a new standard and bring your ideas to life.</span></h3>
-                    <h3>We&apos;d love to connect</h3>
+                    <h3><span className='font-bold'>Let’s make something great together. </span></h3>
                 </div>
                 <div className="homecontact-button">
-                    <a className="homecontact-link" href="#">Let&apos;s talk</a>
+                    <a className="homecontact-link" href="#">We&apos;d love to connect</a>
                 </div>
             </div>
             <div className="homecontact-logos">

@@ -48,8 +48,8 @@ export default function Homehero() {
         playsInline
       />
       <h1 className="hero-title" ref={titleRef}>
-        we are not the standard.
-        <span className="font-bold"> we are aud studios.</span>
+        We’re not the standard.
+        <span className="font-bold">We’re aud studios.</span>
       </h1>
       <img
         className="hero-logo"
