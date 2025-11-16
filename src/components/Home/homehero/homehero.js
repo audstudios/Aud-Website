@@ -41,7 +41,7 @@ export default function Homehero() {
     <div className="home-hero-container">
       <video
         className="background-video"
-        src="/videos/Aud_Land_Video.mp4"
+        src="/videos/JPGHeroFinal_Land.mp4"
         autoPlay
         muted
         loop
