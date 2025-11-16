@@ -69,3 +69,13 @@ h3 {
 .bolded {
   font-family: 'PPMontreal-Bold';
 }
+
+.audlinks {
+  text-decoration: none;
+  color: #000;
+}
+
+.audlinks-white {
+  color: #fff;
+  text-decoration: none;
+}

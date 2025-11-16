@@ -18,7 +18,7 @@ export default function Footer() {
                     </h4>
                     <div className="address">
                         <p>web@audstudios.com</p>
-                        <p>@the.audstudios</p> 
+                        <p><a className='audlinks-white' href="https://www.instagram.com/the.audstudios/?igsh=NW9ycnc1YzJkaG5w#">@the.audstudios</a></p> 
                     </div>
                 </div>
             </div>
