@@ -35,7 +35,7 @@ export const projects = {
     watchLink: '#',
     mainline: 'A cinematic approach to event coverage.',
     content: [
-      'North Six tapped us to produce multiple high-end sizzle reels capturing the atmosphere and curated details of their 2025 Jean Paul Gaultier Pride Event.',
+      'North Six tapped us to produce multiple capturing the atmosphere and curated details of their 2025 Jean Paul Gaultier Pride Event.',
       'Our role: Leveraging our expertise in luxury event coverage, our lean, agile team handled shooting, editing, and delivering all assets with precision and perspective.',
       'The result: A rapid turnaround ensured seamless stakeholder approval, and the final video achieved 50% higher reach than the average sizzle reel.',
     ],

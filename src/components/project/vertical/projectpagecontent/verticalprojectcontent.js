@@ -1,3 +1,4 @@
+
 import '../../projecthero.css';
 import './verticalprojectcontent.css';
 

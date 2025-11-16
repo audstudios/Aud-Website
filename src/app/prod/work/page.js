@@ -6,6 +6,7 @@ import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
 import GhostLogo from '@/components/global/ghostlogo/ghostlogo';
 import WorkTitle from '@/components/work/title/worktitle';
 import ProjectStackOne from '@/components/work/projectstackone/projectstackone';
+import HomeSlider from '@/components/Home/homeslider/homeslider';
 
 export default function Test() {
   useEffect(() => {
@@ -32,8 +33,7 @@ export default function Test() {
     <div>
         <NavigationGeneral />
         <WorkTitle />
-        <GhostLogo />
-        <ProjectStackOne />
+        <HomeSlider />
     </div>
   );
 }

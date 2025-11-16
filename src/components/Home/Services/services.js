@@ -63,7 +63,7 @@ export default function Services() {
               <span className="font-bold">Our Approach</span>
             </h3>
             <p ref={paraRef}>
-              As a founder-led <span>creative strategy</span> and <span>production</span> agency, collaboration is at the heart of everything we do. We partner as a true extension of your in-house team, aligning strategy and production to move as one. From creating viral social moments to OOH campaigns, we bring brands to life through thoughtful strategy and premium production, moving at the speed the moment demands. 
+              As a founder-led <span className='bolded'>creative strategy</span> and <span className='bolded'>production</span> agency, collaboration is at the heart of everything we do. We partner as a true extension of your in-house team, aligning strategy and production to move as one. From creating viral social moments to OOH campaigns, we bring brands to life through thoughtful strategy and premium production, moving at the speed the moment demands. 
             </p>
           </div>
         </div>

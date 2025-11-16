@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import Link from 'next/link';
 import './homeslider.css';
 import './titles.css'
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
@@ -13,18 +14,21 @@ const slides = [
     video: '/videos/Aud_Land_Video.mp4',
     background: '/images/homeblur/jpghomebg.jpg',
     className: 'slide-jeanpaul',
+    link: '/prod/work/projects/pages/jeanpaulgautier',  // ✅ Added link
   },
   {
     title: 'Doordash',
     video: '/images/CardiBDoorDash/CardiBHomeSlider.mp4',
     background: '/images/homeblur/cardibhomebg.jpg',
     className: 'slide-frogeating',
+    link: '/prod/work/projects/pages/cardibdoordash',  // ✅ Added link
   },
   {
-    title: 'Hardee\'s',
+    title: "Hardee's",
     video: '/images/RizzlerHardees/RizzlerHardees.mp4',
     background: '/images/homeblur/rizzlerhomebg.jpg',
     className: 'slide-flippedfrog',
+    link: '/prod/work/projects/pages/rizzlerHardees',  // ✅ Added link
   },
 ];
 
@@ -128,7 +132,7 @@ export default function HomeSlider() {
     }
   }, []);
 
-  const { title, video, background, className } = slides[currentIndex];
+  const { title, video, background, className, link } = slides[currentIndex];
   const prevClass = slides.find((s) => s.background === prevBackground)?.className || '';
 
   return (
@@ -192,6 +196,9 @@ export default function HomeSlider() {
           </div>
 
           <div className="homeslider-count">
+            <Link href={link} className="homeslider-link-button">
+              View Project
+            </Link>
             <p>
               {String(currentIndex + 1).padStart(2, '0')}/
               {String(totalSlides).padStart(2, '0')}

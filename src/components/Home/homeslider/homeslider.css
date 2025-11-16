@@ -91,12 +91,21 @@
 }
 
 .homeslider-count p {
-  font-size: 36px;
-  position: relative;
-  bottom: -120px;
-  color: white;
+    font-size: 36px;
+    position: relative;
+    bottom: -140px;
+    color: white;
+    text-align: center;
 }
 
+.homeslider-link-button {
+    position: relative;
+    top: 120px;
+    background: black;
+    color: white;
+    padding: 8px 25px;
+    border-radius: 5px;
+}
 
 @media (max-width: 1392px) {
     .homeslider-controls {
@@ -127,6 +136,9 @@
     }
     .homeslider-container {
         height: 725px;
+    }
+    .homeslider-link-button {
+          top: 65px;
     }
 }
 
@@ -163,6 +175,9 @@
     .homeslider-count p {
         bottom: -30px;
         font-size: 26px;
+    }
+    .homeslider-link-button {
+        top: 17px;
     }
 }
 

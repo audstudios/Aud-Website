@@ -65,3 +65,7 @@ h3 {
   text-decoration: none;
   color: #000;
 }
+
+.bolded {
+  font-family: 'PPMontreal-Bold';
+}
