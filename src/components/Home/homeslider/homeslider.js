@@ -197,7 +197,7 @@ export default function HomeSlider() {
 
           <div className="homeslider-count">
             <Link href={link} className="homeslider-link-button">
-              View Project
+              VIEW PROJECT
             </Link>
             <p>
               {String(currentIndex + 1).padStart(2, '0')}/
