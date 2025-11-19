@@ -79,3 +79,11 @@ h3 {
   color: #fff;
   text-decoration: none;
 }
+
+.p-spacer {
+  padding-top: 15px;
+}
+
+.pb-15 {
+  padding: 0 0 15px 0;
+}
