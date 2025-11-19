@@ -1,4 +1,3 @@
-
 import '../../projecthero.css';
 import './verticalprojectcontent.css';
 
@@ -47,9 +46,11 @@ export default function VerticalProjectContent({ project }) {
           <h3 className='project-content-mainline'>{project.mainline}</h3>
           
           {project.content?.map((paragraph, index) => (
-            <p key={index} className='project-content-subcontent'>
-              {paragraph}
-            </p>
+            <p 
+              key={index} 
+              className='project-content-subcontent'
+              dangerouslySetInnerHTML={{ __html: paragraph }}
+            />
           ))}
           
           {project.brandLogo && (

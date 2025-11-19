@@ -25,7 +25,8 @@
 }
 
 .homecontact-subtitle p {
-    font-size: 24px;
+    font-size: 32px;
+    font-weight: bold;
 }
 
 .homecontact-button {
@@ -40,6 +41,17 @@
     text-decoration: none;
     border-radius: 5px;
     font-size: 26px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: 3px solid #000;
+}
+
+.homecontact-link:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
 }
 
 .homecontact-logos {
@@ -91,8 +103,12 @@
 
 
 @media (max-width: 450px) {
+    .homecontact-wrapper {
+        margin: 0 0 90px 0;
+    }
+
     .homecontact-box {
         width: 310px;
-        height: 290px;
+        height: 230px;
     }
 }
