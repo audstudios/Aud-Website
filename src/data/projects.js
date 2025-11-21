@@ -70,5 +70,25 @@ export const projects = {
     subImages: [
     ],
     brandLogo: '/images/logos/CarouselLogo_png-15.png',
-  }
+  },
+  rizzlersandlot: {
+    title: 'JEAN PAUL GAULTIER PRIDE EVENT',
+    client: 'NORTH SIX // JEAN PAUL GAULTIER',
+    type: 'Experiential and Event Content Production',
+    year: '2025',
+    heroVideo: '/videos/Aud_Land_Video.mp4',
+    fullVideo: '/videos/Aud_Land_Video.mp4', // Full video with audio for modal
+    watchLink: 'https://www.youtube.com/watch?v=iy1Bz_bHVac',
+    mainline: 'A cinematic approach to event coverage.',
+    content: [
+      "North Six tapped us to produce multiple <span class='font-bold'>high-end sizzle reels</span> capturing the atmosphere and curated details of their 2025 Jean Paul Gaultier Pride Event.",
+      "Our role: Leveraging our <span class='font-bold'>expertise in luxury event coverage</span>, our lean, agile team handled shooting, editing, and delivering all assets with precision and perspective.",
+      "The result: A <span class='font-bold'>rapid turnaround</span> ensured seamless stakeholder approval, and the final video achieved 50% higher reach than the average sizzle reel.",
+    ],
+    mainImages: [
+    ],
+    subImages: [
+    ],
+    brandLogo: '/images/logos/CarouselLogo_png-16.png',
+  },
 };

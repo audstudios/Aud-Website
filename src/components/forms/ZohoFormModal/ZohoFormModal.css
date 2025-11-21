@@ -1,0 +1,282 @@
+/* Modal Container */
+.zoho-form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoho-form-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoho-form-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.zoho-form-modal-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.zoho-form-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.zoho-form-wrapper {
+  padding: 20px;
+}
+
+/* Zoho Form Styles */
+.zf-templateWidth {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.zf-templateWrapper {
+  font-family: 'PPNeueMontreal-Thin', Arial, sans-serif;
+}
+
+.zf-tempHeadBdr {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.zf-tempHeadContBdr {
+  border-bottom: 2px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.zf-frmTitle {
+  font-family: 'PPMontreal-Bold', Arial, sans-serif;
+  font-size: 32px;
+  margin: 0;
+  color: #000;
+}
+
+.zf-frmTitle em {
+  font-style: normal;
+}
+
+.zf-frmDesc {
+  margin: 10px 0 0 0;
+  color: #666;
+}
+
+.zf-clearBoth {
+  clear: both;
+}
+
+.zf-subContWrap {
+  padding: 0;
+}
+
+.zf-subContWrap ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.zf-tempFrmWrapper {
+  margin-bottom: 20px;
+}
+
+.zf-labelName {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #000;
+  font-size: 16px;
+}
+
+.zf-important {
+  color: #ff0000;
+  font-style: normal;
+}
+
+.zf-tempContDiv {
+  position: relative;
+}
+
+/* Name Field Styling */
+.zf-nameWrapper {
+  display: flex;
+  gap: 15px;
+}
+
+.zf-nameWrapper span {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.zf-nameWrapper input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  font-family: 'PPNeueMontreal-Thin', Arial, sans-serif;
+}
+
+.zf-nameWrapper label {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+  font-weight: normal;
+}
+
+/* Input Field Styling */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  font-family: 'PPNeueMontreal-Thin', Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #000;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Error Message */
+.zf-errorMessage {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Submit Button */
+.zf-fmFooter {
+  list-style: none;
+  padding: 20px 0 0 0;
+  margin: 0;
+  border-top: 2px solid #f0f0f0;
+}
+
+.zf-submitColor {
+  background: #000;
+  color: #fff;
+  border: 3px solid #000;
+  padding: 12px 40px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'PPMontreal-Bold', Arial, sans-serif;
+  width: 100%;
+}
+
+.zf-submitColor:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .zoho-form-modal-content {
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .zoho-form-modal-close {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.7);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .zoho-form-wrapper {
+    padding: 15px;
+  }
+
+  .zf-frmTitle {
+    font-size: 26px;
+  }
+
+  .zf-nameWrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zoho-form-modal-content {
+    width: 100%;
+    border-radius: 0;
+    max-height: 100vh;
+  }
+
+  .zf-frmTitle {
+    font-size: 22px;
+  }
+
+  .zf-labelName {
+    font-size: 14px;
+  }
+
+  input[type="text"],
+  textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .zf-submitColor {
+    padding: 10px 30px;
+    font-size: 16px;
+  }
+}

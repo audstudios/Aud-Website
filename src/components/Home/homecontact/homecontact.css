@@ -45,6 +45,8 @@
     transition: all 0.3s ease;
     display: inline-block;
     border: 3px solid #000;
+    cursor: pointer;
+    font-family: 'PPNeueMontreal-Thin', system-ui, sans-serif;
 }
 
 .homecontact-link:hover {
