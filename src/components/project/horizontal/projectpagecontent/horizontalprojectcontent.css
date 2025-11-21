@@ -1,5 +1,8 @@
 .horizontal-project-content-container {
     padding: 80px;
+    position: relative;
+    z-index: 1; /* Ensures content stays above ghost logo */
+    background: #fff; /* Add background so ghost logo doesn't show through */
 }
 
 .horizontal-project-content-wrapper {
@@ -94,4 +97,3 @@
         padding: 35px;
     }
 }
-

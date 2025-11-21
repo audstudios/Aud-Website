@@ -1,7 +1,8 @@
-  .ghostlogo {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center from its own dimensions */
-    z-index: -1;
-  }
+.ghostlogo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0; /* Changed from -1 to 0 so it stays visible */
+  pointer-events: none; /* Prevents it from blocking clicks */
+}
