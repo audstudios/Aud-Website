@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
 import HomeContact from '@/components/Home/homecontact/homecontact';
+import './contactpage.css';
 
 export default function Test() {
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function Test() {
   return (
     <div>
       <NavigationGeneral />
+      <div className='spacer-45'></div>
       <HomeContact />
     </div>
   );
