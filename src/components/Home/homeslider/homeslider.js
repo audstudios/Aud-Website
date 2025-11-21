@@ -30,13 +30,6 @@ const slides = [
     className: 'slide-flippedfrog',
     link: '/prod/work/projects/pages/rizzlerHardees',  // ✅ Added link
   },
-  {
-    title: "HARDEE’S SUMMER",
-    video: '/images/RizzlerHardees/RizzlerHardees.mp4',
-    background: '/images/homeblur/rizzlerhomebg.jpg',
-    className: 'slide-jeanpaul',
-    link: '/prod/work/projects/pages/rizzlerHardees',  // ✅ Added link
-  },
 ];
 
 export default function HomeSlider() {
