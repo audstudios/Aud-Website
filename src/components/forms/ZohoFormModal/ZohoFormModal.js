@@ -207,7 +207,7 @@ export default function ZohoFormModal({ isOpen, onClose }) {
                                 type="text" 
                                 maxLength="255" 
                                 name="Name_First" 
-                                fieldType="7" 
+                                data-fieldtype="7" 
                                 placeholder=""
                                 onChange={() => setErrors(prev => ({ ...prev, Name: '' }))}
                               />
@@ -218,7 +218,7 @@ export default function ZohoFormModal({ isOpen, onClose }) {
                                 type="text" 
                                 maxLength="255" 
                                 name="Name_Last" 
-                                fieldType="7" 
+                                data-fieldtype="7" 
                                 placeholder=""
                                 onChange={() => setErrors(prev => ({ ...prev, Name: '' }))}
                               />
@@ -245,10 +245,10 @@ export default function ZohoFormModal({ isOpen, onClose }) {
                             <input 
                               type="text" 
                               name="Email" 
-                              checktype="c5" 
+                              data-checktype="c5" 
                               defaultValue="" 
                               maxLength="255" 
-                              fieldType="9" 
+                              data-fieldtype="9" 
                               placeholder=""
                               onChange={() => setErrors(prev => ({ ...prev, Email: '' }))}
                             /> 
@@ -271,7 +271,7 @@ export default function ZohoFormModal({ isOpen, onClose }) {
                           <span> 
                             <textarea 
                               name="MultiLine" 
-                              checktype="c1" 
+                              data-checktype="c1" 
                               maxLength="65535" 
                               placeholder=""
                               onChange={() => setErrors(prev => ({ ...prev, MultiLine: '' }))}
