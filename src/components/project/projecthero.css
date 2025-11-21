@@ -29,6 +29,15 @@
 
 .project-hero-info-type {
     color: #ffffff;
+    font-size: 12px;
+}
+
+.project-sub-width {
+    text-align: right;
+}
+
+.project-title-width {
+    text-align: left;
 }
 
 .project-hero-info-right {

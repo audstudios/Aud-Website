@@ -50,16 +50,16 @@ export default function HorizontalProjectHero({ project }) {
             <div className="project-hero-info-container">
               <div className="project-hero-info-wrapper">
                 <div className='project-hero-client-wrapper'>
-                    <p className="project-hero-info-type">Client</p>
-                    <p className="project-hero-info-type">{project.client}</p>
+                    <p className="project-hero-info-type project-title-width">Client</p>
+                    <p className="project-hero-info-type project-sub-width">{project.client}</p>
                 </div>
                 <div className='project-hero-client-wrapper'>
-                    <p className="project-hero-info-type">Our Role</p>
-                    <p className="project-hero-info-type">{project.type}</p>
+                    <p className="project-hero-info-type project-title-width">Our Role</p>
+                    <p className="project-hero-info-type project-sub-width">{project.type}</p>
                 </div>
                 <div className='project-hero-client-wrapper'>
-                    <p className="project-hero-info-type">Released</p>
-                    <p className="project-hero-info-type">{project.year}</p>
+                    <p className="project-hero-info-type project-title-width">Released</p>
+                    <p className="project-hero-info-type project-sub-width">{project.year}</p>
                 </div>
               </div>
               {project.watchLink && project.fullVideo && (
