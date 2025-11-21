@@ -7,7 +7,8 @@ export const projects = {
     type: 'Commercial Production',
     year: '2025',
     heroVideo: '/images/RizzlerHardees/RizzlerHardees.mp4',
-    watchLink: 'https://youtube.com/...',
+    fullVideo: '/images/RizzlerHardees/RizzlerHardees.mp4', // Full video with audio for modal
+    watchLink: 'https://www.youtube.com/watch?v=iy1Bz_bHVac',
     
     // Content data
     mainline: 'The production team behind your next viral moment.',
@@ -32,7 +33,8 @@ export const projects = {
     type: 'Experiential and Event Content Production',
     year: '2025',
     heroVideo: '/videos/Aud_Land_Video.mp4',
-    watchLink: '#',
+    fullVideo: '/videos/Aud_Land_Video.mp4', // Full video with audio for modal
+    watchLink: 'https://www.youtube.com/watch?v=iy1Bz_bHVac',
     mainline: 'A cinematic approach to event coverage.',
     content: [
       "North Six tapped us to produce multiple <span class='font-bold'>high-end sizzle reels</span> capturing the atmosphere and curated details of their 2025 Jean Paul Gaultier Pride Event.",
@@ -56,7 +58,8 @@ export const projects = {
       '/images/CardiBDoorDash/cardibvideo.mp4',
       '/images/CardiBDoorDash/cardixamayavideo.mp4'
     ],
-    watchLink: 'https://youtube.com/...',
+    fullVideo: '/images/CardiBDoorDash/cardibvideo.mp4', // Full video with audio for modal
+    watchLink: 'https://www.youtube.com/watch?v=iy1Bz_bHVac',
     mainline: 'A trusted extension of your in-house creative team, wherever the work takes you.',
     content: [
       "Get Engaged Media brought us on to <span class='font-bold'>produce all assets</span> for the Cardi B x DoorDash campaign tied to her new album.",

@@ -53,12 +53,31 @@
     color: #000000;
     text-align: center;
     margin: 15px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-hero-info-button:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 .project-video-link {
     text-decoration: none;
     color: black;
     font-weight: 800;
+    background: none;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    padding: 8px 0;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.project-video-link p {
+    margin: 0;
 }
 
 .project-right-content {
