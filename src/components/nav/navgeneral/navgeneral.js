@@ -26,8 +26,10 @@ export default function NavigationGeneral() {
             <Link href="/prod/about">
               <p className="nav-link">About</p>
             </Link>
+            <Link href="/prod/contact">
+              <p className="nav-link">Contact</p>
+            </Link>
 {/* <p className="nav-link">Services</p> */}
-{/* <p className="nav-link">Contact</p> */}
 {/* <p className="nav-link">Aud Jobs</p> */}
           </div>
         </div>

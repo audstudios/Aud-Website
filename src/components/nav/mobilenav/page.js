@@ -12,6 +12,7 @@ const menuLinks = [
     { path: "/", label: "Home" },
     { path: "/prod/work", label: "Projects" },
     { path: "/prod/about", label: "About" },
+    { path: "/prod/contact", label: "Contact" },
 ];
 
 const MobileMenu = () => {

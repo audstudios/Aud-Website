@@ -7,8 +7,8 @@ export const projects = {
     type: 'Commercial Production',
     year: '2025',
     heroVideo: '/images/RizzlerHardees/RizzlerHardees.mp4',
-    fullVideo: '/images/RizzlerHardees/RizzlerHardees.mp4', // Full video with audio for modal
-    watchLink: 'https://www.youtube.com/watch?v=iy1Bz_bHVac',
+    fullVideo: '/images/RizzlerHardees/RizzlerHardeesBase_1.mp4', // Full video with audio for modal
+    watchLink: '#',
     
     // Content data
     mainline: 'The production team behind your next viral moment.',
@@ -32,9 +32,9 @@ export const projects = {
     client: 'NORTH SIX // JEAN PAUL GAULTIER',
     type: 'Experiential and Event Content Production',
     year: '2025',
-    heroVideo: '/videos/Aud_Land_Video.mp4',
-    fullVideo: '/videos/Aud_Land_Video.mp4', // Full video with audio for modal
-    watchLink: 'https://www.youtube.com/watch?v=iy1Bz_bHVac',
+    heroVideo: 'videos/RizzlerHardeesBase_1.mp4',
+    fullVideo: 'videos/RizzlerHardeesBase_1.mp4', // Full video with audio for modal
+    watchLink: '#',
     mainline: 'A cinematic approach to event coverage.',
     content: [
       "North Six tapped us to produce multiple <span class='font-bold'>high-end sizzle reels</span> capturing the atmosphere and curated details of their 2025 Jean Paul Gaultier Pride Event.",
@@ -76,9 +76,9 @@ export const projects = {
     client: 'NORTH SIX // JEAN PAUL GAULTIER',
     type: 'Experiential and Event Content Production',
     year: '2025',
-    heroVideo: '/videos/Aud_Land_Video.mp4',
-    fullVideo: '/videos/Aud_Land_Video.mp4', // Full video with audio for modal
-    watchLink: 'https://www.youtube.com/watch?v=iy1Bz_bHVac',
+    heroVideo: '/images/JPG/JPGHeroFinal_Land.mp4',
+    fullVideo: '/images/JPG/JPG_Audio.mp4', // Full video with audio for modal
+    watchLink: '#',
     mainline: 'A cinematic approach to event coverage.',
     content: [
       "North Six tapped us to produce multiple <span class='font-bold'>high-end sizzle reels</span> capturing the atmosphere and curated details of their 2025 Jean Paul Gaultier Pride Event.",
