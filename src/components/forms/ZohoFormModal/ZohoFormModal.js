@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import './ZohoFormModal.css';
 
@@ -8,6 +8,8 @@ export default function ZohoFormModal({ isOpen, onClose }) {
   const modalRef = useRef(null);
   const overlayRef = useRef(null);
   const contentRef = useRef(null);
+  const formRef = useRef(null);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (isOpen) {
@@ -77,6 +79,57 @@ export default function ZohoFormModal({ isOpen, onClose }) {
     }
   };
 
+  const validateEmail = (email) => {
+    const emailExp = /^[\w]([\w\-.+&'/]*)@([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,22}$/;
+    return emailExp.test(email.trim());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const firstName = formData.get('Name_First')?.trim() || '';
+    const lastName = formData.get('Name_Last')?.trim() || '';
+    const email = formData.get('Email')?.trim() || '';
+    const message = formData.get('MultiLine')?.trim() || '';
+    
+    const newErrors = {};
+
+    // Validate first name
+    if (!firstName) {
+      newErrors.Name = 'First name is required';
+    }
+
+    // Validate last name
+    if (!lastName) {
+      newErrors.Name = 'Last name is required';
+    }
+
+    // Validate email
+    if (!email) {
+      newErrors.Email = 'Email is required';
+    } else if (!validateEmail(email)) {
+      newErrors.Email = 'Please enter a valid email address';
+    }
+
+    // Validate message
+    if (!message) {
+      newErrors.MultiLine = 'Please leave us a message';
+    }
+
+    // If there are errors, show them
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    // Clear errors and submit
+    setErrors({});
+    
+    // Submit the form
+    e.target.submit();
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -116,18 +169,12 @@ export default function ZohoFormModal({ isOpen, onClose }) {
           <div className="zoho-form-wrapper">
             <div className="zf-templateWidth">
               <form 
+                ref={formRef}
                 action='https://forms.zohopublic.com/webaudst1/form/ContactUs/formperma/xzFbK-sIk0kkdwv8TrSOpd6_95LKypEbk3rwfc1vxm8/htmlRecords/submit' 
                 name='form'
                 method='POST'
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  if (typeof window !== 'undefined' && window.zf_ValidateAndSubmit) {
-                    if (window.zf_ValidateAndSubmit()) {
-                      e.target.submit();
-                    }
-                  }
-                }}
-                accept-charset='UTF-8' 
+                onSubmit={handleSubmit}
+                acceptCharset='UTF-8' 
                 encType='multipart/form-data' 
                 id='form'
               >
@@ -156,16 +203,34 @@ export default function ZohoFormModal({ isOpen, onClose }) {
                         <div className="zf-tempContDiv zf-twoType">
                           <div className="zf-nameWrapper">
                             <span> 
-                              <input type="text" maxLength="255" name="Name_First" fieldType="7" placeholder=""/>
+                              <input 
+                                type="text" 
+                                maxLength="255" 
+                                name="Name_First" 
+                                fieldType="7" 
+                                placeholder=""
+                                onChange={() => setErrors(prev => ({ ...prev, Name: '' }))}
+                              />
                               <label>First</label> 
                             </span>
                             <span> 
-                              <input type="text" maxLength="255" name="Name_Last" fieldType="7" placeholder=""/>
+                              <input 
+                                type="text" 
+                                maxLength="255" 
+                                name="Name_Last" 
+                                fieldType="7" 
+                                placeholder=""
+                                onChange={() => setErrors(prev => ({ ...prev, Name: '' }))}
+                              />
                               <label>Last</label> 
                             </span>
                             <div className="zf-clearBoth"></div>
                           </div>
-                          <p id="Name_error" className="zf-errorMessage" style={{display:'none'}}>Invalid value</p>
+                          {errors.Name && (
+                            <p className="zf-errorMessage" style={{display:'block'}}>
+                              {errors.Name}
+                            </p>
+                          )}
                         </div>
                         <div className="zf-clearBoth"></div>
                       </div>
@@ -177,9 +242,22 @@ export default function ZohoFormModal({ isOpen, onClose }) {
                         </label>
                         <div className="zf-tempContDiv">
                           <span> 
-                            <input type="text" name="Email" checktype="c5" defaultValue="" maxLength="255" fieldType="9" placeholder="" /> 
+                            <input 
+                              type="text" 
+                              name="Email" 
+                              checktype="c5" 
+                              defaultValue="" 
+                              maxLength="255" 
+                              fieldType="9" 
+                              placeholder=""
+                              onChange={() => setErrors(prev => ({ ...prev, Email: '' }))}
+                            /> 
                           </span>
-                          <p id="Email_error" className="zf-errorMessage" style={{display: 'none'}}>Invalid value</p>
+                          {errors.Email && (
+                            <p className="zf-errorMessage" style={{display: 'block'}}>
+                              {errors.Email}
+                            </p>
+                          )}
                         </div>
                         <div className="zf-clearBoth"></div>
                       </div>
@@ -191,9 +269,19 @@ export default function ZohoFormModal({ isOpen, onClose }) {
                         </label>
                         <div className="zf-tempContDiv">
                           <span> 
-                            <textarea name="MultiLine" checktype="c1" maxLength="65535" placeholder=""></textarea> 
+                            <textarea 
+                              name="MultiLine" 
+                              checktype="c1" 
+                              maxLength="65535" 
+                              placeholder=""
+                              onChange={() => setErrors(prev => ({ ...prev, MultiLine: '' }))}
+                            ></textarea> 
                           </span>
-                          <p id="MultiLine_error" className="zf-errorMessage" style={{display: 'none'}}>Invalid value</p>
+                          {errors.MultiLine && (
+                            <p className="zf-errorMessage" style={{display: 'block'}}>
+                              {errors.MultiLine}
+                            </p>
+                          )}
                         </div>
                         <div className="zf-clearBoth"></div>
                       </div>

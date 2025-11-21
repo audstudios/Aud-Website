@@ -1,23 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './homecontact.css';
 import ZohoFormModal from '@/components/forms/ZohoFormModal/ZohoFormModal';
 
 export default function HomeContact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Load Zoho validation script
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '/js/zoho-validation.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   return (
     <>
