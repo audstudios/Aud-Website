@@ -1,3 +1,9 @@
 .spacer-45 {
     padding-top: 60px;
 }
+
+@media (max-width: 450px) {
+.spacer-45 {
+    padding-top: 120px;
+}
+}
