@@ -4,37 +4,24 @@ import './homehero.css';
 
 export default function Homehero() {
   const logoRef = useRef(null);
-  const titleRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    // Set initial state - centered but offset down and invisible
+    gsap.set(logoRef.current, {
+      opacity: 0,
+      x: '0%',
+      y: 'calc(-50% + 50px)'  // Start 50px lower than centered position
+    });
 
-    tl.fromTo(
-      logoRef.current,
-      { 
-        autoAlpha: 0, 
-        y: 20  //
-      },
-      { 
-        autoAlpha: 1, 
-        y: 0,  
-        duration: 1,
-        clearProps: 'transform'  // 
-      }
-    ).fromTo(
-      titleRef.current,
-      { 
-        autoAlpha: 0, 
-        y: 20  
-      },
-      { 
-        autoAlpha: 1, 
-        y: 0,  
-        duration: 1,
-        clearProps: 'transform' 
-      },
-      "-=0.5" 
-    );
+    // Animate: fade in and move up to centered position
+    gsap.to(logoRef.current, {
+      opacity: 1,
+      x: '0%',
+      y: '-50%',  // End at perfectly centered position
+      duration: 1.5,
+      ease: 'power3.out',
+      delay: 0.3
+    });
   }, []);
 
   return (
@@ -47,12 +34,6 @@ export default function Homehero() {
         loop
         playsInline
       />
-{/*
-      <h1 className="hero-title" ref={titleRef}>
-        We're not the standard.
-        <span className="font-bold">We're aud studios.</span>
-      </h1>
-*/}
       <img
         className="hero-logo"
         ref={logoRef}

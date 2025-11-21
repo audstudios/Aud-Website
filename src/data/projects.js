@@ -32,8 +32,8 @@ export const projects = {
     client: 'NORTH SIX // JEAN PAUL GAULTIER',
     type: 'Experiential and Event Content Production',
     year: '2025',
-    heroVideo: 'videos/RizzlerHardeesBase_1.mp4',
-    fullVideo: 'videos/RizzlerHardeesBase_1.mp4', // Full video with audio for modal
+    heroVideo: '/images/JPG/JPGHeroFinal_Land.mp4',
+    fullVideo: '/images/JPG/JPG_Audio.mp4', // Full video with audio for modal
     watchLink: '#',
     mainline: 'A cinematic approach to event coverage.',
     content: [
