@@ -107,6 +107,12 @@
     text-decoration: none;
 }
 
+.slide-jeanpaul {
+    font-size: 90px;
+    top: -110px;
+}
+
+
 @media (max-width: 1392px) {
     .homeslider-controls {
         width: 90%;
@@ -118,6 +124,14 @@
         width: 70%;
     }
 }
+
+@media (max-width: 988px) {
+    .slide-jeanpaul {
+        font-size: 80px;
+        top: -50px;
+    }
+}
+
 
 @media (max-width: 960px) {
     .slider-video {
@@ -139,6 +153,13 @@
     }
     .homeslider-link-button {
           top: 65px;
+    }
+}
+
+@media (max-width: 858px) {
+    .slide-jeanpaul {
+        font-size: 60px;
+        top: -30px;
     }
 }
 
@@ -178,5 +199,11 @@
     }
     .homeslider-link-button {
         top: 17px;
+    }
+    
+    .slide-jeanpaul {
+        font-size: 30px;
+        position: relative;
+        top: 20px;
     }
 }
