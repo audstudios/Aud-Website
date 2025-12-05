@@ -21,9 +21,13 @@ export default function Footer() {
                             <img className='footer-icons' src="/icons/mail.svg"></img>
                             <p>web@audstudios.com</p>
                         </div>
-                        <div className='footer-info-flex'>
+                        <div className='footer-info-flex pb-15'>
                             <img className='footer-icons instagram-icon' src="/icons/instagram.svg"></img>
                             <p><a className='audlinks-white' href="https://www.instagram.com/the.audstudios/?igsh=NW9ycnc1YzJkaG5w#">@the.audstudios</a></p> 
+                        </div>
+                        <div className='footer-info-flex'>
+                            <img className='footer-icons instagram-icon' src="/icons/linkedin.svg"></img>
+                            <p><a className='audlinks-white' href="https://www.linkedin.com/company/aud-studios/">LinkedIn</a></p> 
                         </div>
                     </div>
                 </div>

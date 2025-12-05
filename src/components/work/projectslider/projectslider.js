@@ -10,6 +10,13 @@ import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArro
 
 const slides = [
   {
+    title: "Hardee's",
+    video: '/images/RizzlerHardees/RizzlerHardees.mp4',
+    background: '/images/homeblur/rizzlerhomebg.jpg',
+    className: 'slide-flippedfrog',
+    link: '/prod/work/projects/pages/rizzlerHardees',  // ✅ Added link
+  },
+  {
     title: 'Jean Paul Gaultier',
     video: '/videos/Aud_Land_Video.mp4',
     background: '/images/homeblur/jpghomebg.jpg',
@@ -22,13 +29,6 @@ const slides = [
     background: '/images/homeblur/cardibhomebg.jpg',
     className: 'slide-frogeating',
     link: '/prod/work/projects/pages/cardibdoordash',  // ✅ Added link
-  },
-  {
-    title: "Hardee's",
-    video: '/images/RizzlerHardees/RizzlerHardees.mp4',
-    background: '/images/homeblur/rizzlerhomebg.jpg',
-    className: 'slide-flippedfrog',
-    link: '/prod/work/projects/pages/rizzlerHardees',  // ✅ Added link
   },
 ];
 
