@@ -15,7 +15,7 @@ export default function VerticalProjectHero({ project }) {
       <div className='vertical-hero-container project-hero-container'>
         <GhostLogo />
         <div className='vertical-hero-wrapper project-hero-wrapper'>
-          <div className="project-title-container">
+          <div className="project-title-container vert-control-herobox">
             <h1 className="project-title">PROJECT TITLES THAT ARE LONGER</h1>
           </div>
           <div className='project-vertical-video-container'>

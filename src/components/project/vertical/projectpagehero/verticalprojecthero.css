@@ -3,3 +3,13 @@
   height: 700px;
   width: 100%;
 }
+
+.vertical-hero-wrapper {
+    padding: 40px 0;
+}
+
+.vert-control-herobox {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px;
+}
