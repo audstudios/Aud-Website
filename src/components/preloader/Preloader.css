@@ -18,22 +18,50 @@
   justify-content: center;
 }
 
-/* Ensure lottie player is centered */
-lottie-player {
-  margin: 0 auto;
+.preloader-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+}
+
+.preloader-logo {
+  width: 150px;
+  height: auto;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
 }
 
 /* For mobile devices */
 @media (max-width: 768px) {
-  .preloader-content lottie-player {
-    width: 250px !important;
-    height: 250px !important;
+  .preloader-spinner {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .preloader-logo {
+    width: 120px;
   }
 }
 
 @media (max-width: 480px) {
-  .preloader-content lottie-player {
-    width: 200px !important;
-    height: 200px !important;
+  .preloader-spinner {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .preloader-logo {
+    width: 100px;
   }
 }
