@@ -30,7 +30,13 @@ export default function ExpandibleList() {
     const el = contentRefs.current[key];
     if (!el) return;
 
-    gsap.fromTo(
+    const listItems = el.querySelectorAll('li');
+
+    // Create a timeline for the opening animation
+    const tl = gsap.timeline();
+
+    // First, expand the container
+    tl.fromTo(
       el,
       { height: 0, opacity: 0 },
       {
@@ -43,18 +49,57 @@ export default function ExpandibleList() {
         },
       }
     );
+
+    // Then, stagger the list items
+    tl.fromTo(
+      listItems,
+      { 
+        opacity: 0, 
+        y: 10 
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        ease: 'power2.out',
+        stagger: 0.08, // 0.08s delay between each item
+      },
+      '-=0.2' // Start 0.2s before container finishes expanding
+    );
   };
 
   const animateClose = (key) => {
     const el = contentRefs.current[key];
     if (!el) return;
 
-    gsap.to(el, {
-      height: 0,
+    const listItems = el.querySelectorAll('li');
+
+    // Create a timeline for the closing animation
+    const tl = gsap.timeline();
+
+    // First, fade out list items in reverse
+    tl.to(listItems, {
       opacity: 0,
-      duration: 0.3,
-      ease: 'power2.inOut',
+      y: -5,
+      duration: 0.2,
+      ease: 'power2.in',
+      stagger: {
+        each: 0.05,
+        from: 'end', // Animate from bottom to top
+      },
     });
+
+    // Then, collapse the container
+    tl.to(
+      el,
+      {
+        height: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.inOut',
+      },
+      '-=0.1' // Start 0.1s before items finish fading
+    );
   };
 
   // 👇 Animate section headers on scroll into view

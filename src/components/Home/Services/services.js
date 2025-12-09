@@ -8,46 +8,77 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Services() {
   const titleRef = useRef(null);
-  const paraRef = useRef(null);
+  const para1Ref = useRef(null);
+  const para2Ref = useRef(null);
+  const expandibleListRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(
+      // Create a timeline for staggered animations
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        }
+      });
+
+      // Stagger the animations with smooth timing
+      tl.fromTo(
         titleRef.current,
         {
           autoAlpha: 0,
-          yPercent: 20
+          y: 30
         },
         {
           autoAlpha: 1,
-          yPercent: 0,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: 'top 80%', // when top of element hits 80% of viewport
-            toggleActions: 'play none none none'
-          }
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out'
         }
-      );
-
-      gsap.fromTo(
-        paraRef.current,
+      )
+      .fromTo(
+        para1Ref.current,
         {
           autoAlpha: 0,
-          yPercent: 20
+          y: 30
         },
         {
           autoAlpha: 1,
-          yPercent: 0,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: paraRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none none'
-          }
-        }
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out'
+        },
+        '-=0.5' // Start 0.5s before previous animation ends
+      )
+      .fromTo(
+        para2Ref.current,
+        {
+          autoAlpha: 0,
+          y: 30
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out'
+        },
+        '-=0.6' // Start 0.6s before previous animation ends
+      )
+      .fromTo(
+        expandibleListRef.current,
+        {
+          autoAlpha: 0,
+          y: 30
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out'
+        },
+        '-=0.5' // Start 0.5s before previous animation ends
       );
     });
 
@@ -55,23 +86,23 @@ export default function Services() {
   }, []);
 
   return (
-    <div className="services-container">
+    <div className="services-container" ref={containerRef}>
       <div className="services-wrapper">
         <div className="services-left">
           <div className="services-content">
-            <h3 className="services-title" ref={titleRef}>
+            <h3 className="services-title" ref={titleRef} style={{ opacity: 0 }}>
               <span className="font-bold">Our Approach</span>
             </h3>
-            <p ref={paraRef}>
+            <p ref={para1Ref} style={{ opacity: 0 }}>
               As a founder-led <span className='bolded'>creative strategy</span> and <span className='bolded'>production</span> agency, collaboration is at the heart of everything we do. We partner as a true extension of your in-house team, aligning strategy and production to move as one. 
             </p>
-            <p className="p-spacer">
+            <p className="p-spacer" ref={para2Ref} style={{ opacity: 0 }}>
               From creating viral social moments to OOH campaigns, we bring brands to life through thoughtful strategy and premium production, moving at the speed the moment demands. 
             </p>
           </div>
         </div>
         <div className="services-right">
-          <div className="service-dropdown-container">
+          <div className="service-dropdown-container" ref={expandibleListRef} style={{ opacity: 0 }}>
             <Expandiblelist />
           </div>
         </div>
