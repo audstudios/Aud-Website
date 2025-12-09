@@ -18,50 +18,33 @@
   justify-content: center;
 }
 
-.preloader-spinner {
+.preloader-text {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  height: 300px;
+  gap: 0px;
+  font-family: 'PPPangaiaMedium', sans-serif;
+  font-size: 120px;
+  color: #000000;
+  font-weight: 500;
+  letter-spacing: -5px; /* Tighten kerning */
 }
 
-.preloader-logo {
-  width: 150px;
-  height: auto;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(0.95);
-  }
+.preloader-letter {
+  display: inline-block;
+  opacity: 0;
+  transform-origin: center;
 }
 
 /* For mobile devices */
 @media (max-width: 768px) {
-  .preloader-spinner {
-    width: 250px;
-    height: 250px;
-  }
-  
-  .preloader-logo {
-    width: 120px;
+  .preloader-text {
+    font-size: 80px;
+    letter-spacing: -3px;
   }
 }
 
 @media (max-width: 480px) {
-  .preloader-spinner {
-    width: 200px;
-    height: 200px;
-  }
-  
-  .preloader-logo {
-    width: 100px;
+  .preloader-text {
+    font-size: 60px;
+    letter-spacing: -2px;
   }
 }
