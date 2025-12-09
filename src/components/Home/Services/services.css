@@ -49,9 +49,6 @@
     .services-title {
         font-size: 40px;
     }
-    .section-content li {
-        font-size: 20px;
-    }
 }
 
 @media (max-width: 450px) {

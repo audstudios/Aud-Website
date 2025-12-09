@@ -65,4 +65,7 @@ details[open] .expandable-content {
     .expand-list-title {
         font-size: 26px;
     }
+    .section-content li {
+        font-size: 20px;
+    }
 }

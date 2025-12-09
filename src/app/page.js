@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Lenis from '@studio-freight/lenis';
 
 import Navigation from "@/components/nav/nav";
@@ -9,8 +9,11 @@ import Services from "@/components/Home/Services/services";
 import HomeSlider from "@/components/Home/homeslider/homeslider";
 import HomeCarousel from "@/components/Home/homecarousel/homecarousel";
 import HomeContact from "@/components/Home/homecontact/homecontact";
+import Preloader from "@/components/preloader/Preloader";
 
 export default function Test() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -31,14 +34,21 @@ export default function Test() {
     };
   }, []);
 
+  const handlePreloaderComplete = () => {
+    setIsLoading(false);
+  };
+
   return (
-    <div>
-      <Navigation />
-      <Homehero />
-      <Services />
-      <HomeSlider />
-      <HomeCarousel />
-      <HomeContact />
-    </div>
+    <>
+      {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
+      <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.8s ease-in-out' }}>
+        <Navigation />
+        <Homehero />
+        <Services />
+        <HomeSlider />
+        <HomeCarousel />
+        <HomeContact />
+      </div>
+    </>
   );
 }
