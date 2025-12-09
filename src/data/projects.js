@@ -91,4 +91,26 @@ export const projects = {
     ],
     brandLogo: '/images/logos/CarouselLogo_png-16.png',
   },
+  flav: {
+    title: 'Flav',
+    client: 'Flav',
+    type: 'Campaign Development, Creative Direction, Production',
+    year: '2025',
+    layout: 'vertical',
+    heroVideos: [
+      '/images/CardiBDoorDash/cardibvideo.mp4',
+      '/images/CardiBDoorDash/cardixamayavideo.mp4'
+    ],
+    fullVideo: '/images/CardiBDoorDash/cardibvideo.mp4', // Full video with audio for modal
+    watchLink: 'https://www.youtube.com/watch?v=iy1Bz_bHVac',
+    mainline: 'With Flav expanding into NYC, they needed a team to craft a campaign that felt authentically New York.',
+    content: [
+      "We led creative direction and end-to-end production, ensuring every element reflected their market expansion goals.",
+      "The result: a comprehensive suite of assets—including OTT, digital and social content, and OOH placements across dispensaries nationwide.",
+    ],
+    mainImages: ['/images/CardiBDoorDash/CardiBDoorDashImages.jpg'],
+    subImages: [
+    ],
+    brandLogo: '/images/logos/Flav_Logo.png',
+  },
 };
