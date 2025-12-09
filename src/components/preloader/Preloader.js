@@ -9,10 +9,18 @@ export default function Preloader({ onComplete }) {
   const aRef = useRef(null);
   const uRef = useRef(null);
   const dRef = useRef(null);
+  const progressBarRef = useRef(null);
 
   useEffect(() => {
-    // Create the looping animation timeline
-    const tl = gsap.timeline({ repeat: 1 }); // Repeat once (plays twice total)
+    // Create the animation timeline (no repeat - single loop)
+    const tl = gsap.timeline();
+
+    // Animate progress bar to fill up over 4 seconds
+    gsap.to(progressBarRef.current, {
+      width: '100%',
+      duration: 4,
+      ease: 'power1.inOut',
+    });
 
     // Animate 'a'
     tl.fromTo(
@@ -26,7 +34,7 @@ export default function Preloader({ onComplete }) {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.5,
+        duration: 0.4,
         ease: 'back.out(1.7)',
       }
     );
@@ -43,7 +51,7 @@ export default function Preloader({ onComplete }) {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.5,
+        duration: 0.4,
         ease: 'back.out(1.7)',
       },
       '-=0.2' // Overlap slightly with previous animation
@@ -61,36 +69,38 @@ export default function Preloader({ onComplete }) {
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 0.5,
+        duration: 0.4,
         ease: 'back.out(1.7)',
       },
       '-=0.2' // Overlap slightly with previous animation
     );
 
     // Hold for a moment
-    tl.to({}, { duration: 0.3 });
+    tl.to({}, { duration: 0.5 });
 
     // Add subtle floating animation to all letters
     tl.to(
       [aRef.current, uRef.current, dRef.current],
       {
         y: -10,
-        duration: 0.4,
+        duration: 0.5,
         ease: 'sine.inOut',
-        stagger: 0.1,
-      },
-      '-=0.3'
+        stagger: 0.08,
+      }
     );
 
     tl.to(
       [aRef.current, uRef.current, dRef.current],
       {
         y: 0,
-        duration: 0.4,
+        duration: 0.5,
         ease: 'sine.inOut',
-        stagger: 0.1,
+        stagger: 0.08,
       }
     );
+
+    // Hold briefly
+    tl.to({}, { duration: 0.3 });
 
     // Fade out all letters
     tl.to(
@@ -99,20 +109,18 @@ export default function Preloader({ onComplete }) {
         opacity: 0,
         y: -20,
         scale: 0.8,
-        duration: 0.5,
+        duration: 0.4,
         ease: 'power2.in',
-        stagger: 0.1,
-      },
-      '+=0.2'
+        stagger: 0.08,
+      }
     );
 
-    // After the animation completes (including repeat), fade out the preloader
+    // After the animation completes, fade out the preloader
     tl.eventCallback('onComplete', () => {
       gsap.to(preloaderRef.current, {
         opacity: 0,
-        duration: 0.8,
+        duration: 0.5,
         ease: 'power2.inOut',
-        delay: 0.3,
         onComplete: () => {
           if (onComplete) onComplete();
         },
@@ -137,6 +145,11 @@ export default function Preloader({ onComplete }) {
           <span ref={dRef} className="preloader-letter">
             d
           </span>
+        </div>
+        <div className="progress-bar-container">
+          <div className="progress-bar-track">
+            <div ref={progressBarRef} className="progress-bar-fill"></div>
+          </div>
         </div>
       </div>
     </div>
