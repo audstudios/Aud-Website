@@ -48,8 +48,8 @@
     display: flex;
     flex-direction: column;
     width: 200px;
-    position: relative;
-    top: 80px;
+    position: absolute;
+    bottom: 80px;
 }
 
 .project-hero-info-wrapper {
