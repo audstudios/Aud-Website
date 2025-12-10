@@ -28,7 +28,7 @@ export default function FlavPage() {
   }, []);
 
   return (
-    <div>
+    <div className="flav-page">
       <NavigationGeneral />
       <HorizontalProjectPage projectData={projects.flav} />
     </div>
