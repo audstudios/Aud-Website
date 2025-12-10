@@ -33,7 +33,7 @@ const slides = [
   {
     title: 'Flav',
     video: '/images/flav/FlavEditWeb.mp4',
-    background: '/images/homeblur/cardibhomebg.jpg',
+    background: '/images/homeblur/flavBG.jpg',
     className: 'slide-frogeating',
     link: '/prod/work/projects/pages/flav',  // ✅ Added link
   },

@@ -30,6 +30,13 @@ const slides = [
     className: 'slide-frogeating',
     link: '/prod/work/projects/pages/cardibdoordash',  // ✅ Added link
   },
+    {
+    title: 'Flav',
+    video: '/images/flav/FlavEditWeb.mp4',
+    background: '/images/homeblur/flavBG.jpg',
+    className: 'slide-frogeating',
+    link: '/prod/work/projects/pages/flav',  // ✅ Added link
+  },
 ];
 
 export default function ProjectSlider() {

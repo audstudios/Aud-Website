@@ -10,7 +10,7 @@ export default function NavigationGeneral() {
   return (
     <div className="nav-container">
       <div className="nav-wrapper">
-        <Link href="/test">
+        <Link href="/">
           <div className="nav-left">
             <img src="/images/audwordmark_nav.svg" alt="Logo" />
           </div>
