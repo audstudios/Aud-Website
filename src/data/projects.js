@@ -6,7 +6,7 @@ export const projects = {
     client: 'Hardees // Get Engaged Media',
     type: 'Commercial Production',
     year: '2025',
-    heroVideo: '/images/RizzlerHardees/RizzlerHardees.mp4',
+    heroVideo: '/images/RizzlerHardees/RizzlerHardeesBase_1.mp4',
     fullVideo: '/images/RizzlerHardees/RizzlerHardeesBase_1.mp4', // Full video with audio for modal
     watchLink: '#',
     

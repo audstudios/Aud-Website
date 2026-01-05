@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import './homecontact.css';
-import ZohoFormModal from '@/components/forms/ZohoFormModal/ZohoFormModal';
+import ContactFormModal from '@/components/forms/ContactFormModal/ContactFormModal';
 
 export default function HomeContact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,7 +33,7 @@ export default function HomeContact() {
         </div>
       </div>
 
-      <ZohoFormModal 
+      <ContactFormModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
       />

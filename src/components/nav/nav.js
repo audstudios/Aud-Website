@@ -2,6 +2,7 @@
 
 import './nav.css';
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link'; 
@@ -9,6 +10,8 @@ import Link from 'next/link';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Navigation() {
+  const pathname = usePathname();
+
   useEffect(() => {
     gsap.to(".nav-home", {
       opacity: 1,
@@ -23,6 +26,8 @@ export default function Navigation() {
     });
   }, []);
 
+  const isActive = (path) => pathname === path;
+
   return (
     <div className="nav-container">
       <div className="nav-wrapper">
@@ -34,13 +39,13 @@ export default function Navigation() {
         <div className="nav-right">
           <div className="nav-menu">
             <Link href="/prod/work">
-              <p className="nav-link">Work</p>
+              <p className={`nav-link ${isActive('/prod/work') ? 'active' : ''}`} data-text="Work">Work</p>
             </Link>
             <Link href="/prod/about">
-              <p className="nav-link">About</p>
+              <p className={`nav-link ${isActive('/prod/about') ? 'active' : ''}`} data-text="About">About</p>
             </Link>
             <Link href="/prod/contact">
-              <p className="nav-link">Contact</p>
+              <p className={`nav-link ${isActive('/prod/contact') ? 'active' : ''}`} data-text="Contact">Contact</p>
             </Link>
 {/* <p className="nav-link">Services</p> */}
 {/* <p className="nav-link">Contact</p> */}

@@ -42,6 +42,30 @@
     gap: 60px;
 }
 
+.nav-link {
+    transition: font-family 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Reserve space for bold text to prevent layout shift */
+.nav-link::after {
+    content: attr(data-text);
+    content: attr(data-text) / "";
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    user-select: none;
+    pointer-events: none;
+    font-family: 'PPMontreal-Bold', system-ui, sans-serif;
+    display: block;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    font-family: 'PPMontreal-Bold', system-ui, sans-serif;
+}
+
 @media (max-width: 900px) {
     .nav-container {
         display: none;
