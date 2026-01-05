@@ -60,27 +60,53 @@ const MobileMenu = () => {
             <div className="menu-bar">
                 <div className="menu-logo">
                     <Link href="/">
-                     <img className="mobile-menu-logo" src="/images/logos/Aud_Logo_MM_Black.svg"></img>
+                      <img 
+                        className="mobile-menu-logo" 
+                        src="/images/logos/Aud_Logo_MM_Black.svg"
+                        alt="Aud Studios mobile menu logo"
+                      />
                     </Link>
                 </div>
-                <div className="menu-open" onClick={toggleMenu}>
-                    <p>Menu</p>
+                <div className="menu-open">
+                    <button 
+                      onClick={toggleMenu}
+                      aria-label="Open navigation menu"
+                      aria-expanded={isMenuOpen}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                    >
+                      <p>Menu</p>
+                    </button>
                 </div>
             </div>
-        <div className="menu-overlay">
+        <nav className="menu-overlay" aria-label="Main navigation">
             <div className="menu-overlay-bar">
                 <div className="menu-logo menu-logo-open">
                     <Link href="/">
-                        <img className="mobile-menu-logo" src="/images/logos/Aud_Logo_MM.svg"></img>
+                        <img 
+                          className="mobile-menu-logo" 
+                          src="/images/logos/Aud_Logo_MM.svg"
+                          alt="Aud Studios mobile menu logo"
+                        />
                     </Link>
                 </div>
-                <div className="menu-close"  onClick={toggleMenu}>
-                    <p>Close</p>
+                <div className="menu-close">
+                    <button 
+                      onClick={toggleMenu}
+                      aria-label="Close navigation menu"
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                    >
+                      <p>Close</p>
+                    </button>
                 </div>
             </div>
-            <div className="menu-close-icon" onClick={toggleMenu}>
+            <button 
+              className="menu-close-icon" 
+              onClick={toggleMenu}
+              aria-label="Close navigation menu"
+              style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            >
                 <p>&#x2715;</p>
-            </div>
+            </button>
             <div className="menu-copy">
                 <div className="menu-links">
                     {menuLinks.map((link, index) =>(
@@ -102,7 +128,7 @@ const MobileMenu = () => {
             </div>
             <div className="menu-preview">
             </div>
-        </div>
+        </nav>
     </div>
     );
 };

@@ -22,7 +22,7 @@ export default function NavigationGeneral() {
       <div className="nav-wrapper">
         <Link href="/">
           <div className="nav-left">
-            <img src="/images/audwordmark_nav.svg" alt="Logo" />
+            <img src="/images/audwordmark_nav.svg" alt="Aud Studios wordmark logo" />
           </div>
         </Link>
         <div className="nav-right">
@@ -39,8 +39,6 @@ export default function NavigationGeneral() {
             <Link href="/prod/contact">
               <p className={`nav-link ${isActive('/prod/contact') ? 'active' : ''}`} data-text="Contact">Contact</p>
             </Link>
-{/* <p className="nav-link">Services</p> */}
-{/* <p className="nav-link">Aud Jobs</p> */}
           </div>
         </div>
       </div>

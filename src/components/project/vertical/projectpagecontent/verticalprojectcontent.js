@@ -25,7 +25,7 @@ export default function VerticalProjectContent({ project }) {
             <div className='project-content-vertical-mainimages'>
               <img 
                 src={project.mainImages[0]} 
-                alt={project.title}
+                alt={`${project.title} main vertical project image`}
                 style={{width: '100%', height: '100%', objectFit: 'cover'}}
               />
             </div>
@@ -35,7 +35,7 @@ export default function VerticalProjectContent({ project }) {
               <div key={index} className='project-content-vertical-subimages'>
                 <img 
                   src={image} 
-                  alt={`${project.title} detail ${index + 1}`}
+                  alt={`${project.title} vertical detail ${index + 1}`}
                   style={{width: '100%', height: '100%', objectFit: 'cover'}}
                 />
               </div>
@@ -58,7 +58,7 @@ export default function VerticalProjectContent({ project }) {
               <img 
                 className='project-brand-logo' 
                 src={project.brandLogo}
-                alt={`${project.client} logo`}
+                alt={`${project.client} brand logo`}
               />
             </div>
           )}

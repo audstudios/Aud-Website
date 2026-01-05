@@ -38,7 +38,7 @@ export default function Homehero() {
         className="hero-logo"
         ref={logoRef}
         src="/images/AudGlassLogoV02.png"
-        alt="AUD Studios Logo"
+        alt="Aud Studios glass logo"
       />
       <div className="hero-fade"></div>
     </div>

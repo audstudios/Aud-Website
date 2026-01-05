@@ -28,7 +28,11 @@ export default function HomeContact() {
             </div>
           </div>
           <div className="homecontact-logos">
-            <img className="homecontact-image" src="/images/Aud_LogoGradientStack.png" alt="Aud Studios Logo"></img>
+            <img 
+              className="homecontact-image" 
+              src="/images/Aud_LogoGradientStack.png" 
+              alt="Aud Studios gradient logo stack"
+            />
           </div>
         </div>
       </div>

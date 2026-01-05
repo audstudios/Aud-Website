@@ -27,7 +27,11 @@ export default function HorizontalProjectContent({ project }) {
         <div className='horizontal-project-left-content'>
           {project.mainImages?.map((image, index) => (
             <div key={index} className='horizontal-project-content-img-main'>
-              <img src={image} alt={`${project.title} - ${index + 1}`} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+              <img 
+                src={image} 
+                alt={`${project.title} project image ${index + 1}`} 
+                style={{width: '100%', height: '100%', objectFit: 'cover'}}
+              />
             </div>
           ))}
         </div>
@@ -47,7 +51,7 @@ export default function HorizontalProjectContent({ project }) {
               <img 
                 className='project-brand-logo-img' 
                 src={project.brandLogo}
-                alt={`${project.client} logo`}
+                alt={`${project.client} brand logo`}
               />
             </div>
           )}
@@ -55,7 +59,11 @@ export default function HorizontalProjectContent({ project }) {
           <div className='project-content-subimages-wrapper'>
             {project.subImages?.map((image, index) => (
               <div key={index} className='project-content-horizontal-subimages'>
-                <img src={image} alt={`${project.title} detail - ${index + 1}`} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+                <img 
+                  src={image} 
+                  alt={`${project.title} additional detail ${index + 1}`} 
+                  style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                />
               </div>
             ))}
           </div>
