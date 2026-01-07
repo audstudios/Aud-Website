@@ -14,28 +14,28 @@ const slides = [
     video: '/images/RizzlerHardees/RizzlerHardees.mp4',
     background: '/images/homeblur/rizzlerhomebg.jpg',
     className: 'slide-flippedfrog',
-    link: '/prod/work/projects/pages/rizzlerHardees',  // ✅ Added link
+    link: '/prod/work/projects/pages/rizzlerHardees',
   },
   {
     title: 'Jean Paul Gaultier',
     video: '/videos/Aud_Land_Video.mp4',
     background: '/images/homeblur/jpghomebg.jpg',
     className: 'slide-jeanpaul',
-    link: '/prod/work/projects/pages/jeanpaulgautier',  // ✅ Added link
+    link: '/prod/work/projects/pages/jeanpaulgautier',
   },
   {
     title: 'Doordash',
     video: '/images/CardiBDoorDash/CardiBHomeSlider.mp4',
     background: '/images/homeblur/cardibhomebg.jpg',
     className: 'slide-frogeating',
-    link: '/prod/work/projects/pages/cardibdoordash',  // ✅ Added link
+    link: '/prod/work/projects/pages/cardibdoordash',
   },
     {
     title: 'Flav',
     video: '/images/flav/FlavEditWeb.mp4',
     background: '/images/homeblur/FlavBG.jpg',
     className: 'slide-frogeating',
-    link: '/prod/work/projects/pages/flav',  // ✅ Added link
+    link: '/prod/work/projects/pages/flav',
   },
 ];
 
@@ -43,12 +43,15 @@ export default function ProjectSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevBackground, setPrevBackground] = useState(null);
   const [prevVideo, setPrevVideo] = useState(null);
+  const [prevTitle, setPrevTitle] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const bgEnterRef = useRef(null);
   const bgExitRef = useRef(null);
   const videoEnterRef = useRef(null);
   const videoExitRef = useRef(null);
+  const titleRef = useRef(null);
+  const titleExitRef = useRef(null);
 
   const totalSlides = slides.length;
 
@@ -56,6 +59,7 @@ export default function ProjectSlider() {
     if (isAnimating) return;
     setPrevBackground(slides[currentIndex].background);
     setPrevVideo(slides[currentIndex].video);
+    setPrevTitle({ title: slides[currentIndex].title, className: slides[currentIndex].className });
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
   };
@@ -64,6 +68,7 @@ export default function ProjectSlider() {
     if (isAnimating) return;
     setPrevBackground(slides[currentIndex].background);
     setPrevVideo(slides[currentIndex].video);
+    setPrevTitle({ title: slides[currentIndex].title, className: slides[currentIndex].className });
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
@@ -72,75 +77,122 @@ export default function ProjectSlider() {
   useEffect(() => {
     if (!prevBackground && !prevVideo) return;
 
-    // Background fade out
+    // Set initial states to prevent white flash
     if (bgExitRef.current) {
       gsap.set(bgExitRef.current, { opacity: 1 });
-      gsap.to(bgExitRef.current, {
-        opacity: 0,
-        duration: 1.0,
-        ease: 'power2.out',
-      });
     }
-
-    // Background fade in
     if (bgEnterRef.current) {
       gsap.set(bgEnterRef.current, { opacity: 0 });
-      gsap.to(bgEnterRef.current, {
-        opacity: 1,
-        duration: 1.0,
-        ease: 'power2.out',
-      });
     }
 
-    // Video fade out
+    // Create a master timeline for coordinated transitions
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setPrevBackground(null);
+        setPrevVideo(null);
+        setPrevTitle(null);
+        setIsAnimating(false);
+      }
+    });
+
+    // Phase 1: Quick fade out of old video (0.35s)
     if (videoExitRef.current) {
-      gsap.set(videoExitRef.current, { opacity: 1 });
-      gsap.to(videoExitRef.current, {
+      tl.to(videoExitRef.current, {
         opacity: 0,
-        duration: 1.2,
-        ease: 'power2.out',
-      });
+        duration: 0.35,
+        ease: 'power2.in',
+      }, 0);
     }
 
-    // Video fade in
-    if (videoEnterRef.current) {
-      gsap.set(videoEnterRef.current, { opacity: 0 });
-      gsap.to(videoEnterRef.current, {
+    // Phase 2: Title animation - OLD title fades out, NEW title fades in
+    if (titleExitRef.current) {
+      tl.to(titleExitRef.current, {
+        opacity: 0,
+        y: -20,
+        duration: 0.3,
+        ease: 'power2.in',
+      }, 0);
+    }
+    
+    if (titleRef.current) {
+      tl.fromTo(titleRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          ease: 'power2.out',
+        }, 0.3);
+    }
+
+    // Phase 3: Background crossfade - start immediately to prevent white flash
+    if (bgExitRef.current && bgEnterRef.current) {
+      // Start new background fading in immediately
+      tl.to(bgEnterRef.current, {
         opacity: 1,
-        duration: 1.2,
-        ease: 'power2.out',
-        onComplete: () => {
-          setPrevBackground(null);
-          setPrevVideo(null);
-          setIsAnimating(false);
-        },
-      });
+        duration: 0.5,
+        ease: 'power1.inOut',
+      }, 0);
+      
+      // Fade out old background at same time
+      tl.to(bgExitRef.current, {
+        opacity: 0,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      }, 0);
+    }
+
+    // Phase 4: New video fades in with subtle scale
+    if (videoEnterRef.current) {
+      tl.fromTo(videoEnterRef.current,
+        { opacity: 0, scale: 0.96 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          ease: 'power2.out',
+        }, 0.4);
     }
   }, [currentIndex]);
 
   // Initial load fade-in
   useEffect(() => {
     if (bgEnterRef.current && !prevBackground) {
-      gsap.set(bgEnterRef.current, { opacity: 0 });
-      gsap.to(bgEnterRef.current, {
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-      });
+      gsap.fromTo(bgEnterRef.current,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+        });
     }
 
     if (videoEnterRef.current && !prevVideo) {
-      gsap.set(videoEnterRef.current, { opacity: 0 });
-      gsap.to(videoEnterRef.current, {
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-      });
+      gsap.fromTo(videoEnterRef.current,
+        { opacity: 0, scale: 0.96 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+          delay: 0.3,
+        });
+    }
+
+    if (titleRef.current && !prevBackground) {
+      gsap.fromTo(titleRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+          delay: 0.5,
+        });
     }
   }, []);
 
   const { title, video, background, className, link } = slides[currentIndex];
-  const prevClass = slides.find((s) => s.background === prevBackground)?.className || '';
 
   return (
     <div className="homeslider-container">
@@ -189,7 +241,15 @@ export default function ProjectSlider() {
       {/* Foreground content */}
       <div className="homeslider-wrapper">
         <div className="homeslider-content">
-          <h2 className={`homeslider-title ${className}`}>
+          {/* OLD title fading out */}
+          {prevTitle && (
+            <h2 ref={titleExitRef} className={`homeslider-title ${prevTitle.className}`} style={{ position: 'absolute' }}>
+              <span className="font-bold">{prevTitle.title}</span>
+            </h2>
+          )}
+          
+          {/* NEW title fading in */}
+          <h2 ref={titleRef} className={`homeslider-title ${className}`}>
             <span className="font-bold">{title}</span>
           </h2>
 

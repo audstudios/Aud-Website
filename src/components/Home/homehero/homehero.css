@@ -71,6 +71,10 @@
     white-space: break-spaces;
     width: 400px;
 }
+.hero-logo {
+    top: 45%;
+    width: 100%;
+}
 }
 
 @media (max-width: 410px) {
