@@ -120,7 +120,6 @@ export default function HomeSlider() {
     // Phase 2: Title animation
     if (isMobile) {
       // MOBILE: Only fade, NO movement
-      // IMPORTANT: Don't use y or any transform properties at all
       if (titleExitRef.current) {
         tl.to(titleExitRef.current, {
           opacity: 0,
@@ -217,7 +216,7 @@ export default function HomeSlider() {
 
     if (titleRef.current && !prevBackground) {
       if (isMobile) {
-        // Mobile: only fade in, no Y transform
+        // Mobile: only fade in
         gsap.fromTo(titleRef.current,
           { opacity: 0 },
           {
@@ -290,17 +289,20 @@ export default function HomeSlider() {
       {/* Foreground content */}
       <div className="homeslider-wrapper">
         <div className="homeslider-content">
-          {/* OLD title fading out */}
-          {prevTitle && (
-            <h2 ref={titleExitRef} className={`homeslider-title ${prevTitle.className}`} style={{ position: 'absolute' }}>
-              <span className="font-bold">{prevTitle.title}</span>
+          {/* FIXED HEIGHT CONTAINER TO PREVENT FLEXBOX SHIFTING */}
+          <div className="homeslider-title-container">
+            {/* OLD title fading out */}
+            {prevTitle && (
+              <h2 ref={titleExitRef} className={`homeslider-title ${prevTitle.className}`} style={{ position: 'absolute' }}>
+                <span className="font-bold">{prevTitle.title}</span>
+              </h2>
+            )}
+            
+            {/* NEW title fading in */}
+            <h2 ref={titleRef} className={`homeslider-title ${className}`}>
+              <span className="font-bold">{title}</span>
             </h2>
-          )}
-          
-          {/* NEW title fading in */}
-          <h2 ref={titleRef} className={`homeslider-title ${className}`}>
-            <span className="font-bold">{title}</span>
-          </h2>
+          </div>
 
           <div className="homeslider-controls">
             <span onClick={prevSlide}>

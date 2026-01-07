@@ -45,6 +45,7 @@ export default function ProjectSlider() {
   const [prevVideo, setPrevVideo] = useState(null);
   const [prevTitle, setPrevTitle] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const bgEnterRef = useRef(null);
   const bgExitRef = useRef(null);
@@ -54,6 +55,18 @@ export default function ProjectSlider() {
   const titleExitRef = useRef(null);
 
   const totalSlides = slides.length;
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 705);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const nextSlide = () => {
     if (isAnimating) return;
@@ -104,25 +117,47 @@ export default function ProjectSlider() {
       }, 0);
     }
 
-    // Phase 2: Title animation - OLD title fades out, NEW title fades in
-    if (titleExitRef.current) {
-      tl.to(titleExitRef.current, {
-        opacity: 0,
-        y: -20,
-        duration: 0.3,
-        ease: 'power2.in',
-      }, 0);
-    }
-    
-    if (titleRef.current) {
-      tl.fromTo(titleRef.current,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          ease: 'power2.out',
-        }, 0.3);
+    // Phase 2: Title animation
+    if (isMobile) {
+      // MOBILE: Only fade, NO movement
+      if (titleExitRef.current) {
+        tl.to(titleExitRef.current, {
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.in',
+        }, 0);
+      }
+      
+      if (titleRef.current) {
+        tl.fromTo(titleRef.current,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.4,
+            ease: 'power2.out',
+          }, 0.3);
+      }
+    } else {
+      // DESKTOP: Fade + vertical movement
+      if (titleExitRef.current) {
+        tl.to(titleExitRef.current, {
+          opacity: 0,
+          y: -20,
+          duration: 0.3,
+          ease: 'power2.in',
+        }, 0);
+      }
+      
+      if (titleRef.current) {
+        tl.fromTo(titleRef.current,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: 'power2.out',
+          }, 0.3);
+      }
     }
 
     // Phase 3: Background crossfade - start immediately to prevent white flash
@@ -153,7 +188,7 @@ export default function ProjectSlider() {
           ease: 'power2.out',
         }, 0.4);
     }
-  }, [currentIndex]);
+  }, [currentIndex, isMobile]);
 
   // Initial load fade-in
   useEffect(() => {
@@ -180,17 +215,30 @@ export default function ProjectSlider() {
     }
 
     if (titleRef.current && !prevBackground) {
-      gsap.fromTo(titleRef.current,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power2.out',
-          delay: 0.5,
-        });
+      if (isMobile) {
+        // Mobile: only fade in
+        gsap.fromTo(titleRef.current,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.6,
+            ease: 'power2.out',
+            delay: 0.5,
+          });
+      } else {
+        // Desktop: fade + move
+        gsap.fromTo(titleRef.current,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            delay: 0.5,
+          });
+      }
     }
-  }, []);
+  }, [isMobile]);
 
   const { title, video, background, className, link } = slides[currentIndex];
 
@@ -241,17 +289,20 @@ export default function ProjectSlider() {
       {/* Foreground content */}
       <div className="homeslider-wrapper">
         <div className="homeslider-content">
-          {/* OLD title fading out */}
-          {prevTitle && (
-            <h2 ref={titleExitRef} className={`homeslider-title ${prevTitle.className}`} style={{ position: 'absolute' }}>
-              <span className="font-bold">{prevTitle.title}</span>
+          {/* FIXED HEIGHT CONTAINER TO PREVENT FLEXBOX SHIFTING */}
+          <div className="homeslider-title-container">
+            {/* OLD title fading out */}
+            {prevTitle && (
+              <h2 ref={titleExitRef} className={`homeslider-title ${prevTitle.className}`} style={{ position: 'absolute' }}>
+                <span className="font-bold">{prevTitle.title}</span>
+              </h2>
+            )}
+            
+            {/* NEW title fading in */}
+            <h2 ref={titleRef} className={`homeslider-title ${className}`}>
+              <span className="font-bold">{title}</span>
             </h2>
-          )}
-          
-          {/* NEW title fading in */}
-          <h2 ref={titleRef} className={`homeslider-title ${className}`}>
-            <span className="font-bold">{title}</span>
-          </h2>
+          </div>
 
           <div className="homeslider-controls">
             <span onClick={prevSlide}>
