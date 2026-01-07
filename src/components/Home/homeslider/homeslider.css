@@ -165,6 +165,8 @@
         top: -10px;
         font-size: 60px;
         height: 100px;
+        /* Fix for mobile: prevent title from moving to top during animation */
+        transform: translateY(0) !important;
     }
 
     .homeslider-controls {
@@ -180,4 +182,3 @@
         top: 17px;
     }
 }
-
