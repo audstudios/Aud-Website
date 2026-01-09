@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   try {
@@ -13,23 +15,11 @@ export async function POST(request) {
       );
     }
 
-    // Create a transporter using SMTP
-    // You'll need to configure this with your email service
-    // For production, use environment variables for credentials
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: process.env.SMTP_PORT || 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: process.env.SMTP_USER, // Your email
-        pass: process.env.SMTP_PASS, // Your email password or app password
-      },
-    });
-
-    // Email content
-    const mailOptions = {
-      from: process.env.SMTP_USER,
+    // Send email using Resend
+    const { data, error } = await resend.emails.send({
+      from: 'Aud Studios Contact Form <onboarding@resend.dev>', // Change this after domain verification
       to: 'web@audstudios.com',
+      replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -55,14 +45,18 @@ ${message}
           </div>
         </div>
       `,
-      replyTo: email,
-    };
+    });
 
-    // Send email
-    await transporter.sendMail(mailOptions);
+    if (error) {
+      console.error('Resend error:', error);
+      return NextResponse.json(
+        { error: 'Failed to send email' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
-      { message: 'Email sent successfully' },
+      { message: 'Email sent successfully', data },
       { status: 200 }
     );
   } catch (error) {
