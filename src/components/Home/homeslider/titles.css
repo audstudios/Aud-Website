@@ -1,7 +1,8 @@
 .slide-jeanpaul {
     font-size: 90px;
-    top: 20px;
+    top: 40px;
 }
+
 
 @media (max-width: 988px) {
     .slide-jeanpaul {
