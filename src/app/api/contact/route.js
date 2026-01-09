@@ -1,10 +1,20 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request) {
   try {
+    // Check if API key exists
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not set');
+      return NextResponse.json(
+        { error: 'Email service not configured' },
+        { status: 500 }
+      );
+    }
+
+    // Create Resend instance INSIDE the function
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    
     const { name, email, message } = await request.json();
 
     // Validate input
@@ -17,7 +27,7 @@ export async function POST(request) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'Aud Studios Contact Form <onboarding@resend.dev>', // Change this after domain verification
+      from: 'Aud Studios <onboarding@resend.dev>',
       to: 'web@audstudios.com',
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
@@ -48,7 +58,7 @@ ${message}
     });
 
     if (error) {
-      console.error('Resend error:', error);
+      console.error('Resend API error:', error);
       return NextResponse.json(
         { error: 'Failed to send email' },
         { status: 500 }
