@@ -36,7 +36,7 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1; /* ensure it's on top */
+  z-index: 1;
   user-select: none;
   width: 50%;
 }
@@ -73,7 +73,6 @@
 }
 .hero-logo {
     width: 100%;
-    top: 40%;
 }
 }
 

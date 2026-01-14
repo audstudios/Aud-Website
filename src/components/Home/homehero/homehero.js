@@ -6,18 +6,16 @@ export default function Homehero() {
   const logoRef = useRef(null);
 
   useEffect(() => {
-    // Set initial state - centered but offset down and invisible
+    // Set initial state - centered with offset and invisible
     gsap.set(logoRef.current, {
       opacity: 0,
-      x: '0%',
-      y: 'calc(0% + 50px)'  // Start 50px lower than centered position
+      y: 50  // Start 50px below center
     });
 
-    // Animate: fade in and move up to centered position
+    // Animate: fade in and move to center
     gsap.to(logoRef.current, {
       opacity: 1,
-      x: '0%',
-      y: '10%',  // End at perfectly centered position
+      y: 0,  // Move to perfect center
       duration: 1.5,
       ease: 'power3.out',
       delay: 0.3

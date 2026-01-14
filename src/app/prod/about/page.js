@@ -32,6 +32,7 @@ export default function Test() {
   return (
     <div>
       <NavigationGeneral />
+      <AboutHero />
       <AboutContent />
     </div>
   );
