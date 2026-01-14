@@ -16,14 +16,14 @@ export default function HomeContact() {
               <p>Contact Us</p>
             </div>
             <div className="homecontact-maincontent">
-              <h3><span className='font-bold'>Let&apos;s make something great together. </span></h3>
+              <h3><span className='font-bold'>Whether you’re at an agency, in-house at a brand, or looking for work, we’d love to connect.</span></h3>
             </div>
             <div className="homecontact-button">
               <button 
                 className="homecontact-link" 
                 onClick={() => setIsModalOpen(true)}
               >
-                We&apos;d love to connect
+                Let's chat
               </button>
             </div>
           </div>
