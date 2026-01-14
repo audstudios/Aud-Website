@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 00px 60px;
+    padding: 120px 60px 60px;
     background: #fff;
     position: relative;
     overflow: hidden;
@@ -13,6 +13,10 @@
     max-width: 1400px;
     width: 100%;
     position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Main hero image - 3:2 aspect ratio */
@@ -25,6 +29,7 @@
     z-index: 2;
     overflow: hidden;
     border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .about-hero-main-image img {
@@ -96,14 +101,114 @@
 @media (max-width: 768px) {
     .about-hero-container {
         padding: 100px 20px 40px;
+        min-height: 70vh;
+    }
+    
+    .about-hero-wrapper {
+        min-height: 500px;
     }
     
     .about-hero-main-image {
         max-width: 100%;
+        width: 90%;
     }
     
-    /* Hide floating images on mobile for cleaner look */
-    .floating-image {
-        display: none;
+    /* Adjust floating images for tablet */
+    .floating-image-1 {
+        width: 140px;
+        top: 5%;
+        left: -20px;
+    }
+    
+    .floating-image-2 {
+        width: 120px;
+        top: auto;
+        bottom: 15%;
+        right: -20px;
+    }
+    
+    .floating-image-3 {
+        width: 130px;
+        bottom: 35%;
+        left: -15px;
+    }
+}
+
+/* Mobile stacked layout */
+@media (max-width: 600px) {
+    .about-hero-container {
+        padding: 100px 15px 30px;
+        min-height: 610px;
+    }
+    
+    .about-hero-wrapper {
+        min-height: auto;
+        height: auto;
+    }
+    
+    .about-hero-main-image {
+        width: 85%;
+        max-width: 400px;
+        aspect-ratio: 4 / 5;
+    }
+    
+    /* Creative mobile stack - all images visible and compact */
+    .floating-image-1 {
+        width: 110px;
+        aspect-ratio: 3 / 4;
+        top: -40px;
+        left: 10px;
+        z-index: 1;
+    }
+    
+    .floating-image-2 {
+        width: 100px;
+        aspect-ratio: 1 / 1;
+        top: auto;
+        bottom: -35px;
+        right: 15px;
+        z-index: 3;
+    }
+    
+    .floating-image-3 {
+        width: 95px;
+        aspect-ratio: 4 / 5;
+        top: 50%;
+        transform: translateY(-50%);
+        bottom: auto;
+        left: -25px;
+        z-index: 2;
+    }
+}
+
+@media (max-width: 450px) {
+    .about-hero-container {
+        padding: 90px 10px 20px;
+    }
+    
+    .about-hero-wrapper {
+        min-height: 450px;
+    }
+    
+    .about-hero-main-image {
+        width: 80%;
+        max-width: 280px;
+    }
+    
+    .floating-image-1 {
+        width: 90px;
+        top: -30px;
+        left: 5px;
+    }
+    
+    .floating-image-2 {
+        width: 85px;
+        bottom: -25px;
+        right: 10px;
+    }
+    
+    .floating-image-3 {
+        width: 80px;
+        left: -20px;
     }
 }

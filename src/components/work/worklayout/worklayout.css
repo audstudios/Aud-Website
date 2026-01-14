@@ -1,0 +1,265 @@
+.work-layout-container {
+    padding: 120px 60px 200px;
+    background: #fff;
+    min-height: 100vh;
+}
+
+.work-layout-grid {
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    align-items: start;
+}
+
+/* Project Card */
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    cursor: pointer;
+    background: #000;
+    aspect-ratio: 4 / 5;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.project-card-media {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-card-media img {
+    transform: scale(1.08);
+}
+
+/* Overlay */
+.project-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+    color: #fff;
+    z-index: 2;
+}
+
+.project-card-title {
+    font-family: 'PPMontreal-Bold', system-ui, sans-serif;
+    font-size: 36px;
+    margin: 0 0 15px 0;
+    line-height: 1.1;
+    color: #fff;
+}
+
+.project-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.project-card-client {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.project-card-type {
+    font-size: 12px;
+    opacity: 0.8;
+    text-align: right;
+    line-height: 1.4;
+}
+
+/* Vertical Offsets - Creates staggered rhythm */
+.project-card:nth-child(3n+1) {
+    margin-top: 0;
+}
+
+.project-card:nth-child(3n+2) {
+    margin-top: 120px;
+}
+
+.project-card:nth-child(3n+3) {
+    margin-top: 60px;
+}
+
+/* Additional spacing variations for more breath */
+.project-card:nth-child(4) {
+    margin-top: 180px;
+}
+
+.project-card:nth-child(5) {
+    margin-top: 40px;
+}
+
+/* Tablet */
+@media (max-width: 1200px) {
+    .work-layout-container {
+        padding: 100px 40px 150px;
+    }
+
+    .work-layout-grid {
+        gap: 35px;
+    }
+
+    .project-card-title {
+        font-size: 32px;
+    }
+
+    .project-card-overlay {
+        padding: 35px;
+    }
+
+    .project-card:nth-child(3n+2) {
+        margin-top: 100px;
+    }
+
+    .project-card:nth-child(3n+3) {
+        margin-top: 50px;
+    }
+
+    .project-card:nth-child(4) {
+        margin-top: 150px;
+    }
+}
+
+@media (max-width: 900px) {
+    .work-layout-container {
+        padding: 80px 30px 120px;
+    }
+
+    .work-layout-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .project-card-title {
+        font-size: 28px;
+    }
+
+    .project-card-overlay {
+        padding: 30px;
+    }
+
+    /* Reset offsets for 2-column */
+    .project-card:nth-child(3n+1),
+    .project-card:nth-child(3n+2),
+    .project-card:nth-child(3n+3),
+    .project-card:nth-child(4),
+    .project-card:nth-child(5) {
+        margin-top: 0;
+    }
+
+    /* Apply 2-column offsets */
+    .project-card:nth-child(2n+1) {
+        margin-top: 0;
+    }
+
+    .project-card:nth-child(2n+2) {
+        margin-top: 80px;
+    }
+
+    .project-card:nth-child(4) {
+        margin-top: 120px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .work-layout-container {
+        padding: 60px 20px 80px;
+    }
+
+    .work-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .project-card {
+        aspect-ratio: 4 / 5;
+    }
+
+    .project-card-title {
+        font-size: 32px;
+    }
+
+    .project-card-overlay {
+        padding: 30px;
+    }
+
+    .project-card-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .project-card-type {
+        text-align: left;
+    }
+
+    /* Reset all offsets on mobile */
+    .project-card:nth-child(3n+1),
+    .project-card:nth-child(3n+2),
+    .project-card:nth-child(3n+3),
+    .project-card:nth-child(2n+1),
+    .project-card:nth-child(2n+2),
+    .project-card:nth-child(4),
+    .project-card:nth-child(5) {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-layout-container {
+        padding: 50px 15px 60px;
+    }
+
+    .work-layout-grid {
+        gap: 50px;
+    }
+
+    .project-card-title {
+        font-size: 28px;
+    }
+
+    .project-card-overlay {
+        padding: 25px;
+    }
+}
+
+/* Hover enhancement */
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.project-card:hover::after {
+    opacity: 1;
+}
