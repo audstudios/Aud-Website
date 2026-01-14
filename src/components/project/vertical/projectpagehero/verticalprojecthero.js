@@ -1,7 +1,8 @@
-// src/components/project/vertical/projectpagehero/verticalprojecthero.js
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../../projecthero.css';
 import './verticalprojecthero.css';
 import GhostLogo from '@/components/global/ghostlogo/ghostlogo';
@@ -10,6 +11,8 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function VerticalProjectHero({ project }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,6 +29,10 @@ export default function VerticalProjectHero({ project }) {
   
   const video1Ref = useRef(null);
   const video2Ref = useRef(null);
+  const titleRef = useRef(null);
+  const infoRef = useRef(null);
+  const video1ContainerRef = useRef(null);
+  const video2ContainerRef = useRef(null);
 
   useEffect(() => {
     const video1 = video1Ref.current;
@@ -61,6 +68,48 @@ export default function VerticalProjectHero({ project }) {
       };
     }
   }, []);
+
+  // Page load animations
+  useEffect(() => {
+    if (!project) return;
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    // Animate title
+    tl.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1 }
+    );
+
+    // Animate info container
+    tl.fromTo(
+      infoRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8 },
+      '-=0.6'
+    );
+
+    // Animate left video (from left)
+    if (video1ContainerRef.current) {
+      tl.fromTo(
+        video1ContainerRef.current,
+        { opacity: 0, x: -100, rotation: -5 },
+        { opacity: 1, x: 0, rotation: 0, duration: 1 },
+        '-=0.7'
+      );
+    }
+
+    // Animate right video (from right)
+    if (video2ContainerRef.current) {
+      tl.fromTo(
+        video2ContainerRef.current,
+        { opacity: 0, x: 100, rotation: 5 },
+        { opacity: 1, x: 0, rotation: 0, duration: 1 },
+        '-=0.9'
+      );
+    }
+  }, [project]);
 
   const togglePlay1 = () => {
     if (video1Ref.current) {
@@ -143,8 +192,10 @@ export default function VerticalProjectHero({ project }) {
         <GhostLogo />
         <div className='vertical-hero-wrapper project-hero-wrapper'>
           <div className="project-title-container">
-            <h1 className="project-title">{project.title}</h1>
-            <div className="project-hero-info-container">
+            <h1 className="project-title" ref={titleRef} style={{ opacity: 0 }}>
+              {project.title}
+            </h1>
+            <div className="project-hero-info-container" ref={infoRef} style={{ opacity: 0 }}>
               <div className="project-hero-info-wrapper">
                 <div className='project-hero-client-wrapper'>
                     <p className="project-hero-info-type project-title-width">Client</p>
@@ -174,7 +225,9 @@ export default function VerticalProjectHero({ project }) {
           <div className='project-vertical-video-container'>
             {project.heroVideos && project.heroVideos[0] && (
               <div 
+                ref={video1ContainerRef}
                 className="project-vertical-video-wrapper left-project-video-control"
+                style={{ opacity: 0 }}
                 onMouseEnter={() => setShowControls1(true)}
                 onMouseLeave={() => setShowControls1(false)}
               >
@@ -218,7 +271,9 @@ export default function VerticalProjectHero({ project }) {
             )}
             {project.heroVideos && project.heroVideos[1] && (
               <div 
+                ref={video2ContainerRef}
                 className="project-vertical-video-wrapper right-project-video-control"
+                style={{ opacity: 0 }}
                 onMouseEnter={() => setShowControls2(true)}
                 onMouseLeave={() => setShowControls2(false)}
               >

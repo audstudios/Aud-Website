@@ -1,7 +1,8 @@
-// src/components/project/horizontal/projectpagehero/horizontalprojecthero.js
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../../projecthero.css';
 import './horizontalprojecthero.css';
 import GhostLogo from '@/components/global/ghostlogo/ghostlogo';
@@ -11,6 +12,8 @@ import PauseIcon from '@mui/icons-material/Pause';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function HorizontalProjectHero({ project }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -18,7 +21,11 @@ export default function HorizontalProjectHero({ project }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [showControls, setShowControls] = useState(false);
+  
   const videoRef = useRef(null);
+  const titleRef = useRef(null);
+  const infoRef = useRef(null);
+  const videoContainerRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -35,6 +42,36 @@ export default function HorizontalProjectHero({ project }) {
       video.removeEventListener('loadedmetadata', handleLoadedMetadata);
     };
   }, []);
+
+  // Page load animations
+  useEffect(() => {
+    if (!project) return;
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    // Animate title
+    tl.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1 }
+    );
+
+    // Animate info container
+    tl.fromTo(
+      infoRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8 },
+      '-=0.6'
+    );
+
+    // Animate video container
+    tl.fromTo(
+      videoContainerRef.current,
+      { opacity: 0, scale: 0.95, x: 50 },
+      { opacity: 1, scale: 1, x: 0, duration: 1 },
+      '-=0.8'
+    );
+  }, [project]);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -68,7 +105,6 @@ export default function HorizontalProjectHero({ project }) {
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  // Fallback to placeholder if no project data
   if (!project) {
     return (
       <div className='horizontal-hero-container project-hero-container'>
@@ -91,8 +127,10 @@ export default function HorizontalProjectHero({ project }) {
         <GhostLogo />
         <div className='horizontal-hero-wrapper project-hero-wrapper'>
           <div className="project-title-container">
-            <h1 className="project-title">{project.title}</h1>
-            <div className="project-hero-info-container">
+            <h1 className="project-title" ref={titleRef} style={{ opacity: 0 }}>
+              {project.title}
+            </h1>
+            <div className="project-hero-info-container" ref={infoRef} style={{ opacity: 0 }}>
               <div className="project-hero-info-wrapper">
                 <div className='project-hero-client-wrapper'>
                     <p className="project-hero-info-type project-title-width">Client</p>
@@ -120,7 +158,9 @@ export default function HorizontalProjectHero({ project }) {
             </div>
           </div>
           <div 
+            ref={videoContainerRef}
             className="project-horizontal-video-container"
+            style={{ opacity: 0 }}
             onMouseEnter={() => setShowControls(true)}
             onMouseLeave={() => setShowControls(false)}
           >
