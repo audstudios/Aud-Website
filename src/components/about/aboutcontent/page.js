@@ -98,19 +98,13 @@ export default function AboutContent() {
           <div className="about-bio-content">
             <h2 className="about-bio-name">Madeline Corley</h2>
             <p className="about-bio-text">
-              Madeline Corley is a producer and marketing strategist who bridges vision and
-              execution, aligning creative and strategy teams to bring ideas to life.
+              Madeline Corley is a producer and marketing strategist who bridges vision and execution, aligning creative and strategy teams to bring ideas to life.
             </p>
             <p className="about-bio-text">
-              With experience across commercial, social, and celebrity experiential work,
-              Madeline has led everything from social stunts to large-scale campaigns— including
-              the spots for the Super Bowl, NYFW, and 3D and anamorphic productions featured in
-              Times Square. She integrates seamlessly into teams, executing with clarity,
-              perspective, and a premium production sensibility.
+              With experience across commercial, social, and celebrity experiential production, Madeline has led everything from social stunts to large-scale campaigns— including spots for the Super Bowl, NYFW, and 3D and anamorphic productions featured in Times Square. She integrates seamlessly into teams, executing with clarity, perspective, and a premium production sensibility.
             </p>
             <p className="about-bio-text">
-              Outside of the studio, you'll find her singing in an NYC choir, planning her next
-              trip, or enjoying theatre.
+              Outside of the studio, you'll find her singing in an NYC choir, planning her next trip, or enjoying theatre.
             </p>
           </div>
         </div>
@@ -119,7 +113,7 @@ export default function AboutContent() {
         <div className="about-bio-section" ref={sydBioRef} style={{ opacity: 0 }}>
           <div className="about-bio-image">
             <img
-              src="/images/about/AUD_AboutSydtemp.jpg"
+              src="/images/about/AUD_AboutSyd01.jpg"
               alt="Syd Ross"
             />
           </div>

@@ -64,7 +64,7 @@ export default function AboutHero() {
         {/* Main center image */}
         <div className="about-hero-main-image" ref={mainImageRef}>
           <img
-            src="/images/about/AUD_About01.jpg"
+            src="/images/about/AUD_About02.jpg"
             alt="Aud Studios team collaboration"
           />
         </div>
@@ -72,7 +72,7 @@ export default function AboutHero() {
         {/* Floating images */}
         <div className="floating-image floating-image-1" ref={floating1Ref}>
           <img
-            src="/images/about/AUD_About02.jpg"
+            src="/images/about/AUD_About01.jpg"
             alt="Creative workspace detail"
           />
         </div>
