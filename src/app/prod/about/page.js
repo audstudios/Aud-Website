@@ -3,16 +3,13 @@
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
-import AboutHero from '@/components/about/abouthero/page';
-import AboutContent from '@/components/about/aboutcontent/page';
-import WorkTitle from '@/components/work/title/worktitle';
-import ProjectStackOne from '@/components/work/projectstackone/projectstackone';
+import AboutContentIntegrated from '@/components/about/aboutcontent/page';
 
-export default function Test() {
+export default function AboutPage() {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
       smoothTouch: false,
     });
@@ -25,15 +22,14 @@ export default function Test() {
     requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy(); // Cleanup on unmount
+      lenis.destroy();
     };
   }, []);
 
   return (
     <div>
       <NavigationGeneral />
-      <AboutHero />
-      <AboutContent />
+      <AboutContentIntegrated/>
     </div>
   );
 }
