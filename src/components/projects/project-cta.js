@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Link from 'next/link';
+import ContactFormModal from '@/components/forms/ContactFormModal/ContactFormModal';
 import './project-cta.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectCTA() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const ctaRef = useRef(null);
   const textRef = useRef(null);
   const buttonRef = useRef(null);
@@ -39,13 +40,24 @@ export default function ProjectCTA() {
   }, []);
 
   return (
-    <section className="project-cta-section" ref={ctaRef}>
-      <h2 className="project-cta-text" ref={textRef}>
-        Reach out for our full capabilities deck
-      </h2>
-      <Link href="/prod/contact" className="project-cta-button" ref={buttonRef}>
-        Get in touch
-      </Link>
-    </section>
+    <>
+      <section className="project-cta-section" ref={ctaRef}>
+        <h2 className="project-cta-text" ref={textRef}>
+          Reach out for our full capabilities deck
+        </h2>
+        <button 
+          className="project-cta-button" 
+          ref={buttonRef}
+          onClick={() => setIsModalOpen(true)}
+        >
+          Get in touch
+        </button>
+      </section>
+
+      <ContactFormModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
+    </>
   );
 }

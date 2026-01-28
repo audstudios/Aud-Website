@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import ProjectCTA from '@/components/projects/project-cta';
 import '../../projecthero.css';
 import './verticalprojectcontent.css';
 
@@ -133,86 +134,92 @@ export default function VerticalProjectContent({ project }) {
 
   if (!project) {
     return (
-      <div className='vertical-project-content-container'>
-        <div className='vertical-project-content-wrapper'>
-          <div className='vertical-project-left-content'>
-            <div className='project-content-vertical-mainimages'>Placeholder</div>
-          </div>
-          <div className='project-right-content'>
-            <h3 className='project-content-mainline'>Loading...</h3>
+      <>
+        <div className='vertical-project-content-container'>
+          <div className='vertical-project-content-wrapper'>
+            <div className='vertical-project-left-content'>
+              <div className='project-content-vertical-mainimages'>Placeholder</div>
+            </div>
+            <div className='project-right-content'>
+              <h3 className='project-content-mainline'>Loading...</h3>
+            </div>
           </div>
         </div>
-      </div>
+        <ProjectCTA />
+      </>
     );
   }
 
   return (
-    <div className='vertical-project-content-container'>
-      <div className='vertical-project-content-wrapper'>
-        <div className='vertical-project-left-content'>
-          {project.mainImages && project.mainImages[0] && (
-            <div 
-              className='project-content-vertical-mainimages'
-              ref={mainImageRef}
-              style={{ opacity: 0 }}
-            >
-              <img 
-                src={project.mainImages[0]} 
-                alt={`${project.title} main vertical project image`}
-                style={{width: '100%', height: '100%', objectFit: 'cover'}}
-              />
-            </div>
-          )}
-          <div className='project-content-lower-wrapper'>
-            {project.subImages?.map((image, index) => (
+    <>
+      <div className='vertical-project-content-container'>
+        <div className='vertical-project-content-wrapper'>
+          <div className='vertical-project-left-content'>
+            {project.mainImages && project.mainImages[0] && (
               <div 
-                key={index} 
-                className='project-content-vertical-subimages'
-                ref={(el) => (subImagesRefs.current[index] = el)}
+                className='project-content-vertical-mainimages'
+                ref={mainImageRef}
                 style={{ opacity: 0 }}
               >
                 <img 
-                  src={image} 
-                  alt={`${project.title} vertical detail ${index + 1}`}
+                  src={project.mainImages[0]} 
+                  alt={`${project.title} main vertical project image`}
                   style={{width: '100%', height: '100%', objectFit: 'cover'}}
                 />
               </div>
-            ))}
+            )}
+            <div className='project-content-lower-wrapper'>
+              {project.subImages?.map((image, index) => (
+                <div 
+                  key={index} 
+                  className='project-content-vertical-subimages'
+                  ref={(el) => (subImagesRefs.current[index] = el)}
+                  style={{ opacity: 0 }}
+                >
+                  <img 
+                    src={image} 
+                    alt={`${project.title} vertical detail ${index + 1}`}
+                    style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className='project-right-content'>
-          <h3 
-            className='project-content-mainline' 
-            ref={mainlineRef}
-            style={{ opacity: 0 }}
-          >
-            {project.mainline}
-          </h3>
-          
-          {project.content?.map((paragraph, index) => (
-            <p 
-              key={index} 
-              className='project-content-subcontent'
-              ref={(el) => (contentRefs.current[index] = el)}
-              style={{ opacity: 0 }}
-              dangerouslySetInnerHTML={{ __html: paragraph }}
-            />
-          ))}
-          
-          {project.brandLogo && (
-            <div 
-              ref={logoRef}
+          <div className='project-right-content'>
+            <h3 
+              className='project-content-mainline' 
+              ref={mainlineRef}
               style={{ opacity: 0 }}
             >
-              <img 
-                className='project-brand-logo' 
-                src={project.brandLogo}
-                alt={`${project.client} brand logo`}
+              {project.mainline}
+            </h3>
+            
+            {project.content?.map((paragraph, index) => (
+              <p 
+                key={index} 
+                className='project-content-subcontent'
+                ref={(el) => (contentRefs.current[index] = el)}
+                style={{ opacity: 0 }}
+                dangerouslySetInnerHTML={{ __html: paragraph }}
               />
-            </div>
-          )}
+            ))}
+            
+            {project.brandLogo && (
+              <div 
+                ref={logoRef}
+                style={{ opacity: 0 }}
+              >
+                <img 
+                  className='project-brand-logo' 
+                  src={project.brandLogo}
+                  alt={`${project.client} brand logo`}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+      <ProjectCTA />
+    </>
   );
 }
