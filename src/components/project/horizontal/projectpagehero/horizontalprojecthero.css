@@ -1,8 +1,8 @@
 .project-horizontal-video-container {
   aspect-ratio: 16 / 9;
-  max-width: 950px;
-  width: 100%;
-  min-width: 600px;
+  width: 750px; /* Fixed width for consistency */
+  max-width: 750px;
+  min-width: 750px;
   position: relative;
   overflow: hidden;
 }
@@ -135,7 +135,9 @@
         min-height: 530px;
     }
     .project-horizontal-video-container {
-        min-width: 400px;
+        width: 600px;
+        max-width: 600px;
+        min-width: 600px;
     }
 }
 
@@ -144,7 +146,9 @@
         min-height: 450px;
     }
     .project-horizontal-video-container {
-        min-width: 400px;
+        width: 500px;
+        max-width: 500px;
+        min-width: 500px;
     }
 }
 
@@ -163,19 +167,27 @@
 @media (max-width: 777px) { 
     .horizontal-hero-wrapper {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
       height: auto;
     }
     .project-hero-wrapper {
-      padding: 0px 30px;
+      padding: 0; /* Remove all padding */
       flex-direction: column-reverse;
+      align-items: center;
+      display: flex;
+      width: 100%;
     }
     .project-horizontal-video-container {
         height: 199px;
+        width: 100%;
+        max-width: 100%;
         min-width: auto;
+        margin: 0 auto; /* Center the video */
     }
     .project-hero-info-container {
       position: unset;
+      padding: 0 30px; /* Add padding only to info section */
     }
     .project-title-container {
         width: 100%;
@@ -183,6 +195,7 @@
         margin-top: 45px;
         align-items: center;
         min-width: unset;
+        padding: 0 30px; /* Add padding only to title section */
     }
     
     .video-controls {
@@ -200,14 +213,30 @@
 
 @media (max-width: 500px) { 
     .project-hero-wrapper {
-      padding: 0 0px;
+      padding: 0; /* No padding on wrapper */
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      width: 100%;
     }
     .project-horizontal-video-container {
-      width: 90%;
+      width: 100%;
+      max-width: 100%;
       min-width: auto;
+      margin: 0; /* Remove margin, let it fill width */
+      padding: 0; /* No padding on video */
     }
     .horizontal-hero-wrapper {
       align-items: center;
+      justify-content: center;
+    }
+    
+    .project-hero-info-container {
+      padding: 0 20px; /* Add padding only to info section */
+    }
+    
+    .project-title-container {
+      padding: 0 20px; /* Add padding only to title section */
     }
     
     .video-controls {
