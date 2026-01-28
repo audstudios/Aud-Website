@@ -264,6 +264,9 @@
 }
 
 @media (max-width: 480px) {
+    .syd-mobile-img-position {
+        object-position: center 0%;
+    }
     .about-content-container {
         padding: 120px 20px 40px;
     }

@@ -185,7 +185,7 @@ export default function AboutContentIntegrated() {
         {/* Syd Bio */}
         <div className="about-bio-section" ref={sydBioRef}>
           <div className="about-bio-image">
-            <img src="/images/about/AUD_AboutSyd01.jpg" alt="Syd Ross" />
+            <img className='syd-mobile-img-position' src="/images/about/AUD_AboutSyd01.jpg" alt="Syd Ross" />
           </div>
           <div className="about-bio-content">
             <h2 className="about-bio-name">Syd Ross</h2>
