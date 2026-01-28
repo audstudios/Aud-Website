@@ -12,6 +12,7 @@ const projects = [
   {
     id: 1,
     title: "Jean Paul Gaultier",
+    subtitle: "Pride Event",
     client: "North Six // Jean Paul Gaultier",
     type: "Experiential Production",
     year: "2025",
@@ -20,7 +21,8 @@ const projects = [
   },
   {
     id: 2,
-    title: "Cardi B x DoorDash",
+    title: "Cardi B × DoorDash",
+    subtitle: "",
     client: "Get Engaged Media",
     type: "Full-Service Production",
     year: "2025",
@@ -30,6 +32,7 @@ const projects = [
   {
     id: 3,
     title: "The Rizzwich",
+    subtitle: "Hardee's Campaign",
     client: "Hardee's",
     type: "Commercial",
     year: "2025",
@@ -38,7 +41,8 @@ const projects = [
   },
   {
     id: 4,
-    title: "Flav Campaign",
+    title: "Flav",
+    subtitle: "NYC Market Launch",
     client: "Flav",
     type: "Campaign Development",
     year: "2025",
@@ -54,55 +58,58 @@ export default function WorkLayout() {
   useEffect(() => {
     const cards = cardsRef.current.filter(Boolean);
 
-    // Staggered fade-in animation
-    cards.forEach((card, index) => {
-      gsap.fromTo(
-        card,
-        { 
-          opacity: 0, 
-          y: 80,
+    // Animate content on scroll (removed parallax background animation)
+    cards.forEach((card) => {
+      // Fade in title and button on scroll into view
+      const title = card.querySelector('.project-card-title');
+      const subtitle = card.querySelector('.project-card-subtitle');
+      const line = card.querySelector('.project-card-line');
+      const button = card.querySelector('.project-card-button');
+      const meta = card.querySelector('.project-card-meta');
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 60%',
+          toggleActions: 'play none none none',
         },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-        }
+      });
+
+      tl.fromTo(
+        title,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
       );
 
-      // Variable parallax speeds based on column position
-      const media = card.querySelector('.project-card-media');
-      if (media) {
-        // Column 1 (index % 3 === 0): Slow parallax
-        // Column 2 (index % 3 === 1): Medium parallax
-        // Column 3 (index % 3 === 2): Fast parallax
-        const columnIndex = index % 3;
-        let parallaxAmount = -5; // default
-        
-        if (columnIndex === 0) {
-          parallaxAmount = -3; // slow
-        } else if (columnIndex === 1) {
-          parallaxAmount = -8; // fast
-        } else {
-          parallaxAmount = -5; // medium
-        }
-
-        gsap.to(media, {
-          yPercent: parallaxAmount,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1,
-          },
-        });
+      if (subtitle) {
+        tl.fromTo(
+          subtitle,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+          '-=0.6'
+        );
       }
+
+      tl.fromTo(
+        line,
+        { opacity: 0, scaleY: 0 },
+        { opacity: 1, scaleY: 1, duration: 0.6, ease: 'power2.out' },
+        '-=0.4'
+      );
+
+      tl.fromTo(
+        button,
+        { opacity: 0, scale: 0 },
+        { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)' },
+        '-=0.3'
+      );
+
+      tl.fromTo(
+        meta,
+        { opacity: 0, y: 20 },
+        { opacity: 0.8, y: 0, duration: 0.8, ease: 'power3.out' },
+        '-=0.4'
+      );
     });
 
     return () => {
@@ -119,7 +126,8 @@ export default function WorkLayout() {
               className="project-card"
               ref={(el) => (cardsRef.current[index] = el)}
             >
-              <div className="project-card-media">
+              {/* Background image */}
+              <div className="project-card-background">
                 <img 
                   src={project.image} 
                   alt={project.title}
@@ -128,15 +136,41 @@ export default function WorkLayout() {
                   }}
                 />
               </div>
-              <div className="project-card-overlay">
-                <h3 className="project-card-title">{project.title}</h3>
-                <div className="project-card-meta">
-                  <div className="project-card-client">{project.client}</div>
-                  <div className="project-card-type">
-                    {project.type}<br />{project.year}
-                  </div>
+
+              {/* Dark overlay */}
+              <div className="project-card-overlay" />
+
+              {/* Content overlay */}
+              <div className="project-card-content">
+                <h2 className="project-card-title">{project.title}</h2>
+                
+                {project.subtitle && (
+                  <p className="project-card-subtitle">{project.subtitle}</p>
+                )}
+
+                <div className="project-card-button-wrapper">
+                  <div className="project-card-line" />
+                  <button className="project-card-button">
+                    view
+                  </button>
                 </div>
               </div>
+
+              {/* Meta information */}
+              <div className="project-card-meta">
+                <div className="project-card-client">{project.client}</div>
+                <div className="project-card-type">
+                  {project.type}<br />{project.year}
+                </div>
+              </div>
+
+              {/* Scroll indicator on first card */}
+              {index === 0 && (
+                <div className="scroll-indicator">
+                  <div className="scroll-indicator-line" />
+                  <div className="scroll-indicator-text">Scroll</div>
+                </div>
+              )}
             </div>
           </Link>
         ))}
