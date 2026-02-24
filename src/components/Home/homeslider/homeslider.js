@@ -14,28 +14,28 @@ const slides = [
     video: '/images/RizzlerHardees/RizzlerHardees.mp4',
     background: '/images/homeblur/rizzlerhomebg.jpg',
     className: 'slide-flippedfrog',
-    link: '/prod/work/projects/pages/rizzlerHardees',
+    link: '/work/projects/pages/rizzlerHardees',
   },
   {
     title: 'Jean Paul Gaultier',
     video: '/videos/Aud_Land_Video.mp4',
     background: '/images/homeblur/jpghomebg.jpg',
     className: 'slide-jeanpaul',
-    link: '/prod/work/projects/pages/jeanpaulgautier',
+    link: '/work/projects/pages/jeanpaulgautier',
   },
   {
     title: 'Doordash',
     video: '/images/CardiBDoorDash/CardiBHomeSlider.mp4',
     background: '/images/homeblur/cardibhomebg.jpg',
     className: 'slide-frogeating',
-    link: '/prod/work/projects/pages/cardibdoordash',
+    link: '/work/projects/pages/cardibdoordash',
   },
   {
     title: 'Flav',
     video: '/images/flav/FlavEditWeb.mp4',
     background: '/images/homeblur/FlavBG.jpg',
     className: 'slide-frogeating',
-    link: '/prod/work/projects/pages/flav',
+    link: '/work/projects/pages/flav',
   },
 ];
 
@@ -56,7 +56,6 @@ export default function HomeSlider() {
 
   const totalSlides = slides.length;
 
-  // Check if mobile on mount and resize
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 705);
@@ -86,11 +85,9 @@ export default function HomeSlider() {
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
-  // Animate transitions
   useEffect(() => {
     if (!prevBackground && !prevVideo) return;
 
-    // Set initial states to prevent white flash
     if (bgExitRef.current) {
       gsap.set(bgExitRef.current, { opacity: 1 });
     }
@@ -98,7 +95,6 @@ export default function HomeSlider() {
       gsap.set(bgEnterRef.current, { opacity: 0 });
     }
 
-    // Create a master timeline for coordinated transitions
     const tl = gsap.timeline({
       onComplete: () => {
         setPrevBackground(null);
@@ -108,7 +104,6 @@ export default function HomeSlider() {
       }
     });
 
-    // Phase 1: Quick fade out of old video (0.35s)
     if (videoExitRef.current) {
       tl.to(videoExitRef.current, {
         opacity: 0,
@@ -117,9 +112,7 @@ export default function HomeSlider() {
       }, 0);
     }
 
-    // Phase 2: Title animation
     if (isMobile) {
-      // MOBILE: Only fade, NO movement
       if (titleExitRef.current) {
         tl.to(titleExitRef.current, {
           opacity: 0,
@@ -138,7 +131,6 @@ export default function HomeSlider() {
           }, 0.3);
       }
     } else {
-      // DESKTOP: Fade + vertical movement
       if (titleExitRef.current) {
         tl.to(titleExitRef.current, {
           opacity: 0,
@@ -160,16 +152,13 @@ export default function HomeSlider() {
       }
     }
 
-    // Phase 3: Background crossfade - start immediately to prevent white flash
     if (bgExitRef.current && bgEnterRef.current) {
-      // Start new background fading in immediately
       tl.to(bgEnterRef.current, {
         opacity: 1,
         duration: 0.5,
         ease: 'power1.inOut',
       }, 0);
       
-      // Fade out old background at same time
       tl.to(bgExitRef.current, {
         opacity: 0,
         duration: 0.5,
@@ -177,7 +166,6 @@ export default function HomeSlider() {
       }, 0);
     }
 
-    // Phase 4: New video fades in with subtle scale
     if (videoEnterRef.current) {
       tl.fromTo(videoEnterRef.current,
         { opacity: 0, scale: 0.96 },
@@ -190,7 +178,6 @@ export default function HomeSlider() {
     }
   }, [currentIndex, isMobile]);
 
-  // Initial load fade-in
   useEffect(() => {
     if (bgEnterRef.current && !prevBackground) {
       gsap.fromTo(bgEnterRef.current,
@@ -216,7 +203,6 @@ export default function HomeSlider() {
 
     if (titleRef.current && !prevBackground) {
       if (isMobile) {
-        // Mobile: only fade in
         gsap.fromTo(titleRef.current,
           { opacity: 0 },
           {
@@ -226,7 +212,6 @@ export default function HomeSlider() {
             delay: 0.5,
           });
       } else {
-        // Desktop: fade + move
         gsap.fromTo(titleRef.current,
           { opacity: 0, y: 20 },
           {
@@ -244,7 +229,6 @@ export default function HomeSlider() {
 
   return (
     <div className="homeslider-container">
-      {/* Fade OUT previous background */}
       {prevBackground && (
         <div
           className="bg-layer"
@@ -253,14 +237,12 @@ export default function HomeSlider() {
         />
       )}
 
-      {/* Fade IN new background */}
       <div
         className="bg-layer"
         ref={bgEnterRef}
         style={{ backgroundImage: `url(${background})` }}
       />
 
-      {/* Fade OUT previous video */}
       {prevVideo && (
         <video
           className="slider-video video-exit"
@@ -274,7 +256,6 @@ export default function HomeSlider() {
         />
       )}
 
-      {/* Fade IN new video */}
       <video
         className="slider-video video-enter"
         ref={videoEnterRef}
@@ -286,19 +267,15 @@ export default function HomeSlider() {
         playsInline
       />
 
-      {/* Foreground content */}
       <div className="homeslider-wrapper">
         <div className="homeslider-content">
-          {/* FIXED HEIGHT CONTAINER TO PREVENT FLEXBOX SHIFTING */}
           <div className="homeslider-title-container">
-            {/* OLD title fading out */}
             {prevTitle && (
               <h2 ref={titleExitRef} className={`homeslider-title ${prevTitle.className}`} style={{ position: 'absolute' }}>
                 <span className="font-bold">{prevTitle.title}</span>
               </h2>
             )}
             
-            {/* NEW title fading in */}
             <h2 ref={titleRef} className={`homeslider-title ${className}`}>
               <span className="font-bold">{title}</span>
             </h2>

@@ -38,14 +38,14 @@ export default function Navigation() {
         </div>
         <div className="nav-right">
           <div className="nav-menu">
-            <Link href="/prod/work">
-              <p className={`nav-link ${isActive('/prod/work') ? 'active' : ''}`} data-text="Work">Work</p>
+            <Link href="/work">
+              <p className={`nav-link ${isActive('/work') ? 'active' : ''}`} data-text="Work">Work</p>
             </Link>
-            <Link href="/prod/about">
-              <p className={`nav-link ${isActive('/prod/about') ? 'active' : ''}`} data-text="About">About</p>
+            <Link href="/about">
+              <p className={`nav-link ${isActive('/about') ? 'active' : ''}`} data-text="About">About</p>
             </Link>
-            <Link href="/prod/contact">
-              <p className={`nav-link ${isActive('/prod/contact') ? 'active' : ''}`} data-text="Contact">Contact</p>
+            <Link href="/contact">
+              <p className={`nav-link ${isActive('/contact') ? 'active' : ''}`} data-text="Contact">Contact</p>
             </Link>
           </div>
         </div>

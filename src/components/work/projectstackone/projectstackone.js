@@ -7,7 +7,7 @@ const projects = [
     client: 'NORTH SIX // JEAN PAUL GAULTIER ',
     type: 'Experiential and Event Content Production ',
     year: '2025',
-    href: '/prod/work/projects/pages/jeanpaulgautier',
+    href: '/work/projects/pages/jeanpaulgautier',
     positionClass: 'stack-one-left',
   },
   {
@@ -15,7 +15,7 @@ const projects = [
     client: 'GET ENGAGED MEDIA // DOORDASH ',
     type: 'Full-service video & film production',
     year: '2025',
-    href: '/prod/work/projects/pages/cardibdoordash',
+    href: '/work/projects/pages/cardibdoordash',
     positionClass: 'stack-one-center',
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     client: 'GET ENGAGED MEDIA',
     type: 'Social Media Campaign',
     year: '2025',
-    href: '/prod/work/projects/pages/rizzlerHardees',
+    href: '/work/projects/pages/rizzlerHardees',
     positionClass: 'stack-one-right',
   },
 ];

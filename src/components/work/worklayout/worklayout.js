@@ -17,7 +17,7 @@ const projects = [
     type: "Experiential Production",
     year: "2025",
     image: '/images/work/WorkPageCard_JPG.jpg',
-    link: '/prod/work/projects/pages/jeanpaulgautier'
+    link: '/work/projects/pages/jeanpaulgautier'
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const projects = [
     type: "Full-Service Production",
     year: "2025",
     image: '/images/work/WorkPageCard_Doordash.jpg',
-    link: '/prod/work/projects/pages/cardibdoordash'
+    link: '/work/projects/pages/cardibdoordash'
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const projects = [
     type: "Commercial",
     year: "2025",
     image: '/images/work/WorkPageCard_Rizzwich.jpg',
-    link: '/prod/work/projects/pages/rizzlerHardees'
+    link: '/work/projects/pages/rizzlerHardees'
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const projects = [
     type: "Campaign Development",
     year: "2025",
     image: '/images/work/WorkPageCard_Flav.jpg',
-    link: '/prod/work/projects/pages/flav'
+    link: '/work/projects/pages/flav'
   }
 ];
 
@@ -58,9 +58,7 @@ export default function WorkLayout() {
   useEffect(() => {
     const cards = cardsRef.current.filter(Boolean);
 
-    // Animate content on scroll (removed parallax background animation)
     cards.forEach((card) => {
-      // Fade in title and button on scroll into view
       const title = card.querySelector('.project-card-title');
       const subtitle = card.querySelector('.project-card-subtitle');
       const line = card.querySelector('.project-card-line');
@@ -126,7 +124,6 @@ export default function WorkLayout() {
               className="project-card"
               ref={(el) => (cardsRef.current[index] = el)}
             >
-              {/* Background image */}
               <div className="project-card-background">
                 <img 
                   src={project.image} 
@@ -137,10 +134,8 @@ export default function WorkLayout() {
                 />
               </div>
 
-              {/* Dark overlay */}
               <div className="project-card-overlay" />
 
-              {/* Content overlay */}
               <div className="project-card-content">
                 <h2 className="project-card-title">{project.title}</h2>
                 
@@ -156,7 +151,6 @@ export default function WorkLayout() {
                 </div>
               </div>
 
-              {/* Meta information */}
               <div className="project-card-meta">
                 <div className="project-card-client">{project.client}</div>
                 <div className="project-card-type">
@@ -164,7 +158,6 @@ export default function WorkLayout() {
                 </div>
               </div>
 
-              {/* Scroll indicator on first card */}
               {index === 0 && (
                 <div className="scroll-indicator">
                   <div className="scroll-indicator-line" />
