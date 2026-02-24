@@ -20,8 +20,22 @@ export default function WorkLayout() {
   useEffect(() => {
     async function fetchProjects() {
       try {
+        // Check if client is available
+        if (!client) {
+          console.error('Sanity client not available');
+          setLoading(false);
+          return;
+        }
+        
         const data = await client.fetch(workPageProjectsQuery);
-        const transformedProjects = data.map((project, index) => ({
+        
+        // Check if data exists
+        if (!data) {
+          setLoading(false);
+          return;
+        }
+        
+        const transformedProjects = data.map((project) => ({
           id: project._id,
           title: project.title,
           subtitle: project.workPageSubtitle || '',
@@ -114,6 +128,20 @@ export default function WorkLayout() {
         justifyContent: 'center' 
       }}>
         <p style={{ color: '#fff' }}>Loading projects...</p>
+      </div>
+    );
+  }
+
+  // Show message if no projects found
+  if (projects.length === 0) {
+    return (
+      <div className="work-layout-container" style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center' 
+      }}>
+        <p style={{ color: '#fff' }}>No projects found</p>
       </div>
     );
   }
