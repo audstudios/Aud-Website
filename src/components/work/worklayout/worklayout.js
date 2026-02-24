@@ -1,61 +1,51 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 import './worklayout.css';
+import { client } from '@/sanity/lib/client';
+import { workPageProjectsQuery } from '@/sanity/lib/queries';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const projects = [
-  {
-    id: 1,
-    title: "Jean Paul Gaultier",
-    subtitle: "Pride Event",
-    client: "North Six // Jean Paul Gaultier",
-    type: "Experiential Production",
-    year: "2025",
-    image: '/images/work/WorkPageCard_JPG.jpg',
-    link: '/work/projects/pages/jeanpaulgautier'
-  },
-  {
-    id: 2,
-    title: "Cardi B × DoorDash",
-    subtitle: "",
-    client: "Get Engaged Media",
-    type: "Full-Service Production",
-    year: "2025",
-    image: '/images/work/WorkPageCard_Doordash.jpg',
-    link: '/work/projects/pages/cardibdoordash'
-  },
-  {
-    id: 3,
-    title: "The Rizzwich",
-    subtitle: "Hardee's Campaign",
-    client: "Hardee's",
-    type: "Commercial",
-    year: "2025",
-    image: '/images/work/WorkPageCard_Rizzwich.jpg',
-    link: '/work/projects/pages/rizzlerHardees'
-  },
-  {
-    id: 4,
-    title: "Flav",
-    subtitle: "NYC Market Launch",
-    client: "Flav",
-    type: "Campaign Development",
-    year: "2025",
-    image: '/images/work/WorkPageCard_Flav.jpg',
-    link: '/work/projects/pages/flav'
-  }
-];
 
 export default function WorkLayout() {
   const cardsRef = useRef([]);
   const containerRef = useRef(null);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch projects from Sanity
   useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const data = await client.fetch(workPageProjectsQuery);
+        const transformedProjects = data.map((project, index) => ({
+          id: project._id,
+          title: project.title,
+          subtitle: project.workPageSubtitle || '',
+          client: project.client,
+          type: project.projectType,
+          year: project.year,
+          image: project.workPageImageUrl,
+          link: `/work/projects/${project.slug}`
+        }));
+        setProjects(transformedProjects);
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProjects();
+  }, []);
+
+  // Animations
+  useEffect(() => {
+    if (loading || projects.length === 0) return;
+
     const cards = cardsRef.current.filter(Boolean);
 
     cards.forEach((card) => {
@@ -113,7 +103,20 @@ export default function WorkLayout() {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [loading, projects]);
+
+  if (loading) {
+    return (
+      <div className="work-layout-container" style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center' 
+      }}>
+        <p style={{ color: '#fff' }}>Loading projects...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="work-layout-container" ref={containerRef}>
