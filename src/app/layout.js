@@ -1,8 +1,4 @@
-import './globals.css'; // global styles
-import Header from '../components/oldlanding/header/header';
-import Footer from '@/components/footer/footer';
-import MobileMenu from '@/components/nav/mobilenav/page';
-
+import './globals.css';
 
 export const metadata = {
   title: 'Aud Studios 2025',
@@ -13,12 +9,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header />
-        <MobileMenu />
-        <main>
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
