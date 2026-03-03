@@ -1,5 +1,5 @@
 // src/components/work/worklayout/worklayout.js
-// Updated with Cloudinary support for Sanity data
+// Updated to handle Cloudinary assets from Sanity
 
 'use client';
 
@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
-import { getMediaUrl } from '@/lib/cloudinary';
+import { getCloudinaryAssetUrl } from '@/lib/cloudinary';
 import './worklayout.css';
 import { client } from '@/sanity/lib/client';
 import { workPageProjectsQuery } from '@/sanity/lib/queries';
@@ -24,7 +24,6 @@ export default function WorkLayout() {
   useEffect(() => {
     async function fetchProjects() {
       try {
-        // Check if client is available
         if (!client) {
           console.error('Sanity client not available');
           setLoading(false);
@@ -33,7 +32,6 @@ export default function WorkLayout() {
         
         const data = await client.fetch(workPageProjectsQuery);
         
-        // Check if data exists
         if (!data) {
           setLoading(false);
           return;
@@ -46,10 +44,11 @@ export default function WorkLayout() {
           client: project.client,
           type: project.projectType,
           year: project.year,
-          // Use Cloudinary for the work page image
-          image: getMediaUrl(project.workPageImageUrl, 'fullImage'),
+          // Use Cloudinary asset helper for work page image
+          image: getCloudinaryAssetUrl(project.workPageImage, 'fullImage'),
           link: `/work/projects/${project.slug}`
         }));
+        
         setProjects(transformedProjects);
       } catch (error) {
         console.error('Error fetching projects:', error);
@@ -137,7 +136,6 @@ export default function WorkLayout() {
     );
   }
 
-  // Show message if no projects found
   if (projects.length === 0) {
     return (
       <div className="work-layout-container" style={{ 

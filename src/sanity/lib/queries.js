@@ -1,29 +1,37 @@
-// src/lib/sanity/queries.js
-// GROQ queries for fetching data from Sanity
+// src/sanity/lib/queries.js
+// Updated queries for Cloudinary asset structure
 
 import { groq } from 'next-sanity';
 
-// ============================================
-// PROJECT QUERIES
-// ============================================
-
-// Get all published projects for the Work page
-export const allProjectsQuery = groq`
-  *[_type == "project" && isPublished == true] | order(displayOrder asc) {
+/**
+ * Query for work page - gets all projects with work page image
+ * Cloudinary assets have: public_id, secure_url, resource_type, format, etc.
+ */
+export const workPageProjectsQuery = groq`
+  *[_type == "project"] | order(sortOrder asc) {
     _id,
     title,
     "slug": slug.current,
     client,
     projectType,
     year,
-    layout,
     workPageSubtitle,
-    workPageImageUrl,
-    displayOrder
+    // Cloudinary asset fields
+    "workPageImage": workPageImage {
+      public_id,
+      secure_url,
+      resource_type,
+      format,
+      width,
+      height
+    }
   }
 `;
 
-// Get a single project by slug
+/**
+ * Query for single project by slug
+ * Returns all Cloudinary asset data for transformation
+ */
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
     _id,
@@ -33,99 +41,75 @@ export const projectBySlugQuery = groq`
     projectType,
     year,
     layout,
-    
-    // Hero Section
-    heroVideoUrl,
-    heroVideoUrls,
-    fullVideoUrl,
-    showWatchButton,
-    
-    // Content
     mainline,
     contentParagraphs,
+    showWatchButton,
     
-    // Media
-    mainImageUrls,
-    subImageUrls,
-    brandLogoUrl,
+    // Hero video - Cloudinary asset
+    "heroVideo": heroVideo {
+      public_id,
+      secure_url,
+      resource_type,
+      format,
+      width,
+      height
+    },
     
-    // Work Page
-    workPageImageUrl,
-    workPageSubtitle
+    // Multiple hero videos - array of Cloudinary assets
+    "heroVideos": heroVideos[] {
+      public_id,
+      secure_url,
+      resource_type,
+      format,
+      width,
+      height
+    },
+    
+    // Full video - Cloudinary asset
+    "fullVideo": fullVideo {
+      public_id,
+      secure_url,
+      resource_type,
+      format,
+      width,
+      height
+    },
+    
+    // Main images - array of Cloudinary assets
+    "mainImages": mainImages[] {
+      public_id,
+      secure_url,
+      resource_type,
+      format,
+      width,
+      height
+    },
+    
+    // Sub images - array of Cloudinary assets
+    "subImages": subImages[] {
+      public_id,
+      secure_url,
+      resource_type,
+      format,
+      width,
+      height
+    },
+    
+    // Brand logo - Cloudinary asset
+    "brandLogo": brandLogo {
+      public_id,
+      secure_url,
+      resource_type,
+      format,
+      width,
+      height
+    }
   }
 `;
 
-// Get project paths for static generation
-export const projectPathsQuery = groq`
-  *[_type == "project" && isPublished == true] {
-    "slug": slug.current
-  }
-`;
-
-// ============================================
-// HOME SLIDER QUERIES
-// ============================================
-
-// Get projects marked for home slider
-export const homeSliderProjectsQuery = groq`
-  *[_type == "project" && showOnHomeSlider == true && isPublished == true] | order(homeSliderOrder asc) {
-    _id,
-    title,
-    "slug": slug.current,
-    homeSliderDisplayTitle,
-    homeSliderVideoUrl,
-    homeSliderBackgroundUrl,
-    homeSliderTitleClass
-  }
-`;
-
-// ============================================
-// WORK PAGE QUERIES
-// ============================================
-
-// Get all projects for work page
-export const workPageProjectsQuery = groq`
-  *[_type == "project" && isPublished == true] | order(displayOrder asc) {
-    _id,
-    title,
-    "slug": slug.current,
-    client,
-    projectType,
-    year,
-    workPageImageUrl,
-    workPageSubtitle
-  }
-`;
-
-// ============================================
-// CLIENT LOGOS QUERIES
-// ============================================
-
-// Get all active client logos for carousel
-export const clientLogosQuery = groq`
-  *[_type == "clientLogo" && isActive == true] | order(displayOrder asc) {
-    _id,
-    clientName,
-    logoUrl,
-    displayOrder
-  }
-`;
-
-// ============================================
-// SITE SETTINGS QUERIES
-// ============================================
-
-// Get site settings
-export const siteSettingsQuery = groq`
-  *[_type == "siteSettings"][0] {
-    siteName,
-    siteDescription,
-    tagline,
-    contactEmail,
-    instagramUrl,
-    instagramHandle,
-    linkedinUrl,
-    footerTagline1,
-    footerTagline2
-  }
+/**
+ * Query for all project slugs (for static generation)
+ */
+export const allProjectSlugsQuery = groq`
+  *[_type == "project" && defined(slug.current)][].slug.current
 `;
