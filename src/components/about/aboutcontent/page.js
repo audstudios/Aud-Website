@@ -1,8 +1,13 @@
+// src/components/about/aboutcontent/page.js
+// Updated with Cloudinary support
+
 'use client';
 
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { getMediaUrl } from '@/lib/cloudinary';
+import { aboutImages } from '@/data/projects';
 import './aboutcontent.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -140,33 +145,29 @@ export default function AboutContentIntegrated() {
           </div>
 
           <div className="about-intro-images">
-            <div
-              className="about-intro-image"
-              ref={(el) => (introImageRefs.current[0] = el)}
-            >
-              <img src="/images/about/AUD_About02.jpg" alt="Aud Studios team" />
-            </div>
-            <div
-              className="about-intro-image"
-              ref={(el) => (introImageRefs.current[1] = el)}
-            >
-              <img src="/images/about/AUD_About05.jpg" alt="Creative workspace" />
-            </div>
-            <div
-              className="about-intro-image"
-              ref={(el) => (introImageRefs.current[2] = el)}
-            >
-              <img src="/images/about/AUD_About06.jpg" alt="Team collaboration" />
-            </div>
+            {aboutImages.intro.map((src, index) => (
+              <div
+                key={index}
+                className="about-intro-image"
+                ref={(el) => (introImageRefs.current[index] = el)}
+              >
+                <img 
+                  src={getMediaUrl(src, 'aboutImage')} 
+                  alt={`Aud Studios team ${index + 1}`}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
+            ))}
           </div>
         </div>
-
-
 
         {/* Madeline Bio */}
         <div className="about-bio-section" ref={madelineBioRef}>
           <div className="about-bio-image">
-            <img src="/images/about/AUD_AboutMaddie01.jpg" alt="Madeline Corley" />
+            <img 
+              src={getMediaUrl(aboutImages.madeline, 'aboutImage')} 
+              alt="Madeline Corley" 
+            />
           </div>
           <div className="about-bio-content">
             <h2 className="about-bio-name">Madeline Corley</h2>
@@ -185,7 +186,11 @@ export default function AboutContentIntegrated() {
         {/* Syd Bio */}
         <div className="about-bio-section" ref={sydBioRef}>
           <div className="about-bio-image">
-            <img className='syd-mobile-img-position' src="/images/about/AUD_AboutSyd01.jpg" alt="Syd Ross" />
+            <img 
+              className='syd-mobile-img-position' 
+              src={getMediaUrl(aboutImages.syd, 'aboutImage')} 
+              alt="Syd Ross" 
+            />
           </div>
           <div className="about-bio-content">
             <h2 className="about-bio-name">Syd Ross</h2>
@@ -209,24 +214,19 @@ export default function AboutContentIntegrated() {
 
         {/* Bottom Gallery */}
         <div className="about-gallery-section">
-          <div
-            className="about-gallery-image"
-            ref={(el) => (galleryImageRefs.current[0] = el)}
-          >
-            <img src="/images/about/AUD_About03.jpg" alt="Studio detail" />
-          </div>
-          <div
-            className="about-gallery-image"
-            ref={(el) => (galleryImageRefs.current[1] = el)}
-          >
-            <img src="/images/about/AUD_About04.jpg" alt="Production setup" />
-          </div>
-          <div
-            className="about-gallery-image"
-            ref={(el) => (galleryImageRefs.current[2] = el)}
-          >
-            <img src="/images/about/AUD_About07.jpg" alt="Team moment" />
-          </div>
+          {aboutImages.gallery.map((src, index) => (
+            <div
+              key={index}
+              className="about-gallery-image"
+              ref={(el) => (galleryImageRefs.current[index] = el)}
+            >
+              <img 
+                src={getMediaUrl(src, 'aboutImage')} 
+                alt={`Studio image ${index + 1}`}
+                loading="lazy"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

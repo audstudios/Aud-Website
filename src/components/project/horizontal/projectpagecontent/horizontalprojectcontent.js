@@ -1,8 +1,12 @@
+// src/components/project/horizontal/projectpagecontent/horizontalprojectcontent.js
+// Updated with Cloudinary support
+
 'use client';
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { getMediaUrl } from '@/lib/cloudinary';
 import ProjectCTA from '@/components/projects/project-cta';
 import '../../projecthero.css';
 import './horizontalprojectcontent.css';
@@ -60,7 +64,7 @@ export default function HorizontalProjectContent({ project }) {
         }
       });
 
-      // Animate main images (fade in only, no parallax)
+      // Animate main images
       mainImagesRefs.current.forEach((ref, index) => {
         if (ref) {
           gsap.fromTo(
@@ -163,9 +167,10 @@ export default function HorizontalProjectContent({ project }) {
                 style={{ opacity: 0 }}
               >
                 <img 
-                  src={image} 
+                  src={getMediaUrl(image, 'cardImage')} 
                   alt={`${project.title} project image ${index + 1}`} 
                   style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -197,8 +202,9 @@ export default function HorizontalProjectContent({ project }) {
               >
                 <img 
                   className='project-brand-logo-img' 
-                  src={project.brandLogo}
+                  src={getMediaUrl(project.brandLogo, 'logo')}
                   alt={`${project.client} brand logo`}
+                  loading="lazy"
                 />
               </div>
             )}
@@ -212,9 +218,10 @@ export default function HorizontalProjectContent({ project }) {
                   style={{ opacity: 0 }}
                 >
                   <img 
-                    src={image} 
+                    src={getMediaUrl(image, 'cardImage')} 
                     alt={`${project.title} additional detail ${index + 1}`} 
                     style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                    loading="lazy"
                   />
                 </div>
               ))}

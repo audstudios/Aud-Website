@@ -1,3 +1,9 @@
+// src/components/footer/footer.js
+// Updated with Cloudinary support
+
+'use client';
+
+import { getMediaUrl } from '@/lib/cloudinary';
 import './footer.css';
 
 export default function Footer() {
@@ -7,7 +13,7 @@ export default function Footer() {
             <div className="footer-logo-wrapper">
                 <img 
                   className="footer-logo" 
-                  src="/images/audfooterlogo.svg"
+                  src={getMediaUrl('/images/audfooterlogo.svg', 'logo')}
                   alt="Aud Studios logo"
                 />
                 <div className="footer-logo-byline">
@@ -24,7 +30,7 @@ export default function Footer() {
                         <div className='footer-info-flex pb-15'>
                             <img 
                               className='footer-icons' 
-                              src="/icons/mail.svg"
+                              src={getMediaUrl('/icons/mail.svg', 'logo')}
                               alt="mail icon"
                               role="presentation"
                             />
@@ -33,7 +39,7 @@ export default function Footer() {
                         <div className='footer-info-flex pb-15'>
                             <img 
                               className='footer-icons instagram-icon' 
-                              src="/icons/instagram.svg"
+                              src={getMediaUrl('/icons/instagram.svg', 'logo')}
                               alt="instagram icon"
                               role="presentation"
                             />
@@ -51,7 +57,7 @@ export default function Footer() {
                         <div className='footer-info-flex'>
                             <img 
                               className='footer-icons instagram-icon' 
-                              src="/icons/linkedin.svg"
+                              src={getMediaUrl('/icons/linkedin.svg', 'logo')}
                               alt="linkedin icon"
                               role="presentation"
                             />

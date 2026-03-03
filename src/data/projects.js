@@ -1,4 +1,7 @@
 // src/data/projects.js
+// Project data with Cloudinary-ready paths
+// Paths will automatically be converted to Cloudinary URLs when NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME is set
+
 export const projects = {
   rizzlerHardees: {
     // Hero data
@@ -7,7 +10,7 @@ export const projects = {
     type: 'Commercial Production',
     year: '2025',
     heroVideo: '/images/RizzlerHardees/RizzlerHardeesBase_1.mp4',
-    fullVideo: '/images/RizzlerHardees/RizzlerHardeesBase_1.mp4', // Full video with audio for modal
+    fullVideo: '/images/RizzlerHardees/RizzlerHardeesBase_1.mp4',
     watchLink: '#',
     
     // Content data
@@ -22,9 +25,12 @@ export const projects = {
       '/images/RizzlerHardees/RizzlerHardees_03.jpg',
       '/images/RizzlerHardees/RizzlerHardees_02.jpg',
     ],
-    subImages: [
-    ],
+    subImages: [],
     brandLogo: '/images/logos/CarouselLogo_png-19.png',
+    
+    // Home slider
+    homeSliderVideo: '/images/RizzlerHardees/RizzlerHardees.mp4',
+    homeSliderBackground: '/images/homeblur/rizzlerhomebg.jpg',
   },
   
   jeanPaulGaultier: {
@@ -33,7 +39,7 @@ export const projects = {
     type: 'Experiential and Event Content Production',
     year: '2025',
     heroVideo: '/images/JPG/JPGHeroFinal_Land.mp4',
-    fullVideo: '/images/JPG/JPG_Audio.mp4', // Full video with audio for modal
+    fullVideo: '/images/JPG/JPG_Audio.mp4',
     watchLink: '#',
     mainline: 'A cinematic approach to event coverage.',
     content: [
@@ -41,11 +47,13 @@ export const projects = {
       "Our role: Leveraging our <span class='font-bold'>expertise in luxury event coverage</span>, our lean, agile team handled shooting, editing, and delivering all assets with precision and perspective.",
       "The result: A <span class='font-bold'>rapid turnaround</span> ensured seamless stakeholder approval, and the final video achieved 50% higher reach than the average sizzle reel.",
     ],
-    mainImages: [
-    ],
-    subImages: [
-    ],
+    mainImages: [],
+    subImages: [],
     brandLogo: '/images/logos/CarouselLogo_png-16.png',
+    
+    // Home slider
+    homeSliderVideo: '/videos/Aud_Land_Video.mp4',
+    homeSliderBackground: '/images/homeblur/jpghomebg.jpg',
   },
   
   cardidoordash: {
@@ -58,7 +66,7 @@ export const projects = {
       '/images/CardiBDoorDash/cardibvideo.mp4',
       '/images/CardiBDoorDash/cardixamayavideo.mp4'
     ],
-    fullVideo: '/images/CardiBDoorDash/cardibvideo.mp4', // Full video with audio for modal
+    fullVideo: '/images/CardiBDoorDash/cardibvideo.mp4',
     watchLink: 'https://www.youtube.com/watch?v=iy1Bz_bHVac',
     mainline: 'A trusted extension of your in-house creative team, wherever the work takes you.',
     content: [
@@ -67,37 +75,21 @@ export const projects = {
       "The result: Instant virality: <span class='font-bold'>23M views on Instagram</span> and notable coverage in <span class='font-bold'>USA Today</span> and <span class='font-bold'>Ad Age</span>.",
     ],
     mainImages: ['/images/CardiBDoorDash/CardiBDoorDashImages.jpg'],
-    subImages: [
-    ],
+    subImages: [],
     brandLogo: '/images/logos/CarouselLogo_png-15.png',
+    
+    // Home slider
+    homeSliderVideo: '/images/CardiBDoorDash/CardiBHomeSlider.mp4',
+    homeSliderBackground: '/images/homeblur/cardibhomebg.jpg',
   },
-  rizzlersandlot: {
-    title: 'JEAN PAUL GAULTIER PRIDE EVENT',
-    client: 'NORTH SIX // JEAN PAUL GAULTIER',
-    type: 'Experiential and Event Content Production',
-    year: '2025',
-    heroVideo: '/images/JPG/JPGHeroFinal_Land.mp4',
-    fullVideo: '/images/JPG/JPG_Audio.mp4', // Full video with audio for modal
-    watchLink: '#',
-    mainline: 'A cinematic approach to event coverage.',
-    content: [
-      "North Six tapped us to produce multiple <span class='font-bold'>high-end sizzle reels</span> capturing the atmosphere and curated details of their 2025 Jean Paul Gaultier Pride Event.",
-      "Our role: Leveraging our <span class='font-bold'>expertise in luxury event coverage</span>, our lean, agile team handled shooting, editing, and delivering all assets with precision and perspective.",
-      "The result: A <span class='font-bold'>rapid turnaround</span> ensured seamless stakeholder approval, and the final video achieved 50% higher reach than the average sizzle reel.",
-    ],
-    mainImages: [
-    ],
-    subImages: [
-    ],
-    brandLogo: '/images/logos/CarouselLogo_png-16.png',
-  },
+  
   flav: {
     title: 'Flav',
     client: 'Flav',
     type: 'Campaign Development, Creative Direction, Production',
     year: '2025',
     heroVideo: '/images/flav/FlavEditWeb.mp4',
-    fullVideo: '/images/flav/FlavEditWeb.mp4', // Full video with audio for modal
+    fullVideo: '/images/flav/FlavEditWeb.mp4',
     watchLink: '#',
     mainline: 'With Flav expanding into NYC, they needed a team to craft a campaign that felt authentically New York.',
     content: [
@@ -108,8 +100,77 @@ export const projects = {
       '/images/flav/Flav_03.jpg',
       '/images/flav/Flav_04.jpg',
     ],
-    subImages: [
-    ],
+    subImages: [],
     brandLogo: '/images/logos/Flav_Logo.png',
+    
+    // Home slider
+    homeSliderVideo: '/images/flav/FlavEditWeb.mp4',
+    homeSliderBackground: '/images/homeblur/FlavBG.jpg',
   },
+};
+
+// Client logos for carousel
+export const clientLogos = [
+  { src: '/images/logos/CarouselLogo_png-09.png', alt: 'Tom Ford Beauty Logo' },
+  { src: '/images/logos/CarouselLogo_png-10.png', alt: 'Estee Lauder Logo' },
+  { src: '/images/logos/CarouselLogo_png-11.png', alt: 'David Yurman Logo' },
+  { src: '/images/logos/CarouselLogo_png-12.png', alt: 'Don Julio Logo' },
+  { src: '/images/logos/CarouselLogo_png-13.png', alt: 'Evian Logo' },
+  { src: '/images/logos/CarouselLogo_png-14.png', alt: 'Johnnie Walker Logo' },
+  { src: '/images/logos/CarouselLogo_png-15.png', alt: 'DoorDash logo' },
+  { src: '/images/logos/CarouselLogo_png-16.png', alt: 'Jean Paul Gaultier logo' },
+  { src: '/images/logos/CarouselLogo_png-17.png', alt: 'Aerie Logo' },
+  { src: '/images/logos/CarouselLogo_png-18.png', alt: 'America Eagle Logo' },
+  { src: '/images/logos/CarouselLogo_png-19.png', alt: "Hardee's logo" },
+  { src: '/images/logos/CarouselLogo_png-20.png', alt: 'Paris Hilton Fragrances Logo' },
+  { src: '/images/logos/CarouselLogo_png-21.png', alt: 'DKNY Logo' },
+];
+
+// Home slider data
+export const homeSliderData = [
+  {
+    title: "Hardee's",
+    video: '/images/RizzlerHardees/RizzlerHardees.mp4',
+    background: '/images/homeblur/rizzlerhomebg.jpg',
+    className: 'slide-flippedfrog',
+    link: '/work/projects/pages/rizzlerHardees',
+  },
+  {
+    title: 'Jean Paul Gaultier',
+    video: '/videos/Aud_Land_Video.mp4',
+    background: '/images/homeblur/jpghomebg.jpg',
+    className: 'slide-jeanpaul',
+    link: '/work/projects/pages/jeanpaulgautier',
+  },
+  {
+    title: 'Doordash',
+    video: '/images/CardiBDoorDash/CardiBHomeSlider.mp4',
+    background: '/images/homeblur/cardibhomebg.jpg',
+    className: 'slide-frogeating',
+    link: '/work/projects/pages/cardibdoordash',
+  },
+  {
+    title: 'Flav',
+    video: '/images/flav/FlavEditWeb.mp4',
+    background: '/images/homeblur/FlavBG.jpg',
+    className: 'slide-frogeating',
+    link: '/work/projects/pages/flav',
+  },
+];
+
+// About page images
+export const aboutImages = {
+  main: '/images/about/AUD_About02.jpg',
+  madeline: '/images/about/AUD_AboutMaddie01.jpg',
+  syd: '/images/about/AUD_AboutSyd01.jpg',
+  intro: [
+    '/images/about/AUD_About02.jpg',
+    '/images/about/AUD_About05.jpg',
+    '/images/about/AUD_About06.jpg',
+  ],
+  gallery: [
+    '/images/about/AUD_About03.jpg',
+    '/images/about/AUD_About04.jpg',
+    '/images/about/AUD_About07.jpg',
+  ],
 };

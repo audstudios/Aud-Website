@@ -1,43 +1,17 @@
+// src/components/Home/homeslider/homeslider.js
+// Updated with Cloudinary support
+
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
+import { getMediaUrl } from '@/lib/cloudinary';
+import { homeSliderData } from '@/data/projects';
 import './homeslider.css';
-import './titles.css'
+import './titles.css';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-
-const slides = [
-  {
-    title: "Hardee's",
-    video: '/images/RizzlerHardees/RizzlerHardees.mp4',
-    background: '/images/homeblur/rizzlerhomebg.jpg',
-    className: 'slide-flippedfrog',
-    link: '/work/projects/pages/rizzlerHardees',
-  },
-  {
-    title: 'Jean Paul Gaultier',
-    video: '/videos/Aud_Land_Video.mp4',
-    background: '/images/homeblur/jpghomebg.jpg',
-    className: 'slide-jeanpaul',
-    link: '/work/projects/pages/jeanpaulgautier',
-  },
-  {
-    title: 'Doordash',
-    video: '/images/CardiBDoorDash/CardiBHomeSlider.mp4',
-    background: '/images/homeblur/cardibhomebg.jpg',
-    className: 'slide-frogeating',
-    link: '/work/projects/pages/cardibdoordash',
-  },
-  {
-    title: 'Flav',
-    video: '/images/flav/FlavEditWeb.mp4',
-    background: '/images/homeblur/FlavBG.jpg',
-    className: 'slide-frogeating',
-    link: '/work/projects/pages/flav',
-  },
-];
 
 export default function HomeSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,7 +28,7 @@ export default function HomeSlider() {
   const titleRef = useRef(null);
   const titleExitRef = useRef(null);
 
-  const totalSlides = slides.length;
+  const totalSlides = homeSliderData.length;
 
   useEffect(() => {
     const checkMobile = () => {
@@ -69,18 +43,18 @@ export default function HomeSlider() {
 
   const nextSlide = () => {
     if (isAnimating) return;
-    setPrevBackground(slides[currentIndex].background);
-    setPrevVideo(slides[currentIndex].video);
-    setPrevTitle({ title: slides[currentIndex].title, className: slides[currentIndex].className });
+    setPrevBackground(homeSliderData[currentIndex].background);
+    setPrevVideo(homeSliderData[currentIndex].video);
+    setPrevTitle({ title: homeSliderData[currentIndex].title, className: homeSliderData[currentIndex].className });
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
   };
 
   const prevSlide = () => {
     if (isAnimating) return;
-    setPrevBackground(slides[currentIndex].background);
-    setPrevVideo(slides[currentIndex].video);
-    setPrevTitle({ title: slides[currentIndex].title, className: slides[currentIndex].className });
+    setPrevBackground(homeSliderData[currentIndex].background);
+    setPrevVideo(homeSliderData[currentIndex].video);
+    setPrevTitle({ title: homeSliderData[currentIndex].title, className: homeSliderData[currentIndex].className });
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
@@ -225,30 +199,36 @@ export default function HomeSlider() {
     }
   }, [isMobile]);
 
-  const { title, video, background, className, link } = slides[currentIndex];
+  const { title, video, background, className, link } = homeSliderData[currentIndex];
+
+  // Get Cloudinary URLs
+  const backgroundUrl = getMediaUrl(background, 'blurredBackground');
+  const videoUrl = getMediaUrl(video, 'sliderVideo');
+  const prevBackgroundUrl = prevBackground ? getMediaUrl(prevBackground, 'blurredBackground') : null;
+  const prevVideoUrl = prevVideo ? getMediaUrl(prevVideo, 'sliderVideo') : null;
 
   return (
     <div className="homeslider-container">
-      {prevBackground && (
+      {prevBackgroundUrl && (
         <div
           className="bg-layer"
           ref={bgExitRef}
-          style={{ backgroundImage: `url(${prevBackground})` }}
+          style={{ backgroundImage: `url(${prevBackgroundUrl})` }}
         />
       )}
 
       <div
         className="bg-layer"
         ref={bgEnterRef}
-        style={{ backgroundImage: `url(${background})` }}
+        style={{ backgroundImage: `url(${backgroundUrl})` }}
       />
 
-      {prevVideo && (
+      {prevVideoUrl && (
         <video
           className="slider-video video-exit"
           ref={videoExitRef}
           key={`exit-${prevVideo}`}
-          src={prevVideo}
+          src={prevVideoUrl}
           autoPlay
           muted
           loop
@@ -260,7 +240,7 @@ export default function HomeSlider() {
         className="slider-video video-enter"
         ref={videoEnterRef}
         key={`enter-${video}`}
-        src={video}
+        src={videoUrl}
         autoPlay
         muted
         loop

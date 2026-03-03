@@ -1,8 +1,12 @@
+// src/components/project/horizontal/projectpagehero/horizontalprojecthero.js
+// Updated with Cloudinary support
+
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { getMediaUrl } from '@/lib/cloudinary';
 import '../../projecthero.css';
 import './horizontalprojecthero.css';
 import GhostLogo from '@/components/global/ghostlogo/ghostlogo';
@@ -26,6 +30,10 @@ export default function HorizontalProjectHero({ project }) {
   const titleRef = useRef(null);
   const infoRef = useRef(null);
   const videoContainerRef = useRef(null);
+
+  // Get Cloudinary URLs
+  const heroVideoUrl = project?.heroVideo ? getMediaUrl(project.heroVideo, 'heroVideo') : '';
+  const fullVideoUrl = project?.fullVideo ? getMediaUrl(project.fullVideo, 'heroVideo') : '';
 
   useEffect(() => {
     const video = videoRef.current;
@@ -164,11 +172,11 @@ export default function HorizontalProjectHero({ project }) {
             onMouseEnter={() => setShowControls(true)}
             onMouseLeave={() => setShowControls(false)}
           >
-            {project.heroVideo && (
+            {heroVideoUrl && (
               <>
                 <video
                   ref={videoRef}
-                  src={project.heroVideo}
+                  src={heroVideoUrl}
                   autoPlay
                   muted
                   loop
@@ -208,7 +216,7 @@ export default function HorizontalProjectHero({ project }) {
       <VideoModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        videoSrc={project.fullVideo || project.heroVideo}
+        videoSrc={fullVideoUrl || heroVideoUrl}
       />
     </>
   );
