@@ -1,10 +1,9 @@
 // sanity.config.js
-// Updated with Cloudinary plugin for visual media selection
+// Main Next.js site - studio is hosted separately at *.sanity.studio
 
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
-import { cloudinaryAssetSourcePlugin } from 'sanity-plugin-cloudinary';
 import { schema } from './src/sanity/schemaTypes';
 
 export default defineConfig({
@@ -17,10 +16,7 @@ export default defineConfig({
   plugins: [
     structureTool(),
     visionTool(),
-    // Cloudinary plugin - enables visual media picker in Sanity Studio
-    cloudinaryAssetSourcePlugin({
-      cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'din7i5lsw',
-    }),
+    // Cloudinary plugin is in the standalone studio (*.sanity.studio)
   ],
 
   schema: {
