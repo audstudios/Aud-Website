@@ -1,12 +1,11 @@
 // src/components/project/horizontal/projectpagehero/horizontalprojecthero.js
-// Updated with Cloudinary support
+// Works with both local project data and Sanity data (pre-transformed URLs)
 
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { getMediaUrl } from '@/lib/cloudinary';
 import '../../projecthero.css';
 import './horizontalprojecthero.css';
 import GhostLogo from '@/components/global/ghostlogo/ghostlogo';
@@ -31,9 +30,9 @@ export default function HorizontalProjectHero({ project }) {
   const infoRef = useRef(null);
   const videoContainerRef = useRef(null);
 
-  // Get Cloudinary URLs
-  const heroVideoUrl = project?.heroVideo ? getMediaUrl(project.heroVideo, 'heroVideo') : '';
-  const fullVideoUrl = project?.fullVideo ? getMediaUrl(project.fullVideo, 'heroVideo') : '';
+  // URLs are already transformed (either from getMediaUrl in page or direct Cloudinary URLs)
+  const heroVideoUrl = project?.heroVideo || '';
+  const fullVideoUrl = project?.fullVideo || '';
 
   useEffect(() => {
     const video = videoRef.current;
@@ -153,7 +152,7 @@ export default function HorizontalProjectHero({ project }) {
                     <p className="project-hero-info-type project-sub-width">{project.year}</p>
                 </div>
               </div>
-              {project.watchLink && project.fullVideo && (
+              {project.watchLink && fullVideoUrl && (
                 <div className="project-hero-info-button">
                   <button 
                     className="project-video-link"

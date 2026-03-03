@@ -1,11 +1,12 @@
-// src/app/prod/work/projects/pages/rizzlerHardees/page.js
+// src/app/(site)/work/projects/pages/rizzlerHardees/page.js
 'use client';
 
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
 import HorizontalProjectPage from '../../templates/horizontal/page';
-import { projects } from '@/data/projects'; 
+import { projects, transformProjectForCloudinary } from '@/data/projects';
+import { getMediaUrl } from '@/lib/cloudinary';
 
 export default function RizzlerHardeesPage() {
   useEffect(() => {
@@ -28,10 +29,13 @@ export default function RizzlerHardeesPage() {
     };
   }, []);
 
+  // Transform project data with Cloudinary URLs
+  const projectData = transformProjectForCloudinary(projects.rizzlerHardees, getMediaUrl);
+
   return (
     <div>
       <NavigationGeneral />
-      <HorizontalProjectPage projectData={projects.rizzlerHardees} />
+      <HorizontalProjectPage projectData={projectData} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 // src/components/Home/homeslider/homeslider.js
-// Updated with Cloudinary support
+// Updated with Sanity + Cloudinary support
 
 'use client';
 

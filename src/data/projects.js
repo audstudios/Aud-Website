@@ -1,19 +1,17 @@
 // src/data/projects.js
-// Project data with Cloudinary-ready paths
-// Paths will automatically be converted to Cloudinary URLs when NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME is set
+// Project data - paths are transformed to Cloudinary URLs via getMediaUrl()
+// Import getMediaUrl in components that use this data
 
 export const projects = {
   rizzlerHardees: {
-    // Hero data
     title: 'The Rizzwich: Hardees x The Rizzler',
     client: 'Hardees // Get Engaged Media',
     type: 'Commercial Production',
     year: '2025',
+    // Store raw paths - transform with getMediaUrl() when rendering
     heroVideo: '/images/RizzlerHardees/RizzlerHardeesBase_1.mp4',
     fullVideo: '/images/RizzlerHardees/RizzlerHardeesBase_1.mp4',
     watchLink: '#',
-    
-    // Content data
     mainline: 'The production team behind your next viral moment.',
     content: [
       "Introducing The Rizzwich: the official Hardee's x The Rizzler meal. Get Engaged Media partnered with us to lead full-scale production for the launch of this <span class='font-bold'>now-viral collaboration.</span>",
@@ -27,10 +25,6 @@ export const projects = {
     ],
     subImages: [],
     brandLogo: '/images/logos/CarouselLogo_png-19.png',
-    
-    // Home slider
-    homeSliderVideo: '/images/RizzlerHardees/RizzlerHardees.mp4',
-    homeSliderBackground: '/images/homeblur/rizzlerhomebg.jpg',
   },
   
   jeanPaulGaultier: {
@@ -50,10 +44,6 @@ export const projects = {
     mainImages: [],
     subImages: [],
     brandLogo: '/images/logos/CarouselLogo_png-16.png',
-    
-    // Home slider
-    homeSliderVideo: '/videos/Aud_Land_Video.mp4',
-    homeSliderBackground: '/images/homeblur/jpghomebg.jpg',
   },
   
   cardidoordash: {
@@ -77,10 +67,6 @@ export const projects = {
     mainImages: ['/images/CardiBDoorDash/CardiBDoorDashImages.jpg'],
     subImages: [],
     brandLogo: '/images/logos/CarouselLogo_png-15.png',
-    
-    // Home slider
-    homeSliderVideo: '/images/CardiBDoorDash/CardiBHomeSlider.mp4',
-    homeSliderBackground: '/images/homeblur/cardibhomebg.jpg',
   },
   
   flav: {
@@ -102,14 +88,10 @@ export const projects = {
     ],
     subImages: [],
     brandLogo: '/images/logos/Flav_Logo.png',
-    
-    // Home slider
-    homeSliderVideo: '/images/flav/FlavEditWeb.mp4',
-    homeSliderBackground: '/images/homeblur/FlavBG.jpg',
   },
 };
 
-// Client logos for carousel
+// Client logos for carousel - raw paths
 export const clientLogos = [
   { src: '/images/logos/CarouselLogo_png-09.png', alt: 'Tom Ford Beauty Logo' },
   { src: '/images/logos/CarouselLogo_png-10.png', alt: 'Estee Lauder Logo' },
@@ -126,7 +108,7 @@ export const clientLogos = [
   { src: '/images/logos/CarouselLogo_png-21.png', alt: 'DKNY Logo' },
 ];
 
-// Home slider data
+// Home slider data - raw paths
 export const homeSliderData = [
   {
     title: "Hardee's",
@@ -158,7 +140,7 @@ export const homeSliderData = [
   },
 ];
 
-// About page images
+// About page images - raw paths
 export const aboutImages = {
   main: '/images/about/AUD_About02.jpg',
   madeline: '/images/about/AUD_AboutMaddie01.jpg',
@@ -174,3 +156,27 @@ export const aboutImages = {
     '/images/about/AUD_About07.jpg',
   ],
 };
+
+/**
+ * Helper to transform a project's media URLs to Cloudinary
+ * Use this in page components when loading from projects data
+ */
+export function transformProjectForCloudinary(project, getMediaUrl) {
+  if (!project) return null;
+  
+  return {
+    ...project,
+    heroVideo: project.heroVideo ? getMediaUrl(project.heroVideo, 'heroVideo') : null,
+    fullVideo: project.fullVideo ? getMediaUrl(project.fullVideo, 'heroVideo') : null,
+    heroVideos: project.heroVideos 
+      ? project.heroVideos.map(v => getMediaUrl(v, 'heroVideo')) 
+      : null,
+    mainImages: project.mainImages 
+      ? project.mainImages.map(img => getMediaUrl(img, 'cardImage')) 
+      : [],
+    subImages: project.subImages 
+      ? project.subImages.map(img => getMediaUrl(img, 'cardImage')) 
+      : [],
+    brandLogo: project.brandLogo ? getMediaUrl(project.brandLogo, 'logo') : null,
+  };
+}

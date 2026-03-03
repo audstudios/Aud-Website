@@ -49,35 +49,43 @@ export const TRANSFORMATIONS = {
 };
 
 /**
- * Path mappings from local paths to Cloudinary folder structure
- * Order matters - more specific paths should come first!
+ * Path mappings - MUST match the upload script mappings!
+ * Maps local paths to Cloudinary folder structure
+ * Order matters - more specific paths first!
  */
 const PATH_MAPPINGS = [
-  // Project-specific folders (most specific first)
-  { local: 'images/RizzlerHardees', cloudinary: 'aud-studios/projects/rizzler-hardees' },
-  { local: 'images/JPG', cloudinary: 'aud-studios/projects/jean-paul-gaultier' },
-  { local: 'images/CardiBDoorDash', cloudinary: 'aud-studios/projects/cardi-doordash' },
-  { local: 'images/flav', cloudinary: 'aud-studios/projects/flav' },
+  // Project folders
+  { from: 'images/RizzlerHardees', to: 'aud-studios/projects/rizzler-hardees' },
+  { from: 'images/JPG', to: 'aud-studios/projects/jean-paul-gaultier' },
+  { from: 'images/CardiBDoorDash', to: 'aud-studios/projects/cardi-doordash' },
+  { from: 'images/flav', to: 'aud-studios/projects/flav' },
   
-  // Specific asset folders
-  { local: 'images/logos', cloudinary: 'aud-studios/logos' },
-  { local: 'images/about', cloudinary: 'aud-studios/about' },
-  { local: 'images/homeblur', cloudinary: 'aud-studios/home/slider-backgrounds' },
-  { local: 'images/work', cloudinary: 'aud-studios/work' },
-  { local: 'images/global', cloudinary: 'aud-studios/global' },
-  { local: 'images/projectcard', cloudinary: 'aud-studios/work/cards' },
+  // Other specific folders
+  { from: 'images/logos', to: 'aud-studios/logos' },
+  { from: 'images/about', to: 'aud-studios/about' },
+  { from: 'images/homeblur', to: 'aud-studios/home/slider-backgrounds' },
+  { from: 'images/work', to: 'aud-studios/work' },
+  { from: 'images/global', to: 'aud-studios/global' },
+  { from: 'images/projectcard', to: 'aud-studios/work/cards' },
   
-  // Other asset types
-  { local: 'videos', cloudinary: 'aud-studios/videos' },
-  { local: 'icons', cloudinary: 'aud-studios/icons' },
+  // Videos and icons
+  { from: 'videos', to: 'aud-studios/videos' },
+  { from: 'icons', to: 'aud-studios/icons' },
   
-  // Catch-all for any other images (must be last!)
-  { local: 'images', cloudinary: 'aud-studios/images' },
+  // Catch-all for other images (must be last)
+  { from: 'images', to: 'aud-studios/images' },
 ];
 
 /**
  * Convert local asset path to Cloudinary public ID
- * @param {string} localPath - Local path (e.g., "/images/AudGlassLogoV02.png")
+ * 
+ * Examples:
+ * /images/logos/CarouselLogo_png-09.png -> aud-studios/logos/CarouselLogo_png-09.png
+ * /images/RizzlerHardees/RizzlerHardees.mp4 -> aud-studios/projects/rizzler-hardees/RizzlerHardees.mp4
+ * /images/homeblur/rizzlerhomebg.jpg -> aud-studios/home/slider-backgrounds/rizzlerhomebg.jpg
+ * /videos/Aud_Land_Video.mp4 -> aud-studios/videos/Aud_Land_Video.mp4
+ * 
+ * @param {string} localPath - Local path (e.g., "/images/logos/CarouselLogo_png-09.png")
  * @returns {string} Cloudinary public ID
  */
 export function localPathToCloudinaryId(localPath) {
@@ -86,28 +94,13 @@ export function localPathToCloudinaryId(localPath) {
   // Remove leading slash
   let path = localPath.replace(/^\//, '');
   
-  // Find matching path mapping
+  // Find matching path mapping (first match wins, so order matters)
   for (const mapping of PATH_MAPPINGS) {
-    if (path.startsWith(mapping.local + '/') || path.startsWith(mapping.local)) {
-      // Replace the local prefix with cloudinary prefix
-      if (path.startsWith(mapping.local + '/')) {
-        path = path.replace(mapping.local + '/', mapping.cloudinary + '/');
-      } else if (path === mapping.local) {
-        path = mapping.cloudinary;
-      } else {
-        // Handle case where file is directly in the mapped folder
-        // e.g., "images/AudGlassLogoV02.png" -> "aud-studios/images/AudGlassLogoV02.png"
-        path = mapping.cloudinary + path.substring(mapping.local.length);
-      }
+    if (path.startsWith(mapping.from + '/')) {
+      // Replace the matched prefix with the Cloudinary folder
+      path = path.replace(mapping.from, mapping.to);
       break;
     }
-  }
-
-  // Remove file extension for images (Cloudinary handles format automatically)
-  // Keep extension info for videos since we need to know the type
-  const isVideo = /\.(mp4|webm|mov)$/i.test(path);
-  if (!isVideo) {
-    path = path.replace(/\.(jpg|jpeg|png|gif|webp|svg)$/i, '');
   }
 
   return path;
@@ -115,7 +108,7 @@ export function localPathToCloudinaryId(localPath) {
 
 /**
  * Generate Cloudinary URL for an image
- * @param {string} publicId - The public ID of the asset in Cloudinary
+ * @param {string} publicId - The public ID of the asset in Cloudinary (with extension)
  * @param {string} transformation - Transformation string or key from TRANSFORMATIONS
  * @returns {string} Full Cloudinary URL
  */
@@ -131,7 +124,7 @@ export function getCloudinaryImageUrl(publicId, transformation = 'fullImage') {
 
 /**
  * Generate Cloudinary URL for a video
- * @param {string} publicId - The public ID of the video in Cloudinary
+ * @param {string} publicId - The public ID of the video in Cloudinary (with extension)
  * @param {string} transformation - Transformation string or key from TRANSFORMATIONS
  * @returns {string} Full Cloudinary URL
  */
@@ -141,11 +134,8 @@ export function getCloudinaryVideoUrl(publicId, transformation = 'heroVideo') {
     return publicId;
   }
 
-  // Remove video extension from public ID if present
-  const cleanPublicId = publicId.replace(/\.(mp4|webm|mov)$/i, '');
-  
   const trans = TRANSFORMATIONS[transformation] || transformation;
-  return `${CLOUDINARY_BASE_URL}/video/upload/${trans}/${cleanPublicId}`;
+  return `${CLOUDINARY_BASE_URL}/video/upload/${trans}/${publicId}`;
 }
 
 /**
@@ -165,18 +155,15 @@ export function getCloudinaryImageSrcSet(publicId, widths = [400, 800, 1200, 160
 /**
  * Generate video poster image URL from video
  * @param {string} videoPublicId - The public ID of the video
- * @param {string} transformation - Additional transformations
  * @returns {string} Poster image URL
  */
-export function getVideoPosterUrl(videoPublicId, transformation = '') {
+export function getVideoPosterUrl(videoPublicId) {
   if (!CLOUD_NAME) return '';
   
-  // Remove video extension if present
-  const cleanPublicId = videoPublicId.replace(/\.(mp4|webm|mov)$/i, '');
-  
-  const baseTrans = 'f_auto,q_auto,so_0';
-  const trans = transformation ? `${baseTrans},${transformation}` : baseTrans;
-  return `${CLOUDINARY_BASE_URL}/video/upload/${trans}/${cleanPublicId}.jpg`;
+  // For video poster, we use so_0 to get the first frame
+  // Replace .mp4 etc with .jpg
+  const posterPublicId = videoPublicId.replace(/\.(mp4|webm|mov)$/i, '.jpg');
+  return `${CLOUDINARY_BASE_URL}/video/upload/f_auto,q_auto,so_0/${posterPublicId}`;
 }
 
 /**

@@ -1,10 +1,12 @@
+// src/app/(site)/work/projects/pages/jeanpaulgautier/page.js
 'use client';
 
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
 import HorizontalProjectPage from '../../templates/horizontal/page';
-import { projects } from '@/data/projects';
+import { projects, transformProjectForCloudinary } from '@/data/projects';
+import { getMediaUrl } from '@/lib/cloudinary';
 
 export default function JeanPaulGaultierPage() {
   useEffect(() => {
@@ -27,10 +29,13 @@ export default function JeanPaulGaultierPage() {
     };
   }, []);
 
+  // Transform project data with Cloudinary URLs
+  const projectData = transformProjectForCloudinary(projects.jeanPaulGaultier, getMediaUrl);
+
   return (
     <div>
       <NavigationGeneral />
-      <HorizontalProjectPage projectData={projects.jeanPaulGaultier} />
+      <HorizontalProjectPage projectData={projectData} />
     </div>
   );
 }

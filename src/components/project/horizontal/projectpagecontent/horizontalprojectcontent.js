@@ -1,12 +1,11 @@
 // src/components/project/horizontal/projectpagecontent/horizontalprojectcontent.js
-// Updated with Cloudinary support
+// Works with both local project data and Sanity data (pre-transformed URLs)
 
 'use client';
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { getMediaUrl } from '@/lib/cloudinary';
 import ProjectCTA from '@/components/projects/project-cta';
 import '../../projecthero.css';
 import './horizontalprojectcontent.css';
@@ -167,7 +166,7 @@ export default function HorizontalProjectContent({ project }) {
                 style={{ opacity: 0 }}
               >
                 <img 
-                  src={getMediaUrl(image, 'cardImage')} 
+                  src={image} 
                   alt={`${project.title} project image ${index + 1}`} 
                   style={{width: '100%', height: '100%', objectFit: 'cover'}}
                   loading="lazy"
@@ -202,7 +201,7 @@ export default function HorizontalProjectContent({ project }) {
               >
                 <img 
                   className='project-brand-logo-img' 
-                  src={getMediaUrl(project.brandLogo, 'logo')}
+                  src={project.brandLogo}
                   alt={`${project.client} brand logo`}
                   loading="lazy"
                 />
@@ -218,7 +217,7 @@ export default function HorizontalProjectContent({ project }) {
                   style={{ opacity: 0 }}
                 >
                   <img 
-                    src={getMediaUrl(image, 'cardImage')} 
+                    src={image} 
                     alt={`${project.title} additional detail ${index + 1}`} 
                     style={{width: '100%', height: '100%', objectFit: 'cover'}}
                     loading="lazy"

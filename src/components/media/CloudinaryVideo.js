@@ -4,15 +4,13 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { getMediaUrl, getVideoPosterUrl, localPathToCloudinaryId, CLOUD_NAME } from '@/lib/cloudinary';
+import { getMediaUrl, CLOUD_NAME } from '@/lib/cloudinary';
 
 /**
  * CloudinaryVideo Component
  * 
  * Renders optimized videos from Cloudinary with:
  * - Automatic format selection
- * - Adaptive bitrate streaming
- * - Auto-generated poster images
  * - Lazy loading for below-the-fold videos
  * - Fallback to local videos if Cloudinary not configured
  * 
@@ -26,12 +24,7 @@ import { getMediaUrl, getVideoPosterUrl, localPathToCloudinaryId, CLOUD_NAME } f
  * @param {boolean} props.playsInline - Play inline on mobile
  * @param {boolean} props.controls - Show video controls
  * @param {boolean} props.priority - Load immediately
- * @param {string} props.poster - Custom poster image path
- * @param {Function} props.onPlay - Callback when video plays
- * @param {Function} props.onPause - Callback when video pauses
- * @param {Function} props.onEnded - Callback when video ends
- * @param {Function} props.onTimeUpdate - Callback on time update
- * @param {Function} props.onLoadedMetadata - Callback when metadata loads
+ * @param {string} props.poster - Custom poster image path (optional)
  */
 export default function CloudinaryVideo({
   src,
@@ -57,14 +50,11 @@ export default function CloudinaryVideo({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
 
-  // Generate URLs
+  // Generate video URL
   const cloudinaryUrl = getMediaUrl(src, transformation);
-  const publicId = localPathToCloudinaryId(src);
   
-  // Generate poster from video if not provided
-  const posterUrl = poster 
-    ? getMediaUrl(poster, 'cardImage')
-    : (CLOUD_NAME ? getVideoPosterUrl(publicId) : '');
+  // Only use poster if explicitly provided
+  const posterUrl = poster ? getMediaUrl(poster, 'cardImage') : undefined;
 
   const handleLoadedMetadata = (e) => {
     setIsLoaded(true);
@@ -106,7 +96,7 @@ export default function CloudinaryVideo({
       ref={videoRef}
       src={priority ? cloudinaryUrl : undefined}
       data-src={!priority ? cloudinaryUrl : undefined}
-      poster={posterUrl || undefined}
+      poster={posterUrl}
       className={className}
       autoPlay={autoPlay}
       muted={muted}

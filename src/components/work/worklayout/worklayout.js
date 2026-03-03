@@ -1,9 +1,13 @@
+// src/components/work/worklayout/worklayout.js
+// Updated with Cloudinary support for Sanity data
+
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
+import { getMediaUrl } from '@/lib/cloudinary';
 import './worklayout.css';
 import { client } from '@/sanity/lib/client';
 import { workPageProjectsQuery } from '@/sanity/lib/queries';
@@ -42,7 +46,8 @@ export default function WorkLayout() {
           client: project.client,
           type: project.projectType,
           year: project.year,
-          image: project.workPageImageUrl,
+          // Use Cloudinary for the work page image
+          image: getMediaUrl(project.workPageImageUrl, 'fullImage'),
           link: `/work/projects/${project.slug}`
         }));
         setProjects(transformedProjects);
@@ -159,6 +164,7 @@ export default function WorkLayout() {
                 <img 
                   src={project.image} 
                   alt={project.title}
+                  loading={index === 0 ? 'eager' : 'lazy'}
                   onError={(e) => {
                     e.target.style.background = '#1a1a1a';
                   }}

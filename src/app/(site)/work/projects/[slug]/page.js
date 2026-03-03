@@ -1,3 +1,6 @@
+// src/app/(site)/work/projects/[slug]/page.js
+// Updated with Cloudinary support for Sanity data
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -6,6 +9,7 @@ import Lenis from '@studio-freight/lenis';
 import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
 import HorizontalProjectPage from '../templates/horizontal/page';
 import VerticalProjectPage from '../templates/vertical/page';
+import { getMediaUrl } from '@/lib/cloudinary';
 import { client } from '@/sanity/lib/client';
 import { projectBySlugQuery } from '@/sanity/lib/queries';
 import { portableTextToHtml } from '@/sanity/lib/portableText';
@@ -41,22 +45,40 @@ export default function ProjectPage() {
         const data = await client.fetch(projectBySlugQuery, { slug: params.slug });
         
         if (data) {
-          // Transform Sanity data to match your component format
+          // Transform Sanity data to match component format
+          // Apply Cloudinary transformations to all media URLs
           const transformedProject = {
             title: data.title,
             client: data.client,
             type: data.projectType,
             year: data.year,
             layout: data.layout || 'horizontal',
-            heroVideo: data.heroVideoUrl,
-            heroVideos: data.heroVideoUrls,
-            fullVideo: data.fullVideoUrl,
+            
+            // Hero videos - apply Cloudinary transformation
+            heroVideo: data.heroVideoUrl 
+              ? getMediaUrl(data.heroVideoUrl, 'heroVideo') 
+              : null,
+            heroVideos: data.heroVideoUrls 
+              ? data.heroVideoUrls.map(url => getMediaUrl(url, 'heroVideo'))
+              : null,
+            fullVideo: data.fullVideoUrl 
+              ? getMediaUrl(data.fullVideoUrl, 'heroVideo') 
+              : null,
+            
             watchLink: data.showWatchButton ? '#' : null,
             mainline: data.mainline,
             content: portableTextToHtml(data.contentParagraphs),
-            mainImages: data.mainImageUrls || [],
-            subImages: data.subImageUrls || [],
-            brandLogo: data.brandLogoUrl,
+            
+            // Images - apply Cloudinary transformation
+            mainImages: data.mainImageUrls 
+              ? data.mainImageUrls.map(url => getMediaUrl(url, 'cardImage'))
+              : [],
+            subImages: data.subImageUrls 
+              ? data.subImageUrls.map(url => getMediaUrl(url, 'cardImage'))
+              : [],
+            brandLogo: data.brandLogoUrl 
+              ? getMediaUrl(data.brandLogoUrl, 'logo') 
+              : null,
           };
           setProject(transformedProject);
         }
