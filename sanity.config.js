@@ -5,7 +5,7 @@ import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { cloudinaryAssetSourcePlugin } from 'sanity-plugin-cloudinary';
-import { schemaTypes } from './src/sanity/schemaTypes';
+import { schema } from './src/sanity/schemaTypes';
 
 export default defineConfig({
   name: 'default',
@@ -24,6 +24,6 @@ export default defineConfig({
   ],
 
   schema: {
-    types: schemaTypes,
+    types: schema,
   },
 });
