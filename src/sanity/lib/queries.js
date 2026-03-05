@@ -1,12 +1,7 @@
 // src/sanity/lib/queries.js
-// Updated queries for Cloudinary asset structure
 
 import { groq } from 'next-sanity';
 
-/**
- * Query for work page - gets all projects with work page image
- * Cloudinary assets have: public_id, secure_url, resource_type, format, etc.
- */
 export const workPageProjectsQuery = groq`
   *[_type == "project"] | order(sortOrder asc) {
     _id,
@@ -16,7 +11,6 @@ export const workPageProjectsQuery = groq`
     projectType,
     year,
     workPageSubtitle,
-    // Cloudinary asset fields
     "workPageImage": workPageImage {
       public_id,
       secure_url,
@@ -28,10 +22,6 @@ export const workPageProjectsQuery = groq`
   }
 `;
 
-/**
- * Query for single project by slug
- * Returns all Cloudinary asset data for transformation
- */
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
     _id,
@@ -44,8 +34,6 @@ export const projectBySlugQuery = groq`
     mainline,
     contentParagraphs,
     showWatchButton,
-    
-    // Hero video - Cloudinary asset
     "heroVideo": heroVideo {
       public_id,
       secure_url,
@@ -54,8 +42,6 @@ export const projectBySlugQuery = groq`
       width,
       height
     },
-    
-    // Multiple hero videos - array of Cloudinary assets
     "heroVideos": heroVideos[] {
       public_id,
       secure_url,
@@ -64,8 +50,6 @@ export const projectBySlugQuery = groq`
       width,
       height
     },
-    
-    // Full video - Cloudinary asset
     "fullVideo": fullVideo {
       public_id,
       secure_url,
@@ -74,8 +58,6 @@ export const projectBySlugQuery = groq`
       width,
       height
     },
-    
-    // Main images - array of Cloudinary assets
     "mainImages": mainImages[] {
       public_id,
       secure_url,
@@ -84,8 +66,6 @@ export const projectBySlugQuery = groq`
       width,
       height
     },
-    
-    // Sub images - array of Cloudinary assets
     "subImages": subImages[] {
       public_id,
       secure_url,
@@ -94,8 +74,6 @@ export const projectBySlugQuery = groq`
       width,
       height
     },
-    
-    // Brand logo - Cloudinary asset
     "brandLogo": brandLogo {
       public_id,
       secure_url,
@@ -107,9 +85,62 @@ export const projectBySlugQuery = groq`
   }
 `;
 
-/**
- * Query for all project slugs (for static generation)
- */
 export const allProjectSlugsQuery = groq`
   *[_type == "project" && defined(slug.current)][].slug.current
+`;
+
+export const homeSliderQuery = groq`
+  *[_type == "homeSlider" && isActive == true] | order(displayOrder asc) {
+    displayTitle,
+    "video": video {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    },
+    "backgroundImage": backgroundImage {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    },
+    projectLink,
+    titleClass,
+    displayOrder
+  }
+`;
+
+export const aboutPageQuery = groq`
+  *[_type == "aboutPage"][0] {
+    introParagraph1,
+    introParagraph2,
+    "introImages": introImages[] {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    },
+    madelineName,
+    "madelinePhoto": madelinePhoto {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    },
+    madelineBio,
+    sydName,
+    "sydPhoto": sydPhoto {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    },
+    sydBio,
+    "galleryImages": galleryImages[] {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    }
+  }
 `;

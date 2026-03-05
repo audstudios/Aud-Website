@@ -1,19 +1,19 @@
-// src/components/Home/homeslider/homeslider.js
-// Updated with Sanity + Cloudinary support
-
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
-import { getMediaUrl } from '@/lib/cloudinary';
-import { homeSliderData } from '@/data/projects';
+import { getMediaUrl, getCloudinaryAssetUrl } from '@/lib/cloudinary';
+import { homeSliderData as fallbackSliderData } from '@/data/projects';
+import { client } from '@/sanity/lib/client';
+import { homeSliderQuery } from '@/sanity/lib/queries';
 import './homeslider.css';
 import './titles.css';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 export default function HomeSlider() {
+  const [slides, setSlides] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevBackground, setPrevBackground] = useState(null);
   const [prevVideo, setPrevVideo] = useState(null);
@@ -28,33 +28,61 @@ export default function HomeSlider() {
   const titleRef = useRef(null);
   const titleExitRef = useRef(null);
 
-  const totalSlides = homeSliderData.length;
+  // Fetch slides from Sanity, fallback to static data
+  useEffect(() => {
+    async function fetchSlides() {
+      try {
+        if (client) {
+          const data = await client.fetch(homeSliderQuery);
+          if (data && data.length > 0) {
+            const transformed = data.map((slide) => ({
+              title: slide.displayTitle,
+              video: getCloudinaryAssetUrl(slide.video, 'sliderVideo'),
+              background: getCloudinaryAssetUrl(slide.backgroundImage, 'blurredBackground'),
+              className: slide.titleClass || '',
+              link: slide.projectLink,
+            }));
+            setSlides(transformed);
+            return;
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching slider data:', error);
+      }
+      // Fallback to static data
+      const fallback = fallbackSliderData.map((slide) => ({
+        ...slide,
+        video: getMediaUrl(slide.video, 'sliderVideo'),
+        background: getMediaUrl(slide.background, 'blurredBackground'),
+      }));
+      setSlides(fallback);
+    }
+    fetchSlides();
+  }, []);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 705);
-    };
-    
+    const checkMobile = () => setIsMobile(window.innerWidth <= 705);
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  const totalSlides = slides.length;
+
   const nextSlide = () => {
-    if (isAnimating) return;
-    setPrevBackground(homeSliderData[currentIndex].background);
-    setPrevVideo(homeSliderData[currentIndex].video);
-    setPrevTitle({ title: homeSliderData[currentIndex].title, className: homeSliderData[currentIndex].className });
+    if (isAnimating || totalSlides === 0) return;
+    setPrevBackground(slides[currentIndex].background);
+    setPrevVideo(slides[currentIndex].video);
+    setPrevTitle({ title: slides[currentIndex].title, className: slides[currentIndex].className });
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
   };
 
   const prevSlide = () => {
-    if (isAnimating) return;
-    setPrevBackground(homeSliderData[currentIndex].background);
-    setPrevVideo(homeSliderData[currentIndex].video);
-    setPrevTitle({ title: homeSliderData[currentIndex].title, className: homeSliderData[currentIndex].className });
+    if (isAnimating || totalSlides === 0) return;
+    setPrevBackground(slides[currentIndex].background);
+    setPrevVideo(slides[currentIndex].video);
+    setPrevTitle({ title: slides[currentIndex].title, className: slides[currentIndex].className });
     setIsAnimating(true);
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
@@ -62,12 +90,8 @@ export default function HomeSlider() {
   useEffect(() => {
     if (!prevBackground && !prevVideo) return;
 
-    if (bgExitRef.current) {
-      gsap.set(bgExitRef.current, { opacity: 1 });
-    }
-    if (bgEnterRef.current) {
-      gsap.set(bgEnterRef.current, { opacity: 0 });
-    }
+    if (bgExitRef.current) gsap.set(bgExitRef.current, { opacity: 1 });
+    if (bgEnterRef.current) gsap.set(bgEnterRef.current, { opacity: 0 });
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -75,176 +99,77 @@ export default function HomeSlider() {
         setPrevVideo(null);
         setPrevTitle(null);
         setIsAnimating(false);
-      }
+      },
     });
 
     if (videoExitRef.current) {
-      tl.to(videoExitRef.current, {
-        opacity: 0,
-        duration: 0.35,
-        ease: 'power2.in',
-      }, 0);
+      tl.to(videoExitRef.current, { opacity: 0, duration: 0.35, ease: 'power2.in' }, 0);
     }
 
     if (isMobile) {
-      if (titleExitRef.current) {
-        tl.to(titleExitRef.current, {
-          opacity: 0,
-          duration: 0.3,
-          ease: 'power2.in',
-        }, 0);
-      }
-      
-      if (titleRef.current) {
-        tl.fromTo(titleRef.current,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.4,
-            ease: 'power2.out',
-          }, 0.3);
-      }
+      if (titleExitRef.current) tl.to(titleExitRef.current, { opacity: 0, duration: 0.3, ease: 'power2.in' }, 0);
+      if (titleRef.current) tl.fromTo(titleRef.current, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power2.out' }, 0.3);
     } else {
-      if (titleExitRef.current) {
-        tl.to(titleExitRef.current, {
-          opacity: 0,
-          y: -20,
-          duration: 0.3,
-          ease: 'power2.in',
-        }, 0);
-      }
-      
-      if (titleRef.current) {
-        tl.fromTo(titleRef.current,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.4,
-            ease: 'power2.out',
-          }, 0.3);
-      }
+      if (titleExitRef.current) tl.to(titleExitRef.current, { opacity: 0, y: -20, duration: 0.3, ease: 'power2.in' }, 0);
+      if (titleRef.current) tl.fromTo(titleRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, 0.3);
     }
 
     if (bgExitRef.current && bgEnterRef.current) {
-      tl.to(bgEnterRef.current, {
-        opacity: 1,
-        duration: 0.5,
-        ease: 'power1.inOut',
-      }, 0);
-      
-      tl.to(bgExitRef.current, {
-        opacity: 0,
-        duration: 0.5,
-        ease: 'power1.inOut',
-      }, 0);
+      tl.to(bgEnterRef.current, { opacity: 1, duration: 0.5, ease: 'power1.inOut' }, 0);
+      tl.to(bgExitRef.current, { opacity: 0, duration: 0.5, ease: 'power1.inOut' }, 0);
     }
 
     if (videoEnterRef.current) {
-      tl.fromTo(videoEnterRef.current,
-        { opacity: 0, scale: 0.96 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.5,
-          ease: 'power2.out',
-        }, 0.4);
+      tl.fromTo(videoEnterRef.current, { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' }, 0.4);
     }
   }, [currentIndex, isMobile]);
 
   useEffect(() => {
+    if (slides.length === 0) return;
+
     if (bgEnterRef.current && !prevBackground) {
-      gsap.fromTo(bgEnterRef.current,
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-        });
+      gsap.fromTo(bgEnterRef.current, { opacity: 0 }, { opacity: 1, duration: 0.8, ease: 'power2.out' });
     }
-
     if (videoEnterRef.current && !prevVideo) {
-      gsap.fromTo(videoEnterRef.current,
-        { opacity: 0, scale: 0.96 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          delay: 0.3,
-        });
+      gsap.fromTo(videoEnterRef.current, { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out', delay: 0.3 });
     }
-
     if (titleRef.current && !prevBackground) {
       if (isMobile) {
-        gsap.fromTo(titleRef.current,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.6,
-            ease: 'power2.out',
-            delay: 0.5,
-          });
+        gsap.fromTo(titleRef.current, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.5 });
       } else {
-        gsap.fromTo(titleRef.current,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: 'power2.out',
-            delay: 0.5,
-          });
+        gsap.fromTo(titleRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', delay: 0.5 });
       }
     }
-  }, [isMobile]);
+  }, [slides, isMobile]);
 
-  const { title, video, background, className, link } = homeSliderData[currentIndex];
+  if (slides.length === 0) {
+    return <div className="homeslider-container" />;
+  }
 
-  // Get Cloudinary URLs
-  const backgroundUrl = getMediaUrl(background, 'blurredBackground');
-  const videoUrl = getMediaUrl(video, 'sliderVideo');
-  const prevBackgroundUrl = prevBackground ? getMediaUrl(prevBackground, 'blurredBackground') : null;
-  const prevVideoUrl = prevVideo ? getMediaUrl(prevVideo, 'sliderVideo') : null;
+  const { title, video, background, className, link } = slides[currentIndex];
 
   return (
     <div className="homeslider-container">
-      {prevBackgroundUrl && (
-        <div
-          className="bg-layer"
-          ref={bgExitRef}
-          style={{ backgroundImage: `url(${prevBackgroundUrl})` }}
-        />
+      {prevBackground && (
+        <div className="bg-layer" ref={bgExitRef} style={{ backgroundImage: `url(${prevBackground})` }} />
       )}
+      <div className="bg-layer" ref={bgEnterRef} style={{ backgroundImage: `url(${background})` }} />
 
-      <div
-        className="bg-layer"
-        ref={bgEnterRef}
-        style={{ backgroundImage: `url(${backgroundUrl})` }}
-      />
-
-      {prevVideoUrl && (
+      {prevVideo && (
         <video
           className="slider-video video-exit"
           ref={videoExitRef}
           key={`exit-${prevVideo}`}
-          src={prevVideoUrl}
-          autoPlay
-          muted
-          loop
-          playsInline
+          src={prevVideo}
+          autoPlay muted loop playsInline
         />
       )}
-
       <video
         className="slider-video video-enter"
         ref={videoEnterRef}
         key={`enter-${video}`}
-        src={videoUrl}
-        autoPlay
-        muted
-        loop
-        playsInline
+        src={video}
+        autoPlay muted loop playsInline
       />
 
       <div className="homeslider-wrapper">
@@ -255,7 +180,6 @@ export default function HomeSlider() {
                 <span className="font-bold">{prevTitle.title}</span>
               </h2>
             )}
-            
             <h2 ref={titleRef} className={`homeslider-title ${className}`}>
               <span className="font-bold">{title}</span>
             </h2>
