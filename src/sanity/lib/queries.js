@@ -91,20 +91,20 @@ export const allProjectSlugsQuery = groq`
 
 export const homeSliderQuery = groq`
   *[_type == "homeSlider" && isActive == true] | order(displayOrder asc) {
-    displayTitle,
-    "video": video {
+    "displayTitle": coalesce(displayTitle, project->title),
+    "video": coalesce(video, project->heroVideo) {
       public_id,
       secure_url,
       resource_type,
       format
     },
-    "backgroundImage": backgroundImage {
+    "backgroundImage": coalesce(backgroundImage, project->workPageImage) {
       public_id,
       secure_url,
       resource_type,
       format
     },
-    projectLink,
+    "projectLink": "/work/projects/" + project->slug.current,
     titleClass,
     displayOrder
   }
