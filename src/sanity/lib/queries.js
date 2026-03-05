@@ -110,33 +110,64 @@ export const homeSliderQuery = groq`
   }
 `;
 
+// About page query - matches standalone studio schema (aboutPage.js)
+// Schema uses individual fields: introImage1/2/3, madelineImage, sydImage, galleryImage1/2/3
 export const aboutPageQuery = groq`
   *[_type == "aboutPage"][0] {
+    pageTitle,
     introParagraph1,
     introParagraph2,
-    "introImages": introImages[] {
+    "introImage1": introImage1 {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    },
+    "introImage2": introImage2 {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    },
+    "introImage3": introImage3 {
       public_id,
       secure_url,
       resource_type,
       format
     },
     madelineName,
-    "madelinePhoto": madelinePhoto {
+    madelineBio1,
+    madelineBio2,
+    madelineBio3,
+    "madelineImage": madelineImage {
       public_id,
       secure_url,
       resource_type,
       format
     },
-    madelineBio,
     sydName,
-    "sydPhoto": sydPhoto {
+    sydBio1,
+    sydBio2,
+    sydBio3,
+    "sydImage": sydImage {
       public_id,
       secure_url,
       resource_type,
       format
     },
-    sydBio,
-    "galleryImages": galleryImages[] {
+    "galleryImage1": galleryImage1 {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    },
+    "galleryImage2": galleryImage2 {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    },
+    "galleryImage3": galleryImage3 {
       public_id,
       secure_url,
       resource_type,
