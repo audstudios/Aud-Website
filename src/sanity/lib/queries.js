@@ -111,7 +111,6 @@ export const homeSliderQuery = groq`
 `;
 
 // About page query - matches standalone studio schema (aboutPage.js)
-// Schema uses individual fields: introImage1/2/3, madelineImage, sydImage, galleryImage1/2/3
 export const aboutPageQuery = groq`
   *[_type == "aboutPage"][0] {
     pageTitle,
@@ -173,5 +172,14 @@ export const aboutPageQuery = groq`
       resource_type,
       format
     }
+  }
+`;
+
+// Contact section CTA query
+export const contactSectionQuery = groq`
+  *[_type == "contactSection"][0] {
+    subtitle,
+    heading,
+    buttonText
   }
 `;
