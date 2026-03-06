@@ -183,3 +183,21 @@ export const contactSectionQuery = groq`
     buttonText
   }
 `;
+
+// Home hero query
+export const homeHeroQuery = groq`
+  *[_type == "homeHero"][0] {
+    "backgroundVideo": backgroundVideo {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    },
+    "logo": logo {
+      public_id,
+      secure_url,
+      resource_type,
+      format
+    }
+  }
+`;
