@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Aud Studios 2025',
-  description: 'Next.js Project',
+  title: 'Aud Studios',
+  description: 'Aud Studios is a founder-led creative strategy and production agency, based in NYC.',
 };
 
 export default function RootLayout({ children }) {
