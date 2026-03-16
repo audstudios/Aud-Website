@@ -38,17 +38,15 @@ export default function Test() {
     setIsLoading(false);
   };
 
-  return (
-    <>
-      {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
-      <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.8s ease-in-out' }}>
-        <Navigation />
-        <Homehero />
-        <Services />
-        <HomeSlider />
-        <HomeCarousel />
-        <HomeContact />
-      </div>
-    </>
-  );
+return (
+  <>
+    {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
+    <Navigation />
+    <Homehero />
+    <Services />
+    <HomeSlider />
+    <HomeCarousel />
+    <HomeContact />
+  </>
+);
 }
