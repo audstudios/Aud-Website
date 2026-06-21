@@ -1,16 +1,10 @@
-'use client';
+import ContactPageClient from './ContactPageClient';
 
-import LenisProvider from '@/components/LenisProvider';
-import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
-import HomeContact from '@/components/Home/homecontact/homecontact';
-import './contactpage.css';
+export const metadata = {
+  title: 'Contact | Aud Studios',
+  description: 'Get in touch with Aud Studios. We'd love to connect about your next project.',
+};
 
 export default function ContactPage() {
-  return (
-    <LenisProvider>
-      <NavigationGeneral />
-      <div className='spacer-45'></div>
-      <HomeContact />
-    </LenisProvider>
-  );
+  return <ContactPageClient />;
 }

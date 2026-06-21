@@ -1,16 +1,10 @@
-'use client';
+import AboutPageClient from './AboutPageClient';
 
-import LenisProvider from '@/components/LenisProvider';
-import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
-import AboutContentIntegrated from '@/components/about/aboutcontent/page';
+export const metadata = {
+  title: 'About | Aud Studios',
+  description: 'Meet the founders of Aud Studios — a founder-led creative strategy and production agency based in NYC.',
+};
 
 export default function AboutPage() {
-  return (
-    <LenisProvider>
-      <div style={{ minHeight: '100vh' }}>
-        <NavigationGeneral />
-        <AboutContentIntegrated/>
-      </div>
-    </LenisProvider>
-  );
+  return <AboutPageClient />;
 }

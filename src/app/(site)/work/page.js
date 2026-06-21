@@ -1,14 +1,10 @@
-'use client';
+import WorkPageClient from './WorkPageClient';
 
-import LenisProvider from '@/components/LenisProvider';
-import NavigationGeneral from '@/components/nav/navgeneral/navgeneral';
-import WorkLayout from '@/components/work/worklayout/worklayout';
+export const metadata = {
+  title: 'Work | Aud Studios',
+  description: 'Explore our portfolio of creative strategy and production work for iconic brands.',
+};
 
 export default function WorkPage() {
-  return (
-    <LenisProvider>
-      <NavigationGeneral />
-      <WorkLayout />
-    </LenisProvider>
-  );
+  return <WorkPageClient />;
 }
