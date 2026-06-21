@@ -5,8 +5,7 @@ import gsap from 'gsap';
 import Link from 'next/link';
 import './projectslider.css';
 import '@/components/Home/homeslider/titles.css'
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import { KeyboardDoubleArrowLeftIcon, KeyboardDoubleArrowRightIcon } from '@/components/icons';
 
 const slides = [
   {

@@ -10,10 +10,7 @@ import '../../projecthero.css';
 import './horizontalprojecthero.css';
 import GhostLogo from '@/components/global/ghostlogo/ghostlogo';
 import VideoModal from '@/components/videomodal/VideoModal';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import PauseIcon from '@mui/icons-material/Pause';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import { PlayArrowIcon, PauseIcon, VolumeUpIcon, VolumeOffIcon } from '@/components/icons';
 
 gsap.registerPlugin(ScrollTrigger);
 

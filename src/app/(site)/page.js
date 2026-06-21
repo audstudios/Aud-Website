@@ -11,7 +11,7 @@ import HomeCarousel from "@/components/Home/homecarousel/homecarousel";
 import HomeContact from "@/components/Home/homecontact/homecontact";
 import Preloader from "@/components/preloader/Preloader";
 
-export default function Test() {
+export default function HomePage() {
   const [isLoading, setIsLoading] = useState(() => {
     if (typeof window === 'undefined') return true;
     if (!sessionStorage.getItem('aud-preloader-shown')) return true;

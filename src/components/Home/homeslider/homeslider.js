@@ -9,8 +9,7 @@ import { client } from '@/sanity/lib/client';
 import { homeSliderQuery } from '@/sanity/lib/queries';
 import './homeslider.css';
 import './titles.css';
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import { KeyboardDoubleArrowLeftIcon, KeyboardDoubleArrowRightIcon } from '@/components/icons';
 
 export default function HomeSlider() {
   const [slides, setSlides] = useState([]);
