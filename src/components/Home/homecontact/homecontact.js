@@ -4,6 +4,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import './homecontact.css';
 import ContactFormModal from '@/components/forms/ContactFormModal/ContactFormModal';
 import { client } from '@/sanity/lib/client';
@@ -61,10 +62,12 @@ export default function HomeContact() {
             </div>
           </div>
           <div className="homecontact-logos">
-            <img 
-              className="homecontact-image" 
-              src="/images/Aud_LogoGradientStack.png" 
+            <Image
+              className="homecontact-image"
+              src="/images/Aud_LogoGradientStack.png"
               alt="Aud Studios gradient logo stack"
+              width={345}
+              height={655}
             />
           </div>
         </div>

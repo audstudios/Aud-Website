@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 import ProjectCTA from '@/components/projects/project-cta';
 import '../../projecthero.css';
 import './verticalprojectcontent.css';
@@ -161,10 +162,11 @@ export default function VerticalProjectContent({ project }) {
                 ref={mainImageRef}
                 style={{ opacity: 0 }}
               >
-                <img 
-                  src={project.mainImages[0]} 
+                <Image
+                  src={project.mainImages[0]}
                   alt={`${project.title} main vertical project image`}
-                  style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                  fill
+                  sizes="355px"
                 />
               </div>
             )}
@@ -176,10 +178,11 @@ export default function VerticalProjectContent({ project }) {
                   ref={(el) => (subImagesRefs.current[index] = el)}
                   style={{ opacity: 0 }}
                 >
-                  <img 
-                    src={image} 
+                  <Image
+                    src={image}
                     alt={`${project.title} vertical detail ${index + 1}`}
-                    style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                    fill
+                    sizes="100px"
                   />
                 </div>
               ))}

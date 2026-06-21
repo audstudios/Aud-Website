@@ -32,9 +32,10 @@
 }
 
 .project-content-vertical-mainimages {
+    position: relative;
     width: 355px;
-    display: flex;
     aspect-ratio: 9 / 16;
+    overflow: hidden;
 }
 
 .project-content-lower-wrapper {
@@ -44,9 +45,10 @@
 }
 
 .project-content-vertical-subimages {
+    position: relative;
     width: 100px;
-    display: flex;
     aspect-ratio: 9 / 16;
+    overflow: hidden;
 }
 
 

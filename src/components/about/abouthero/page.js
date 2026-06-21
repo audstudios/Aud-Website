@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 import './abouthero.css';
 
 export default function AboutHero() {
@@ -56,43 +57,48 @@ export default function AboutHero() {
       <div className="about-hero-wrapper">
         {/* Main center image - AUD_About02.jpg */}
         <div className="about-hero-main-image" ref={mainImageRef}>
-          <img
+          <Image
             src="/images/about/AUD_About02.jpg"
             alt="Aud Studios team collaboration"
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            priority
           />
         </div>
 
-        {/* Supporting images arranged around main image */}
-        
-        {/* Top left - AUD_About01.jpg */}
         <div className="floating-image floating-image-1" ref={floating1Ref}>
-          <img
+          <Image
             src="/images/about/AUD_About01.jpg"
             alt="Creative workspace detail"
+            fill
+            sizes="(max-width: 768px) 50vw, 20vw"
           />
         </div>
 
-        {/* Bottom left - AUD_About05.jpg (new) */}
         <div className="floating-image floating-image-2" ref={floating2Ref}>
-          <img
+          <Image
             src="/images/about/AUD_About05.jpg"
             alt="Team collaboration moment"
+            fill
+            sizes="(max-width: 768px) 50vw, 20vw"
           />
         </div>
 
-        {/* Top right - AUD_About06.jpg (new) */}
         <div className="floating-image floating-image-3" ref={floating3Ref}>
-          <img
+          <Image
             src="/images/about/AUD_About06.jpg"
             alt="Production in action"
+            fill
+            sizes="(max-width: 768px) 50vw, 20vw"
           />
         </div>
 
-        {/* Bottom right - AUD_About07.jpg (new) */}
         <div className="floating-image floating-image-4" ref={floating4Ref}>
-          <img
+          <Image
             src="/images/about/AUD_About07.jpg"
             alt="Behind the scenes"
+            fill
+            sizes="(max-width: 768px) 50vw, 20vw"
           />
         </div>
       </div>

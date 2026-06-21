@@ -6,6 +6,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 import ProjectCTA from '@/components/projects/project-cta';
 import '../../projecthero.css';
 import './horizontalprojectcontent.css';
@@ -165,11 +166,11 @@ export default function HorizontalProjectContent({ project }) {
                 ref={(el) => (mainImagesRefs.current[index] = el)}
                 style={{ opacity: 0 }}
               >
-                <img 
-                  src={image} 
-                  alt={`${project.title} project image ${index + 1}`} 
-                  style={{width: '100%', height: '100%', objectFit: 'cover'}}
-                  loading="lazy"
+                <Image
+                  src={image}
+                  alt={`${project.title} project image ${index + 1}`}
+                  fill
+                  sizes="450px"
                 />
               </div>
             ))}
@@ -216,11 +217,11 @@ export default function HorizontalProjectContent({ project }) {
                   ref={(el) => (subImagesRefs.current[index] = el)}
                   style={{ opacity: 0 }}
                 >
-                  <img 
-                    src={image} 
-                    alt={`${project.title} additional detail ${index + 1}`} 
-                    style={{width: '100%', height: '100%', objectFit: 'cover'}}
-                    loading="lazy"
+                  <Image
+                    src={image}
+                    alt={`${project.title} additional detail ${index + 1}`}
+                    fill
+                    sizes="230px"
                   />
                 </div>
               ))}

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getCloudinaryAssetUrl } from '@/lib/cloudinary';
 import './worklayout.css';
 import { client } from '@/sanity/lib/client';
@@ -159,13 +160,12 @@ export default function WorkLayout() {
               ref={(el) => (cardsRef.current[index] = el)}
             >
               <div className="project-card-background">
-                <img 
-                  src={project.image} 
+                <Image
+                  src={project.image}
                   alt={project.title}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  onError={(e) => {
-                    e.target.style.background = '#1a1a1a';
-                  }}
+                  fill
+                  sizes="100vw"
+                  priority={index === 0}
                 />
               </div>
 

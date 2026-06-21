@@ -23,9 +23,11 @@
 }
 
 .horizontal-project-content-img-main {
+    position: relative;
     aspect-ratio: 16 / 9;
     width: 450px;
     margin: 0px 0 30px 0px;
+    overflow: hidden;
 }
 
 .project-content-subimages-wrapper {
@@ -34,8 +36,10 @@
 }
 
 .project-content-horizontal-subimages {
+    position: relative;
     aspect-ratio: 16/9;
     width: 230px;
+    overflow: hidden;
 }
 
 

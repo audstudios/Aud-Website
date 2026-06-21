@@ -10,6 +10,7 @@ import { getMediaUrl, getCloudinaryAssetUrl } from '@/lib/cloudinary';
 import { aboutImages } from '@/data/projects';
 import { client } from '@/sanity/lib/client';
 import { aboutPageQuery } from '@/sanity/lib/queries';
+import Image from 'next/image';
 import './aboutcontent.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -219,10 +220,12 @@ export default function AboutContentIntegrated() {
                 className="about-intro-image"
                 ref={(el) => (introImageRefs.current[index] = el)}
               >
-                <img
+                <Image
                   src={src}
                   alt={`Aud Studios team ${index + 1}`}
-                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  priority={index === 0}
                 />
               </div>
             ))}
@@ -232,7 +235,7 @@ export default function AboutContentIntegrated() {
         {/* Madeline Bio */}
         <div className="about-bio-section" ref={madelineBioRef}>
           <div className="about-bio-image">
-            <img src={data.madelineImage} alt={data.madelineName} />
+            <Image src={data.madelineImage} alt={data.madelineName} fill sizes="(max-width: 768px) 100vw, 40vw" />
           </div>
           <div className="about-bio-content">
             <h2 className="about-bio-name">{data.madelineName}</h2>
@@ -245,10 +248,12 @@ export default function AboutContentIntegrated() {
         {/* Syd Bio */}
         <div className="about-bio-section" ref={sydBioRef}>
           <div className="about-bio-image">
-            <img
+            <Image
               className="syd-mobile-img-position"
               src={data.sydImage}
               alt={data.sydName}
+              fill
+              sizes="(max-width: 768px) 100vw, 40vw"
             />
           </div>
           <div className="about-bio-content">
@@ -267,10 +272,11 @@ export default function AboutContentIntegrated() {
               className="about-gallery-image"
               ref={(el) => (galleryImageRefs.current[index] = el)}
             >
-              <img
+              <Image
                 src={src}
                 alt={`Studio image ${index + 1}`}
-                loading="lazy"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
           ))}
