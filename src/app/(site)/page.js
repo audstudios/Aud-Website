@@ -12,14 +12,9 @@ import HomeContact from "@/components/Home/homecontact/homecontact";
 import Preloader from "@/components/preloader/Preloader";
 
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(() => {
-    if (typeof window === 'undefined') return true;
-    if (!sessionStorage.getItem('aud-preloader-shown')) return true;
-    return !document.querySelector('video')?.readyState;
-  });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!isLoading) return;
     if (!sessionStorage.getItem('aud-preloader-shown')) return;
 
     const dismiss = () => setIsLoading(false);
@@ -32,7 +27,7 @@ export default function HomePage() {
 
     window.addEventListener('hero-video-ready', dismiss);
     return () => window.removeEventListener('hero-video-ready', dismiss);
-  }, [isLoading]);
+  }, []);
 
   useEffect(() => {
     const lenis = new Lenis({
