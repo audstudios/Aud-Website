@@ -14,8 +14,8 @@ export default function SiteLayout({ children }) {
       <MobileMenu />
       <main>
         {children}
+        <Footer />
       </main>
-      <Footer />
       <Analytics />
     </>
   );

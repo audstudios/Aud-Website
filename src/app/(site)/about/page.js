@@ -27,7 +27,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div>
+    <div style={{ minHeight: '100vh' }}>
       <NavigationGeneral />
       <AboutContentIntegrated/>
     </div>
