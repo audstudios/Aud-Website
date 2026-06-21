@@ -1,6 +1,7 @@
 import './globals.css';
 
 export const metadata = {
+  metadataBase: new URL('https://www.audstudios.com'),
   title: 'Aud Studios',
   description: 'Aud Studios is a founder-led creative strategy and production agency, based in NYC.',
   openGraph: {

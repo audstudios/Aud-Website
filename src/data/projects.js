@@ -115,28 +115,28 @@ export const homeSliderData = [
     video: '/images/RizzlerHardees/RizzlerHardees.mp4',
     background: '/images/homeblur/rizzlerhomebg.jpg',
     className: 'slide-flippedfrog',
-    link: '/work/projects/pages/rizzlerHardees',
+    link: '/work/projects/rizzler-hardees',
   },
   {
     title: 'Jean Paul Gaultier',
     video: '/videos/Aud_Land_Video.mp4',
     background: '/images/homeblur/jpghomebg.jpg',
     className: 'slide-jeanpaul',
-    link: '/work/projects/pages/jeanpaulgautier',
+    link: '/work/projects/jean-paul-gaultier',
   },
   {
     title: 'Doordash',
     video: '/images/CardiBDoorDash/CardiBHomeSlider.mp4',
     background: '/images/homeblur/cardibhomebg.jpg',
     className: 'slide-frogeating',
-    link: '/work/projects/pages/cardibdoordash',
+    link: '/work/projects/cardi-b-doordash',
   },
   {
     title: 'Flav',
     video: '/images/flav/FlavEditWeb.mp4',
     background: '/images/homeblur/FlavBG.jpg',
     className: 'slide-frogeating',
-    link: '/work/projects/pages/flav',
+    link: '/work/projects/flav',
   },
 ];
 

@@ -3,67 +3,21 @@
 
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TransitionLink from '@/components/transition/TransitionLink';
 import Image from 'next/image';
-import { getCloudinaryAssetUrl } from '@/lib/cloudinary';
 import './worklayout.css';
-import { client } from '@/sanity/lib/client';
-import { workPageProjectsQuery } from '@/sanity/lib/queries';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function WorkLayout() {
+export default function WorkLayout({ projects = [] }) {
   const cardsRef = useRef([]);
   const containerRef = useRef(null);
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  // Fetch projects from Sanity
   useEffect(() => {
-    async function fetchProjects() {
-      try {
-        if (!client) {
-          console.error('Sanity client not available');
-          setLoading(false);
-          return;
-        }
-        
-        const data = await client.fetch(workPageProjectsQuery);
-        
-        if (!data) {
-          setLoading(false);
-          return;
-        }
-        
-        const transformedProjects = data.map((project) => ({
-          id: project._id,
-          title: project.title,
-          subtitle: project.workPageSubtitle || '',
-          client: project.client,
-          type: project.projectType,
-          year: project.year,
-          // Use Cloudinary asset helper for work page image
-          image: getCloudinaryAssetUrl(project.workPageImage, 'fullImage'),
-          link: `/work/projects/${project.slug}`
-        }));
-        
-        setProjects(transformedProjects);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchProjects();
-  }, []);
-
-  // Animations
-  useEffect(() => {
-    if (loading || projects.length === 0) return;
+    if (projects.length === 0) return;
 
     const cards = cardsRef.current.filter(Boolean);
 
@@ -122,20 +76,7 @@ export default function WorkLayout() {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [loading, projects]);
-
-  if (loading) {
-    return (
-      <div className="work-layout-container" style={{ 
-        minHeight: '100vh', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center' 
-      }}>
-        <p style={{ color: '#fff' }}>Loading projects...</p>
-      </div>
-    );
-  }
+  }, [projects]);
 
   if (projects.length === 0) {
     return (
