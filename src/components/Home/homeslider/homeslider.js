@@ -185,12 +185,12 @@ export default function HomeSlider() {
           </div>
 
           <div className="homeslider-controls">
-            <span onClick={prevSlide}>
+            <button onClick={prevSlide} aria-label="Previous slide">
               <KeyboardDoubleArrowLeftIcon style={{ fontSize: 80, color: 'white' }} />
-            </span>
-            <span onClick={nextSlide}>
+            </button>
+            <button onClick={nextSlide} aria-label="Next slide">
               <KeyboardDoubleArrowRightIcon style={{ fontSize: 80, color: 'white' }} />
-            </span>
+            </button>
           </div>
 
           <div className="homeslider-count">
