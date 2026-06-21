@@ -47,6 +47,7 @@ export default function Homehero() {
         muted
         loop
         playsInline
+        onCanPlay={() => window.dispatchEvent(new Event('hero-video-ready'))}
       />
       <img
         className="hero-logo"

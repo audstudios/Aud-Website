@@ -12,12 +12,32 @@ import HomeContact from "@/components/Home/homecontact/homecontact";
 import Preloader from "@/components/preloader/Preloader";
 
 export default function Test() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    if (!sessionStorage.getItem('aud-preloader-shown')) return true;
+    return !document.querySelector('video')?.readyState;
+  });
+
+  useEffect(() => {
+    if (!isLoading) return;
+    if (!sessionStorage.getItem('aud-preloader-shown')) return;
+
+    const dismiss = () => setIsLoading(false);
+
+    const video = document.querySelector('.background-video');
+    if (video && video.readyState >= 3) {
+      dismiss();
+      return;
+    }
+
+    window.addEventListener('hero-video-ready', dismiss);
+    return () => window.removeEventListener('hero-video-ready', dismiss);
+  }, [isLoading]);
 
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
       smoothTouch: false,
     });
@@ -30,11 +50,12 @@ export default function Test() {
     requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy(); // Cleanup on unmount
+      lenis.destroy();
     };
   }, []);
 
   const handlePreloaderComplete = () => {
+    sessionStorage.setItem('aud-preloader-shown', 'true');
     setIsLoading(false);
   };
 
