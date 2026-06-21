@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import Link from 'next/link';
+import TransitionLink from '@/components/transition/TransitionLink';
 import { getMediaUrl, getCloudinaryAssetUrl } from '@/lib/cloudinary';
 import { homeSliderData as fallbackSliderData } from '@/data/projects';
 import { client } from '@/sanity/lib/client';
@@ -194,9 +194,9 @@ export default function HomeSlider() {
           </div>
 
           <div className="homeslider-count">
-            <Link href={link} className="homeslider-link-button">
+            <TransitionLink href={link} className="homeslider-link-button">
               VIEW PROJECT
-            </Link>
+            </TransitionLink>
             <p>
               {String(currentIndex + 1).padStart(2, '0')}/
               {String(totalSlides).padStart(2, '0')}

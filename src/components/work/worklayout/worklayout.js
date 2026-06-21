@@ -6,7 +6,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Link from 'next/link';
+import TransitionLink from '@/components/transition/TransitionLink';
 import Image from 'next/image';
 import { getCloudinaryAssetUrl } from '@/lib/cloudinary';
 import './worklayout.css';
@@ -154,7 +154,7 @@ export default function WorkLayout() {
     <div className="work-layout-container" ref={containerRef}>
       <div className="work-layout-grid">
         {projects.map((project, index) => (
-          <Link href={project.link} key={project.id}>
+          <TransitionLink href={project.link} key={project.id}>
             <div
               className="project-card"
               ref={(el) => (cardsRef.current[index] = el)}
@@ -200,7 +200,7 @@ export default function WorkLayout() {
                 </div>
               )}
             </div>
-          </Link>
+          </TransitionLink>
         ))}
       </div>
     </div>

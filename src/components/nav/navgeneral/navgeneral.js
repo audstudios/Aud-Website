@@ -2,7 +2,7 @@
 
 import './navgeneral.css';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link'; 
+import TransitionLink from '@/components/transition/TransitionLink';
 
 export default function NavigationGeneral() {
   const pathname = usePathname();
@@ -15,25 +15,25 @@ export default function NavigationGeneral() {
   return (
     <div className="nav-container">
       <div className="nav-wrapper">
-        <Link href="/">
+        <TransitionLink href="/">
           <div className="nav-left">
             <img src="/images/audwordmark_nav.svg" alt="Aud Studios wordmark logo" />
           </div>
-        </Link>
+        </TransitionLink>
         <div className="nav-right">
           <div className="nav-menu">
-            <Link href="/">
+            <TransitionLink href="/">
               <p className={`nav-link ${isActive('/') ? 'active' : ''}`} data-text="Home">Home</p>
-            </Link>
-            <Link href="/work">
+            </TransitionLink>
+            <TransitionLink href="/work">
               <p className={`nav-link ${isActive('/work') ? 'active' : ''}`} data-text="Work">Work</p>
-            </Link>
-            <Link href="/about">
+            </TransitionLink>
+            <TransitionLink href="/about">
               <p className={`nav-link ${isActive('/about') ? 'active' : ''}`} data-text="About">About</p>
-            </Link>
-            <Link href="/contact">
+            </TransitionLink>
+            <TransitionLink href="/contact">
               <p className={`nav-link ${isActive('/contact') ? 'active' : ''}`} data-text="Contact">Contact</p>
-            </Link>
+            </TransitionLink>
           </div>
         </div>
       </div>

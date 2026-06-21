@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Link from 'next/link'; 
+import TransitionLink from '@/components/transition/TransitionLink';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,21 +32,21 @@ export default function Navigation() {
     <div className="nav-container">
       <div className="nav-wrapper">
         <div className="nav-left nav-home">
-          <Link href="/">
+          <TransitionLink href="/">
             <img src="/images/audwordmark_nav.svg" alt="Aud Studios wordmark logo" />
-          </Link>
+          </TransitionLink>
         </div>
         <div className="nav-right">
           <div className="nav-menu">
-            <Link href="/work">
+            <TransitionLink href="/work">
               <p className={`nav-link ${isActive('/work') ? 'active' : ''}`} data-text="Work">Work</p>
-            </Link>
-            <Link href="/about">
+            </TransitionLink>
+            <TransitionLink href="/about">
               <p className={`nav-link ${isActive('/about') ? 'active' : ''}`} data-text="About">About</p>
-            </Link>
-            <Link href="/contact">
+            </TransitionLink>
+            <TransitionLink href="/contact">
               <p className={`nav-link ${isActive('/contact') ? 'active' : ''}`} data-text="Contact">Contact</p>
-            </Link>
+            </TransitionLink>
           </div>
         </div>
       </div>

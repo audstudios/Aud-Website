@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
+import TransitionLink from '@/components/transition/TransitionLink';
 
 import "./menu.css";
 
@@ -59,13 +59,13 @@ const MobileMenu = () => {
         <div className="menu-container" ref={container}>
             <div className="menu-bar">
                 <div className="menu-logo">
-                    <Link href="/">
-                      <img 
-                        className="mobile-menu-logo" 
+                    <TransitionLink href="/">
+                      <img
+                        className="mobile-menu-logo"
                         src="/images/logos/Aud_Logo_MM_Black.svg"
                         alt="Aud Studios mobile menu logo"
                       />
-                    </Link>
+                    </TransitionLink>
                 </div>
                 <div className="menu-open">
                     <button 
@@ -81,13 +81,13 @@ const MobileMenu = () => {
         <nav className="menu-overlay" aria-label="Main navigation">
             <div className="menu-overlay-bar">
                 <div className="menu-logo menu-logo-open">
-                    <Link href="/">
-                        <img 
-                          className="mobile-menu-logo" 
+                    <TransitionLink href="/">
+                        <img
+                          className="mobile-menu-logo"
                           src="/images/logos/Aud_Logo_MM.svg"
                           alt="Aud Studios mobile menu logo"
                         />
-                    </Link>
+                    </TransitionLink>
                 </div>
                 <div className="menu-close">
                     <button 
@@ -112,9 +112,9 @@ const MobileMenu = () => {
                     {menuLinks.map((link, index) =>(
                         <div className="menu-link-item" key={index}>
                             <div className="menu-link-item-holder"  onClick={toggleMenu}>
-                                <Link href={link.path} className="menu-link">
+                                <TransitionLink href={link.path} className="menu-link">
                                     {link.label}
-                                </Link>
+                                </TransitionLink>
                             </div>
                         </div>
                     ))}

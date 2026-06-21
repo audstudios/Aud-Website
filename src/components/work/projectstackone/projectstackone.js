@@ -1,5 +1,5 @@
 import './projectstackone.css';
-import Link from 'next/link';
+import TransitionLink from '@/components/transition/TransitionLink';
 
 const projects = [
   {
@@ -33,7 +33,7 @@ export default function ProjectStackOne() {
     <div className="project-stack-one-container">
       <div className="project-stack-one-wrapper">
         {projects.map((project, index) => (
-          <Link href={project.href} key={index}>
+          <TransitionLink href={project.href} key={index}>
             <div className={`project-card-vert-container ${project.positionClass}`}>
               <div className="project-card-vert-wrapper">
                 <div className="project-card-vert-content-left">
@@ -54,7 +54,7 @@ export default function ProjectStackOne() {
                 </div>
               </div>
             </div>
-          </Link>
+          </TransitionLink>
         ))}
       </div>
       <div className='temp-spacer'></div>
