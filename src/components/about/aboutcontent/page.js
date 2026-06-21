@@ -184,8 +184,7 @@ export default function AboutContentIntegrated() {
     };
   }, [data]);
 
-  // Don't render until data is ready
-  if (!data) return null;
+  if (!data) return <div style={{ minHeight: '100vh' }} />;
 
   return (
     <div className="about-content-container">
